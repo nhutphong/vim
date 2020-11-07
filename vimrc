@@ -1,6 +1,7 @@
 call plug#begin()
 Plug 'preservim/nerdtree'
 Plug 'scrooloose/nerdcommenter'
+Plug 'severin-lemaignan/vim-minimap'
 Plug 'junegunn/fzf'
 Plug 'vim-airline/vim-airline'
 Plug 'altercation/vim-colors-solarized'
@@ -8,12 +9,12 @@ Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/syntastic'
 Plug 'mattn/emmet-vim'
+Plug 'easymotion/vim-easymotion'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go'
 call plug#end()
 
-autocmd vimenter * NERDTree
 
 set shell=/usr/bin/zsh
 
@@ -30,7 +31,6 @@ filetype plugin indent on
 set wrap
 
 syntax on
-set number
 
 "colorschemy
 colo peachpuff
@@ -62,8 +62,8 @@ set smarttab
 
 " Display & format
 
-set number
-
+"set number
+set relativenumber
 set textwidth=80
 
 set wrapmargin=2
@@ -80,6 +80,9 @@ set incsearch
 set ignorecase
 
 set smartcase
+
+set ruler
+set rulerformat=%l\:%c
 
 
 " Browse & Scroll
@@ -109,8 +112,35 @@ set visualbell
 set errorbells
 
 
+"let mapleader='\'         =<leader>
+let mapleader=';'
+" . dot => repeat command truoc do
+
+"map <silent> <leader>g :tabnew 
+"co silent se khong thong bao khi press </g>
+"map <keyname> :expresion
+"khi press <keyname> run :expresion
+"map <keyname> <CR>  "khi press <keyname> => press <Enter>
+"
+"
+"<CR> or <Enter> or <Return> => <Enter>
+"<BS> => <Backspace>
 " map key
 imap jj <Esc>
+
+" 1 new tap se co nhieu windows
+map <C-l> gt       "shortcut cho next tab
+map <C-h> gT       "previous tab
+map <C-n> :tabnew  "new tab
+
+"p or shift+p paste vim in vim
+";p paste  tu program khac vao vim
+nnoremap <leader>p "+gP
+
+"set colo ron trong file vimrc = :colo ron<cr> trong command vim
+"set<space> = :
+" set colo ron ===== :colo ron<cr>
+nmap <leader>ron :colo ron<cr>
 
 
 " airline
@@ -119,4 +149,9 @@ let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'default'
 
+
+
+" NERDTree
+autocmd VimEnter * NERDTree       "tự chạy NERDTree ngay sau khi vào Vim
+autocmd VimEnter * wincmd p       "thêm màu mè cho code
 
