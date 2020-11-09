@@ -2,10 +2,19 @@ call plug#begin()
 Plug 'preservim/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'severin-lemaignan/vim-minimap'
+
+"autocomplete
+Plug 'valloric/youcompleteme'
+
+Plug 'honza/vim-snippets'
 Plug 'junegunn/fzf'
 Plug 'vim-airline/vim-airline'
+
+"colorschemy
 Plug 'altercation/vim-colors-solarized'
-Plug 'morhetz/gruvbox'
+Plug 'https://github.com/rafi/awesome-vim-colorschemes.git'
+
+
 Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/syntastic'
 Plug 'mattn/emmet-vim'
@@ -14,6 +23,13 @@ Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go'
 call plug#end()
+
+
+"source %  -> reload file
+"PlugInstall
+"plugUpdate
+"PlugClean -> delete
+"PlugUpgrade
 
 
 set shell=/usr/bin/zsh
@@ -33,7 +49,7 @@ set wrap
 syntax on
 
 "colorschemy
-colo peachpuff
+colo molokai
 
 " display options
 set showmode
@@ -55,6 +71,7 @@ set tabstop=4
 
 set shiftwidth=4
 
+"use spaces instead of tabs
 set expandtab
 
 set smarttab
@@ -62,9 +79,9 @@ set smarttab
 
 " Display & format
 
-"set number
-set relativenumber
-set textwidth=80
+set number
+"set relativenumber
+set textwidth=79
 
 set wrapmargin=2
 
@@ -137,10 +154,11 @@ map <C-n> :tabnew  "new tab
 ";p paste  tu program khac vao vim
 nnoremap <leader>p "+gP
 
+
 "set colo ron trong file vimrc = :colo ron<cr> trong command vim
 "set<space> = :
 " set colo ron ===== :colo ron<cr>
-nmap <leader>ron :colo ron<cr>
+nmap <leader>cgb :colo gruvbox<cr>
 
 
 " airline
