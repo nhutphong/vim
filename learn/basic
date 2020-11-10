@@ -1,0 +1,122 @@
+
+
+
+
+:q: Thoát khỏi Vim
+:q!: Bắt buộc thoát không cần lưu
+:w: Lưu file
+:w!: Bắt buộc ghi file (ghi đè)
+:wq: Lưu xong thoát
+
+
+$: nhảy về cuối dòng hiện tại
+0 (số không @@): nhảy về đầu dòng hiện tại
+
+
+gg: nhảy lên đầu file
+G: nhảy xuống cuối file
+50G: nhảy tới dòng 50 của file
+Ctrl + G: Xem thông tin dòng hiện tại
+
+
+
+let mapleader = "\"
+:map <leader>A  haha <Esc>
+: map \A haha <Esc>
+
+split windows:
+<C-w>v: vertical=chia doc
+<C-w>s: horizontally= chia ngang
+ 
+
+
+                            normal mode:
+key stroke:
+<C-w>o = press ctrl+w break roi press o
+
+
+o : new file
+. : repeat cmd truoc do
+u : undo
+
+3gg=3G : goto line 3
+gg : dau file
+G : cuoi file
+
+^ : line first word
+g_: line last word
+
+0 : line first
+$ : line last
+
+w: forward(next=dau tu tiep theo)
+e: forward(next= cuoi tu tiep theo)
+b: backward(previous=dau tu truoc do)
+ge: backward (end tu truoc do)
+
+dd: xoa 1 dong
+d3d: xoa 3 dong
+d3w: delete 3 word(tinh tu vi tri cursor)
+x: cut 1 letter
+c3w new_string<ESC>: override 3 tu= new_string
+yy: copy 1 line
+yiw: copy  word hien tai
+p: paste
+g~: swap case
+gu: make lowercase
+gU: make uppercase
+>G: tab word
+A;<esc> : cuoi line($a) them ; press<esc>
+5@a: titlecase
+
+
+find and replace text
+:5,12s/foo/bar/g
+
+
+f<char> search char=chu cai can tim
+`{a-z}: any lowercase letter
+m{a-zA-Z}: any lower and uppercase letter
+$<>: dung shell
+:<> ex command
+/<> forward=next search
+?<> backward=previous search
+=<> code vim
+
+-------------------------------------------------------------------------
+
+                    visual mode: select contents
+    che do chon nhieu words, lines
+
+v
+*: select all word giong nhau 
+vjj: chon them 2 line
+vG: full below lines
+o: go to end highlight text
+vit: goto contents html
+U: uppercase
+/ge<CR>: select contents from cursor to ge
+
+-------------------------------------------------------------------------
+
+
+cmd mode = (:)
+:w[rite] -> save file
+:clo[se]
+
+:shell
+:copy = :t
+:6copy.=:6t. => copy line 6 goto current line=.
+:t6 => current line. paste below line 6
+:t. => duplicate copy and paste vi tri hien tai
+:t$ => paste to end line
+
+# move lines
+:m[ove]
+:'<,'>m$ : move select contents to end lines
+:!{cmd}
+:5,7m 21    move lines 5, 6 and 7 to after line 21
+:5,7m 0 move lines 5, 6 and 7 to before first line
+:5,7m $ move lines 5, 6 and 7 to after last line
+:.,.+4m 21  move 5 lines starting at current line to after line 21
+:,+4m14 same (. for current line is assumed)

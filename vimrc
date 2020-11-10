@@ -5,6 +5,8 @@ Plug 'severin-lemaignan/vim-minimap'
 
 "autocomplete
 Plug 'valloric/youcompleteme'
+Plug 'govim/govim'
+
 
 Plug 'honza/vim-snippets'
 Plug 'junegunn/fzf'
@@ -21,7 +23,6 @@ Plug 'mattn/emmet-vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-fugitive'
-Plug 'fatih/vim-go'
 call plug#end()
 
 
@@ -34,22 +35,33 @@ call plug#end()
 
 set shell=/usr/bin/zsh
 
+"size gvim
+set columns=130
+set lines=42
+
 " Set compatibility to Vim only.
 set nocompatible
 
 " Helps force plug-ins to load correctly when it is turned back on below.
-filetype off
+
 
 " For plug-ins to load correctly.
-filetype plugin indent on
+autocmd FileType plugin indent on
 
 " Automatically wrap text that extends beyond the screen length.
 set wrap
+set linebreak
+set nolist
+set textwidth=79
+"set formatoptions+=a
+
+set colorcolumn=+1
+hi ColorColumn guibg=#2d2d2d ctermbg=246
 
 syntax on
 
 "colorschemy
-colo molokai
+colo darkblue
 
 " display options
 set showmode
@@ -81,7 +93,6 @@ set smarttab
 
 set number
 "set relativenumber
-set textwidth=79
 
 set wrapmargin=2
 
@@ -154,11 +165,22 @@ map <C-n> :tabnew  "new tab
 ";p paste  tu program khac vao vim
 nnoremap <leader>p "+gP
 
+"open file config
+nmap <leader>vimrc :e ~/.vim/vimrc<cr>
+nmap <leader>zshrc :e ~/.zshrc<cr>
+nmap <leader>bashrc :e ~/.bashrc<cr>
 
-"set colo ron trong file vimrc = :colo ron<cr> trong command vim
+"reload file source file_name
+map <leader>runvimrc :so ~/.vimrc<cr>
+
+
+"colo ron trong file vimrc = :colo ron<cr> trong command vim
 "set<space> = :
-" set colo ron ===== :colo ron<cr>
+"colo ron ===== :colo ron<cr>
 nmap <leader>cgb :colo gruvbox<cr>
+
+
+"-----------------------------------------------------------------------------
 
 
 " airline
@@ -172,4 +194,35 @@ let g:airline#extensions#tabline#formatter = 'default'
 " NERDTree
 autocmd VimEnter * NERDTree       "tự chạy NERDTree ngay sau khi vào Vim
 autocmd VimEnter * wincmd p       "thêm màu mè cho code
+
+
+"vim-easymotion
+map <Leader> <Plug>(easymotion-prefix)
+let g:EasyMotion_smartcase = 1
+
+
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+
+" Gif config
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+
+" These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
+" Without these mappings, `n` & `N` works fine. (These mappings just provide
+" different highlight method and have some other features )
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
 
