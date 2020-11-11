@@ -306,10 +306,4 @@ vit: goto contents html
 U: uppercase
 /ge<CR>: select contents from cursor to ge
 
--------------------------------------------------------------------------
-
-
-cmd mode = (:)
-:w[rite] -> save file
-:clo[se]
-
+---------------------------------------------------------------------
