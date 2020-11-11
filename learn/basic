@@ -9,14 +9,52 @@
 :wq: Lưu xong thoát
 
 
-$: nhảy về cuối dòng hiện tại
-0 (số không @@): nhảy về đầu dòng hiện tại
+Cursor movement     [count=int][operator]
+h - move cursor left
+j - move cursor down
+k - move cursor up
+l - move cursor right
+
+H - move to top of screen
+M - move to middle of screen
+L - move to bottom of screen
+
+w - jump forwards to the start of a word
+W - jump forwards to the start of a word (words can contain punctuation)
+e - jump forwards to the end of a word
+E - jump forwards to the end of a word (words can contain punctuation)
+b - jump backwards to the start of a word
+B - jump backwards to the start of a word (words can contain punctuation)
+% - move to matching character (default supported pairs: '()', '{}', '[]' - use :h matchpairs in vim for more info)
 
 
-gg: nhảy lên đầu file
-G: nhảy xuống cuối file
+"jump to line   [count=int]gg
+gg - go to the first line of the document
+G - go to the last line of the document
 50G: nhảy tới dòng 50 của file
+5gg or 5G - go to line 5
 Ctrl + G: Xem thông tin dòng hiện tại
+
+0 - jump to the start of the line
+$ - jump to the end of the line
+^ - jump to the first non-blank character of the line
+g_ - jump to the last non-blank character of the line
+
+tx - jump to before next occurrence of character x
+fx - jump to next occurrence of character x
+Fx - jump to previous occurence of character x
+Tx - jump to after previous occurence of character x
+; - repeat previous f, t, F or T movement
+, - repeat previous f, t, F or T movement, backwards
+} - jump to next paragraph (or function/block, when editing code)
+{ - jump to previous paragraph (or function/block, when editing code)
+zz - center cursor on screen
+Ctrl + e - move screen down one line (without moving cursor)
+Ctrl + y - move screen up one line (without moving cursor)
+Ctrl + b - move back one full screen
+Ctrl + f - move forward one full screen
+Ctrl + d - move forward 1/2 a screen
+Ctrl + u - move back 1/2 a screen
 
 
 
@@ -34,123 +72,211 @@ split windows:
 key stroke:
 <C-w>o = press ctrl+w break roi press o
 
-
-o : new file
-. : repeat cmd truoc do
-u : undo
-
-3gg=3G : goto line 3
-gg : dau file
-G : cuoi file
-
-^ : line first word
-g_: line last word
-
-0 : line first
-$ : line last
-
-w: forward(next=dau tu tiep theo)
-e: forward(next= cuoi tu tiep theo)
-b: backward(previous=dau tu truoc do)
-ge: backward (end tu truoc do)
-
 dd: xoa 1 dong
 d3d: xoa 3 dong
 d3w: delete 3 word(tinh tu vi tri cursor)
 x: cut 1 letter
 c3w new_string<ESC>: override 3 tu= new_string
 yy: copy 1 line
-yiw: copy  word hien tai
-yy - Copies a line
-yw - Copies a word
-y$ - Copies from where your cursor is to the end of a line
-
-2. Vim commands for movement#
-When using movement commands, you can put a number in front of them to make Vim complete a command multiple times. For example, 5h will move your cursor five spaces to the left, and 90j will put your cursor at the beginning of the 90th line down from where your cursor currently is.
-
-h - Moves the cursor to the left
-
-l - Moves the cursor to the right
-
-j - Moves the cursor down one line
-
-k - Moves the cursor up one line
-
-H - Puts the cursor at the top of the screen
-
-M - Puts the cursor in the middle of the screen
-
-L - Puts the cursor at the bottom of the screen
-
-w - Puts the cursor at the start of the next word
-
-b - Puts the cursor at the start of the previous word
-
-e - Puts the cursor at the end of a word
-
-0 - Places the cursor at the beginning of a line
-
-$ - Places the cursor at the end of a line
-
-) - Takes you to the start of the next sentence
-
-( - Takes you to the start of the previous sentence
-
-} - Takes you to the start of the next paragraph or block of text
-
-{ - Takes you to the start of the previous paragraph or block of text
-
-Ctrl + f - Takes you one page forward
-
-Ctrl + b - Takes you one page back
-
-gg - Places the cursor at the start of the file
-
-G - Places the cursor at the end of the file
-
-# - Where # is the number of a line, this command takes you to the line specified
-
-3. Vim commands for editing#
-Those who use Vim tend to use the term "yank" where most people would use the terms copy and paste. Therefore, the command for copying a word is yw, which stands for yank word, and the command for pasting whatever has been copied is p, meaning put. If you look up additional commands in the future, it can be confusing if you don't know what yank and put mean when using Vim.
-
-You also have two options for how to select text. You can either use commands like dd, which deletes a single line, and yy, which copies a single line, or you can highlight text and then copy it to the unnamed register. The paste commands work the same whether you've highlighted text or used a command to automatically copy it.
-
-As with movement commands, putting a number in front of the command can increase the number of times a task is completed. For instance, putting a number in front of yy will increase the number of lines copied, so 5yy will copy five lines.
-
-yy - Copies a line
-
-yw - Copies a word
-
-y$ - Copies from where your cursor is to the 
-
-d - Deletes highlighted text
-
-dd - Deletes a line of text
-
-dw - Deletes a word
-
-D - Deletes everything from where your cursor is to the end of the line
-
-d0 - Deletes everything from where your cursor is to the beginning of the line
-
-dgg - Deletes everything from where your cursor is to the beginning of the file
-
-dG - Deletes everything from where your cursor is to the end of the file
-
-x - Deletes a single character
-
-u - Undo the last operation; u# allows you to undo multiple actions
-
-Ctrl + r - Redo the last undo
-
-. - Repeats the last action
-
 g~: swap case
 gu: make lowercase
 gU: make uppercase
 >G: tab word
 A;<esc> : cuoi line($a) them ; press<esc>
 5@a: titlecase
+
+
+Insert mode - inserting/appending text
+i - insert before the cursor
+I - insert at the beginning of the line
+a - insert (append) after the cursor
+A - insert (append) at the end of the line
+o - append (open) a new line below the current line
+O - append (open) a new line above the current line
+ea - insert (append) at the end of the word
+Ctrl + h - delete the character before the cursor during insert mode
+Ctrl + w - delete word before the cursor during insert mode
+Ctrl + j - begin new line during insert mode
+Ctrl + t - indent (move right) line one shiftwidth during insert mode
+Ctrl + d - de-indent (move left) line one shiftwidth during insert mode
+Ctrl + n - insert (auto-complete) next match before the cursor during insert mode
+Ctrl + p - insert (auto-complete) previous match before the cursor during insert mode
+Ctrl + rx - insert the contents of register x
+
+
+EDITING
+r - replace a single character
+J - join line below to the current one with one space in between
+gJ - join line below to the current one without space in between
+gwip - reflow paragraph
+g~ - switch case up to motion
+gu - change to lowercase up to motion
+gU - change to uppercase up to motion
+cc - change (replace) entire line
+C - change (replace) to the end of the line
+c$ - change (replace) to the end of the line
+ciw - change (replace) entire word
+cw - change (replace) to the end of the word
+s - delete character and substitute text
+S - delete line and substitute text (same as cc)
+xp - transpose two letters (delete and paste)
+u - undo
+U - restore (undo) last changed line
+Ctrl + r - redo
+. - repeat last command
+
+
+Marking text (visual mode)
+v - start visual mode, mark lines, then do a command (like y-yank)
+V - start linewise visual mode
+o - move to other end of marked area
+Ctrl + v - start visual block mode
+O - move to other corner of block
+aw - mark a word
+ab - a block with ()
+aB - a block with {}
+at - a block with <> tags
+ib - inner block with ()
+iB - inner block with {}
+it - inner block with <> tags
+Esc - exit visual mode
+
+
+Visual commands
+> - shift text right
+< - shift text left
+y - yank (copy) marked text
+d - delete marked text
+~ - switch case
+u - change marked text to lowercase
+U - change marked text to uppercase
+
+
+Registers
+:reg[isters] - show registers content
+"xy - yank into register x
+"xp - paste contents of register x
+"+y - yank into the system clipboard register
+"+p - paste from the system clipboard register
+     0 - last yank
+     " - unnamed register, last delete or yank
+     % - current file name
+     # - alternate file name
+     * - clipboard contents (X11 primary)
+     + - clipboard contents (X11 clipboard)
+     / - last search pattern
+     : - last command-line
+     . - last inserted text
+     - - last small (less than a line) delete
+     = - expression register
+     _ - black hole register
+
+
+Marks and positions
+:marks - list of marks
+ma - set current position for mark A
+`a - jump to position of mark A
+y`a - yank text to position of mark A
+`0 - go to the position where Vim was previously exited
+`" - go to the position when last editing this file
+`. - go to the position of the last change in this file
+`` - go to the position before the last jump
+:ju[mps] - list of jumps
+Ctrl + i - go to newer position in jump list
+Ctrl + o - go to older position in jump list
+:changes - list of changes
+g, - go to newer position in change list
+g; - go to older position in change list
+Ctrl + ] - jump to the tag under cursor
+
+
+Macros
+qa - record macro a
+q - stop recording macro
+@a - run macro a
+@@ - rerun last run macro
+
+
+Cut and paste   
+yy - yank (copy) a line
+2yy - yank (copy) 2 lines
+yw - yank (copy) the characters of the word from the cursor position to the start of the next word
+y$ - yank (copy) to end of line
+p - put (paste) the clipboard after cursor
+P - put (paste) before cursor
+dd - delete (cut) a line
+2dd - delete (cut) 2 lines
+dw - delete (cut) the characters of the word from the cursor position to the start of the next word
+D - delete (cut) to the end of the line
+d$ - delete (cut) to the end of the line
+x - delete (cut) character
+
+
+:copy = :t
+:6copy.=:6t. => copy line 6 goto current line=.
+:t6 => current line. paste below line 6
+:t. => duplicate copy and paste vi tri hien tai
+:t$ => paste to end line
+
+# move lines
+:m[ove]
+:'<,'>m$ : move select contents to end lines
+:!{cmd}
+:5,7m 21    move lines 5, 6 and 7 to after line 21
+:5,7m 0 move lines 5, 6 and 7 to before first line
+:5,7m $ move lines 5, 6 and 7 to after last line
+:.,.+4m 21  move 5 lines starting at current line to after line 21
+:,+4m14 same (. for current line is assumed)
+
+
+Indent text
+>> - indent (move right) line one shiftwidth
+<< - de-indent (move left) line one shiftwidth
+>% - indent a block with () or {} (cursor on brace)
+>ib - indent inner block with ()
+>at - indent a block with <> tags
+3== - re-indent 3 lines
+=% - re-indent a block with () or {} (cursor on brace)
+=iB - re-indent inner block with {}
+gg=G - re-indent entire buffer
+]p - paste and adjust indent to current line
+
+
+Exiting
+:w - write (save) the file, but don't exit
+:w !sudo tee % - write out the current file using sudo
+:wq or :x or ZZ - write (save) and quit
+:q - quit (fails if there are unsaved changes)
+:q! or ZQ - quit and throw away unsaved changes
+:wqa - write (save) and quit on all tabs
+Search and replace
+/pattern - search for pattern
+?pattern - search backward for pattern
+\vpattern - 'very magic' pattern: non-alphanumeric characters are interpreted as special regex symbols (no escaping needed)
+n - repeat search in same direction
+N - repeat search in opposite direction
+:%s/old/new/g - replace all old with new throughout file
+:%s/old/new/gc - replace all old with new throughout file with confirmations
+:noh[lsearch] - remove highlighting of search matches
+
+
+Search in multiple files
+:vim[grep] /pattern/ {`{file}`} - search for pattern in multiple files
+e.g. :vim[grep] /foo/ **/*
+:cn[ext] - jump to the next match
+:cp[revious] - jump to the previous match
+:cope[n] - open a window containing the list of matches
+:ccl[ose] - close the quickfix window
+Tabs
+:tabnew or :tabnew {page.words.file} - open a file in a new tab
+Ctrl + wT - move the current split window into its own tab
+gt or :tabn[ext] - move to the next tab
+gT or :tabp[revious] - move to the previous tab
+#gt - move to tab number #
+:tabm[ove] # - move current tab to the #th position (indexed from 0)
+:tabc[lose] - close the current tab and all its windows
+:tabo[nly] - close all tabs except for the current one
+:tabdo command - run the command on all tabs (e.g. :tabdo q - closes all opened tabs)
 
 
 find and replace text
@@ -187,19 +313,3 @@ cmd mode = (:)
 :w[rite] -> save file
 :clo[se]
 
-:shell
-:copy = :t
-:6copy.=:6t. => copy line 6 goto current line=.
-:t6 => current line. paste below line 6
-:t. => duplicate copy and paste vi tri hien tai
-:t$ => paste to end line
-
-# move lines
-:m[ove]
-:'<,'>m$ : move select contents to end lines
-:!{cmd}
-:5,7m 21    move lines 5, 6 and 7 to after line 21
-:5,7m 0 move lines 5, 6 and 7 to before first line
-:5,7m $ move lines 5, 6 and 7 to after last line
-:.,.+4m 21  move 5 lines starting at current line to after line 21
-:,+4m14 same (. for current line is assumed)

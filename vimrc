@@ -16,21 +16,38 @@ Plug 'vim-airline/vim-airline'
 Plug 'altercation/vim-colors-solarized'
 Plug 'https://github.com/rafi/awesome-vim-colorschemes.git'
 
+"Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
+Plug 'ctrlpvim/ctrlp.vim'
+
+"style code
+Plug 'tpope/vim-sleuth'
+Plug 'editorconfig/editorconfig-vim'
 
 Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/syntastic'
 Plug 'mattn/emmet-vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'majutsushi/tagbar'
+
+"github
+Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+
+
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'godlygeek/tabular'
+
+
 call plug#end()
 
-
+"vim-plug
 "source %  -> reload file
 "PlugInstall
-"plugUpdate
+"plugUpdate -> update plugin
 "PlugClean -> delete
-"PlugUpgrade
+
+"PlugUpgrade -> upgrade itself
 
 
 set shell=/usr/bin/zsh
@@ -145,7 +162,7 @@ let mapleader=';'
 " . dot => repeat command truoc do
 
 "map <silent> <leader>g :tabnew 
-"co silent se khong thong bao khi press </g>
+"co silent se khong thong uao khi press </g>
 "map <keyname> :expresion
 "khi press <keyname> run :expresion
 "map <keyname> <CR>  "khi press <keyname> => press <Enter>
@@ -171,7 +188,7 @@ nmap <leader>zshrc :e ~/.zshrc<cr>
 nmap <leader>bashrc :e ~/.bashrc<cr>
 
 "reload file source file_name
-map <leader>runvimrc :so ~/.vimrc<cr>
+map <leader>xvimrc :so ~/.vimrc<cr>
 
 
 "colo ron trong file vimrc = :colo ron<cr> trong command vim
