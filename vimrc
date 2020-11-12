@@ -26,8 +26,14 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/syntastic'
 Plug 'mattn/emmet-vim'
-Plug 'easymotion/vim-easymotion'
 Plug 'majutsushi/tagbar'
+
+
+Plug 'easymotion/vim-easymotion'
+Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch-fuzzy.vim'
+Plug 'haya14busa/incsearch-easymotion.vim'
+
 
 "github
 Plug 'airblade/vim-gitgutter'
@@ -78,7 +84,8 @@ hi ColorColumn guibg=#2d2d2d ctermbg=246
 syntax on
 
 "colorschemy
-colo darkblue
+colo molokayo 
+"molokayo space-vim-dark darkblue torte sonokai peachpuff onedark OceanicNext
 
 " display options
 set showmode
@@ -211,12 +218,40 @@ let g:airline#extensions#tabline#formatter = 'default'
 " NERDTree
 autocmd VimEnter * NERDTree       "tự chạy NERDTree ngay sau khi vào Vim
 autocmd VimEnter * wincmd p       "thêm màu mè cho code
-
+"------------------------------------------------------------------------------
 
 "vim-easymotion
 map <Leader> <Plug>(easymotion-prefix)
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
 let g:EasyMotion_smartcase = 1
 
+
+function! s:config_easyfuzzymotion(...) abort
+  return extend(copy({
+  \   'converters': [incsearch#config#fuzzyword#converter()],
+  \   'modules': [incsearch#config#easymotion#module({'overwin': 1})],
+  \   'keymap': {"\<CR>": '<Over>(easymotion)'},
+  \   'is_expr': 0,
+  \   'is_stay': 1
+  \ }), get(a:, 1, {}))
+endfunction
+
+noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
+
+
+" show marked lines, select marked jump to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+" show marked words, select marked jump to word
+map  <Leader>w <Plug>(easymotion-bcw)
+nmap <Leader>W <Plug>(easymotion-overwin-w)
+
+map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>h <Plug>(easymotion-linebackward)
+let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 
 " <Leader>f{char} to move to {char}
 map  <Leader>f <Plug>(easymotion-bd-f)
@@ -225,21 +260,12 @@ nmap <Leader>f <Plug>(easymotion-overwin-f)
 " s{char}{char} to move to {char}{char}
 nmap s <Plug>(easymotion-overwin-f2)
 
-" Move to line
-map <Leader>L <Plug>(easymotion-bd-jk)
-nmap <Leader>L <Plug>(easymotion-overwin-line)
-
-" Move to word
-map  <Leader>w <Plug>(easymotion-bd-w)
-nmap <Leader>w <Plug>(easymotion-overwin-w)
-
-" Gif config
+" search 
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 
-" These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
-" Without these mappings, `n` & `N` works fine. (These mappings just provide
-" different highlight method and have some other features )
 map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
 
+"------------------------------------------------------------------------------
+"

@@ -1,6 +1,10 @@
-
-
-
+important
+    [number][operator][motion/ text object]
+    number = int
+    operator=command -> i,a,r,c,d,y -> them xoa sua, ....
+    motion -> phim hjkl, w,e,b ,, ^ 0 $ g_
+    text object: 1 tu, 1 word, 1 line, ...
+    
 
 :q: Thoát khỏi Vim
 :q!: Bắt buộc thoát không cần lưu
@@ -40,7 +44,7 @@ $ - jump to the end of the line
 ^ - jump to the first non-blank character of the line
 g_ - jump to the last non-blank character of the line
 
-tx - jump to before next occurrence of character x
+tx - jump to left next occurrence of character x
 fx - jump to next occurrence of character x
 Fx - jump to previous occurence of character x
 Tx - jump to after previous occurence of character x
@@ -49,6 +53,7 @@ Tx - jump to after previous occurence of character x
 } - jump to next paragraph (or function/block, when editing code)
 { - jump to previous paragraph (or function/block, when editing code)
 zz - center cursor on screen
+
 Ctrl + e - move screen down one line (without moving cursor)
 Ctrl + y - move screen up one line (without moving cursor)
 Ctrl + b - move back one full screen
@@ -87,25 +92,25 @@ A;<esc> : cuoi line($a) them ; press<esc>
 
 
 Insert mode - inserting/appending text
-i - insert before the cursor
+i - insert left the cursor
 I - insert at the beginning of the line
 a - insert (append) after the cursor
 A - insert (append) at the end of the line
 o - append (open) a new line below the current line
 O - append (open) a new line above the current line
 ea - insert (append) at the end of the word
-Ctrl + h - delete the character before the cursor during insert mode
-Ctrl + w - delete word before the cursor during insert mode
+Ctrl + h - delete the character left the cursor during insert mode
+Ctrl + w - delete word left the cursor during insert mode
 Ctrl + j - begin new line during insert mode
 Ctrl + t - indent (move right) line one shiftwidth during insert mode
 Ctrl + d - de-indent (move left) line one shiftwidth during insert mode
-Ctrl + n - insert (auto-complete) next match before the cursor during insert mode
-Ctrl + p - insert (auto-complete) previous match before the cursor during insert mode
+Ctrl + n - insert (auto-complete) next match left the cursor during insert mode
+Ctrl + p - insert (auto-complete) previous match left the cursor during insert mode
 Ctrl + rx - insert the contents of register x
 
 
 EDITING
-r - replace a single character
+r{char} - replace a single character
 J - join line below to the current one with one space in between
 gJ - join line below to the current one without space in between
 gwip - reflow paragraph
@@ -124,6 +129,12 @@ u - undo
 U - restore (undo) last changed line
 Ctrl + r - redo
 . - repeat last command
+
+
+SEARCH TEXT AND REPLACE occurrence 
+search text sau do move cursor den position can thay the
+press cgn [text can thay the] exit
+repeat = .
 
 
 Marking text (visual mode)
@@ -157,7 +168,7 @@ Registers
 "xy - yank into register x
 "xp - paste contents of register x
 "+y - yank into the system clipboard register
-"+p - paste from the system clipboard register
+"+p - paste from the system clipboard kegister
      0 - last yank
      " - unnamed register, last delete or yank
      % - current file name
@@ -180,7 +191,7 @@ y`a - yank text to position of mark A
 `0 - go to the position where Vim was previously exited
 `" - go to the position when last editing this file
 `. - go to the position of the last change in this file
-`` - go to the position before the last jump
+`` - go to the position left the last jump
 :ju[mps] - list of jumps
 Ctrl + i - go to newer position in jump list
 Ctrl + o - go to older position in jump list
@@ -203,7 +214,7 @@ yy - yank (copy) a line
 yw - yank (copy) the characters of the word from the cursor position to the start of the next word
 y$ - yank (copy) to end of line
 p - put (paste) the clipboard after cursor
-P - put (paste) before cursor
+P - put (paste) left cursor
 dd - delete (cut) a line
 2dd - delete (cut) 2 lines
 dw - delete (cut) the characters of the word from the cursor position to the start of the next word
@@ -223,7 +234,7 @@ x - delete (cut) character
 :'<,'>m$ : move select contents to end lines
 :!{cmd}
 :5,7m 21    move lines 5, 6 and 7 to after line 21
-:5,7m 0 move lines 5, 6 and 7 to before first line
+:5,7m 0 move lines 5, 6 and 7 to left first line
 :5,7m $ move lines 5, 6 and 7 to after last line
 :.,.+4m 21  move 5 lines starting at current line to after line 21
 :,+4m14 same (. for current line is assumed)
