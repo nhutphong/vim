@@ -81,11 +81,19 @@ set textwidth=79
 set colorcolumn=+1
 hi ColorColumn guibg=#2d2d2d ctermbg=246
 
+"hi Visual ctermfg=14 ctermbg=NONE cterm=bold,underline
+
 syntax on
 
+"set background=dark
+
 "colorschemy
-colo molokayo 
-"molokayo space-vim-dark darkblue torte sonokai peachpuff onedark OceanicNext
+colo atom
+"mau=dark
+"gruvbox dogrun atom molokayo space-vim-dark darkblue torte sonokai peachpuff onedark OceanicNext
+
+"mau=white
+"github
 
 " display options
 set showmode
@@ -247,12 +255,13 @@ nmap <Leader>L <Plug>(easymotion-overwin-line)
 map  <Leader>w <Plug>(easymotion-bcw)
 nmap <Leader>W <Plug>(easymotion-overwin-w)
 
-map <Leader>l <Plug>(easymotion-lineforward)
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
-map <Leader>h <Plug>(easymotion-linebackward)
+map <Leader>l <Plug>(easymotion-lineforward) "right cursor 1 line
+map <Leader>j <Plug>(easymotion-j) "down cursor 1 column
+map <Leader>k <Plug>(easymojtion-k) "up cursor 1 column
+map <Leader>h <Plug>(easymotion-linebackward) "left cursor 1 line
 let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 
+"
 " <Leader>f{char} to move to {char}
 map  <Leader>f <Plug>(easymotion-bd-f)
 nmap <Leader>f <Plug>(easymotion-overwin-f)
