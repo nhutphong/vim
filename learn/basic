@@ -5,6 +5,9 @@ important
     motion -> phim hjkl, w,e,b ,, ^ 0 $ g_
     text object: 1 tu, 1 word, 1 line, ...
     
+vim command -> sau
+:! cmd_bash
+
 
 :q: Thoát khỏi Vim
 :q!: Bắt buộc thoát không cần lưu
@@ -43,6 +46,7 @@ Ctrl + G: Xem thông tin dòng hiện tại
 $ - jump to the end of the line
 ^ - jump to the first non-blank character of the line
 g_ - jump to the last non-blank character of the line
+     bay nhay di nao         
 
 tx - jump to left next occurrence of character x
 fx - jump to next occurrence of character x
@@ -66,11 +70,6 @@ Ctrl + u - move back 1/2 a screen
 let mapleader = "\"
 :map <leader>A  haha <Esc>
 : map \A haha <Esc>
-
-split windows:
-<C-w>v: vertical=chia doc
-<C-w>s: horizontally= chia ngang
- 
 
 
                             normal mode:
@@ -154,8 +153,8 @@ Esc - exit visual mode
 
 
 Visual commands
-> - shift text right
-< - shift text left
+>> - shift text right
+<< - shift text left
 y - yank (copy) marked text
 d - delete marked text
 ~ - switch case
@@ -234,10 +233,10 @@ x - delete (cut) character
 :'<,'>m$ : move select contents to end lines
 :!{cmd}
 :5,7m 21    move lines 5, 6 and 7 to after line 21
-:5,7m 0 move lines 5, 6 and 7 to left first line
-:5,7m $ move lines 5, 6 and 7 to after last line
+:5,7m 0     move lines 5, 6 and 7 to left first line
+:5,7m $     move lines 5, 6 and 7 to after last line
 :.,.+4m 21  move 5 lines starting at current line to after line 21
-:,+4m14 same (. for current line is assumed)
+:,+4m14     same (. for current line is assumed)
 
 
 Indent text
@@ -266,8 +265,11 @@ Search and replace
 \vpattern - 'very magic' pattern: non-alphanumeric characters are interpreted as special regex symbols (no escaping needed)
 n - repeat search in same direction
 N - repeat search in opposite direction
-:%s/old/new/g - replace all old with new throughout file
-:%s/old/new/gc - replace all old with new throughout file with confirmations
+
+:s/old_string/new_string/g      - replace on 1 line
+:%s/old_string/new_string/g     - replace all old with new throughout file
+:%s/old_string/new_string/gc    - replace all old with new throughout file with confirmations
+
 :noh[lsearch] - remove highlighting of search matches
 
 
@@ -308,8 +310,9 @@ $<>: dung shell
                     visual mode: select contents
     che do chon nhieu words, lines
 
-v
 *: select all word giong nhau 
+*: NEXT hightlight text
+
 vjj: chon them 2 line
 vG: full below lines
 o: go to end highlight text
