@@ -10,6 +10,8 @@ Plug 'govim/govim'
 "snippet
 Plug 'sirver/ultisnips'
 
+"add text-object delete,change text in (),{}, ...
+Plug 'wellle/targets.vim'
 
 Plug 'honza/vim-snippets'
 Plug 'junegunn/fzf'
