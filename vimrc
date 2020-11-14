@@ -7,6 +7,9 @@ Plug 'severin-lemaignan/vim-minimap'
 Plug 'valloric/youcompleteme'
 Plug 'govim/govim'
 
+"snippet
+Plug 'sirver/ultisnips'
+
 
 Plug 'honza/vim-snippets'
 Plug 'junegunn/fzf'
@@ -85,15 +88,14 @@ hi ColorColumn guibg=#2d2d2d ctermbg=246
 
 syntax on
 
-"set background=dark
-
-"colorschemy
 colo atom
+
 "mau=dark
 "gruvbox dogrun atom molokayo space-vim-dark darkblue torte sonokai peachpuff onedark OceanicNext
 
 "mau=white
 "github
+
 
 " display options
 set showmode
@@ -279,4 +281,12 @@ map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
 
 "------------------------------------------------------------------------------
-"
+"ultisnips
+" phai map to <C-j> tranh xung dot youcompleteme
+let g:UltiSnipsExpandTrigger="<C-j>" "<ctrl-j> complete snip
+
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"

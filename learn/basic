@@ -1,46 +1,47 @@
 important
-    [number][operator][motion/ text object]
+    {operator}{count}{motion}
+    {count}{operator}{motion}
+
     number = int
     operator=command -> i,a,r,c,d,y -> them xoa sua, ....
     motion -> phim hjkl, w,e,b ,, ^ 0 $ g_
-    text object: 1 tu, 1 word, 1 line, ...
-    
+    text object:     
 vim command -> sau
 :! cmd_bash
 
 
-:q: Thoát khỏi Vim
-:q!: Bắt buộc thoát không cần lưu
-:w: Lưu file
-:w!: Bắt buộc ghi file (ghi đè)
-:wq: Lưu xong thoát
+:q: thoát khỏi vim
+:q!: bắt buộc thoát không cần lưu
+:w: lưu file
+:w!: bắt buộc ghi file (ghi đè)
+:wq: lưu xong thoát
 
 
-Cursor movement     [count=int][operator]
+cursor movement [count=int][operator]
 h - move cursor left
 j - move cursor down
 k - move cursor up
 l - move cursor right
 
-H - move to top of screen
-M - move to middle of screen
-L - move to bottom of screen
+h - move to top of screen
+m - move to middle of screen
+l - move to bottom of screen
 
 w - jump forwards to the start of a word
-W - jump forwards to the start of a word (words can contain punctuation)
+w - jump forwards to the start of a word (words can contain punctuation)
 e - jump forwards to the end of a word
-E - jump forwards to the end of a word (words can contain punctuation)
+e - jump forwards to the end of a word (words can contain punctuation)
 b - jump backwards to the start of a word
-B - jump backwards to the start of a word (words can contain punctuation)
+b - jump backwards to the start of a word (words can contain punctuation)
 % - move to matching character (default supported pairs: '()', '{}', '[]' - use :h matchpairs in vim for more info)
 
 
 "jump to line   [count=int]gg
 gg - go to the first line of the document
-G - go to the last line of the document
-50G: nhảy tới dòng 50 của file
-5gg or 5G - go to line 5
-Ctrl + G: Xem thông tin dòng hiện tại
+g - go to the last line of the document
+50g: nhảy tới dòng 50 của file
+5gg or 5g - go to line 5
+ctrl + g: xem thông tin dòng hiện tại
 
 0 - jump to the start of the line
 $ - jump to the end of the line
@@ -50,68 +51,105 @@ g_ - jump to the last non-blank character of the line
 
 tx - jump to left next occurrence of character x
 fx - jump to next occurrence of character x
-Fx - jump to previous occurence of character x
-Tx - jump to after previous occurence of character x
-; - repeat previous f, t, F or T movement
-, - repeat previous f, t, F or T movement, backwards
+fx - jump to previous occurence of character x
+tx - jump to after previous occurence of character x
+; - repeat previous f, t, f or t movement
+, - repeat previous f, t, f or t movement, backwards
 } - jump to next paragraph (or function/block, when editing code)
 { - jump to previous paragraph (or function/block, when editing code)
 zz - center cursor on screen
 
-Ctrl + e - move screen down one line (without moving cursor)
-Ctrl + y - move screen up one line (without moving cursor)
-Ctrl + b - move back one full screen
-Ctrl + f - move forward one full screen
-Ctrl + d - move forward 1/2 a screen
-Ctrl + u - move back 1/2 a screen
+ctrl + e - move screen down one line (without moving cursor)
+ctrl + y - move screen up one line (without moving cursor)
+ctrl + b - move back one full screen
+ctrl + f - move forward one full screen
+ctrl + d - move forward 1/2 a screen
+ctrl + u - move back 1/2 a screen
 
 
 
 let mapleader = "\"
-:map <leader>A  haha <Esc>
-: map \A haha <Esc>
+:map <leader>a  haha <esc>
+: map \a haha <esc>
 
 
                             normal mode:
 key stroke:
-<C-w>o = press ctrl+w break roi press o
+<c-w>o = press ctrl+w break roi press o
 
+                            DELETE
 dd: xoa 1 dong
 d3d: xoa 3 dong
 d3w: delete 3 word(tinh tu vi tri cursor)
+dfp: xoa den khi gap 'p' xoa lun 'p' thi stop on line
+dtp: xoa den khi gap 'p' thi stop NO delete 'p'
+d/haha: xoa den khi gap 'haha' thi stop all lines
+ggdG: gg=nhau ve dau file - dG xoa den cuoi file
+
 x: cut 1 letter
-c3w new_string<ESC>: override 3 tu= new_string
+c3w new_string<esc>: override 3 tu= new_string
 yy: copy 1 line
 g~: swap case
-gu: make lowercase
-gU: make uppercase
->G: tab word
-A;<esc> : cuoi line($a) them ; press<esc>
+guw: make a word lowercase
+gUw: make a word uppercase
+>g: tab word
+a;<esc> : cuoi line($a) them ; press<esc>
 5@a: titlecase
 
 
-Insert mode - inserting/appending text
+                        text object
+{operator}{a|i}{text-object}
+
+text-object
+w   for word
+s   for sentence
+', ", `     for quotes
+p   for paragraph
+b (or (, )) for block surrounded by (),
+B (or {, }) for block surrounded by {}
+<, > for a block surrounded by <>
+[, ] for a block surrounded by []
+t for tag.
+
+daw - xoa 1 tu gap space stop
+ciw to change inner word
+das to delete a sentence (dis to delete inner sentence)
+da" to delete something in double quotes including the quotes themselves (di" deletes only the content inside the quotes and spares the quotes)
+ci" to change something inside double quotes
+dap to delete a paragraph
+dab da( or da) to delete a block surrounded by (
+daB da{ or da} to delete a block surrounded by {
+dat to delete an HTML tag
+cit to change the contents of an HTML tag
+
+ci" jump to "" into insert-mode change text
+cib jumpt to () into insert-mode change text
+ciB jump to {} into insert-mdoe change text
+
+ca" delete tat ca ,lun ca "" gap dau tien, sau on into insert-mode
+
+insert mode - inserting/appending text
 i - insert left the cursor
-I - insert at the beginning of the line
+i - insert at the beginning of the line
 a - insert (append) after the cursor
-A - insert (append) at the end of the line
+a - insert (append) at the end of the line
 o - append (open) a new line below the current line
-O - append (open) a new line above the current line
+o - append (open) a new line above the current line
 ea - insert (append) at the end of the word
-Ctrl + h - delete the character left the cursor during insert mode
-Ctrl + w - delete word left the cursor during insert mode
-Ctrl + j - begin new line during insert mode
-Ctrl + t - indent (move right) line one shiftwidth during insert mode
-Ctrl + d - de-indent (move left) line one shiftwidth during insert mode
-Ctrl + n - insert (auto-complete) next match left the cursor during insert mode
-Ctrl + p - insert (auto-complete) previous match left the cursor during insert mode
-Ctrl + rx - insert the contents of register x
+ctrl + h - delete the character left the cursor during insert mode
+ctrl + w - delete word left the cursor during insert mode
+ctrl + j - begin new line during insert mode
+ctrl + t - indent (move right) line one shiftwidth during insert mode
+ctrl + d - de-indent (move left) line one shiftwidth during insert mode
+ctrl + n - insert (auto-complete) next match left the cursor during insert mode
+ctrl + p - insert (auto-complete) previous match left the cursor during insert mode
+ctrl + rx - insert the contents of register x
 
 
-EDITING
+editing
 r{char} - replace a single character
-J - join line below to the current one with one space in between
-gJ - join line below to the current one without space in between
+j - join line below to the current one with one space in between
+gj - join line below to the current one without space in between
 gwip - reflow paragraph
 g~ - switch case up to motion
 gu - change to lowercase up to motion
@@ -297,13 +335,9 @@ find and replace text
 
 
 f<char> search char=chu cai can tim
-`{a-z}: any lowercase letter
-m{a-zA-Z}: any lower and uppercase letter
-$<>: dung shell
-:<> ex command
-/<> forward=next search
-?<> backward=previous search
-=<> code vim
+/{find_text} forward=right=next search
+?{find_text} backward=left=previous search
+={code vim}
 
 -------------------------------------------------------------------------
 
@@ -318,6 +352,6 @@ vG: full below lines
 o: go to end highlight text
 vit: goto contents html
 U: uppercase
-/ge<CR>: select contents from cursor to ge
+/find_text<CR>: select contents from cursor to ge
 
 ---------------------------------------------------------------------
