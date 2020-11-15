@@ -234,7 +234,7 @@ autocmd VimEnter * wincmd p       "thêm màu mè cho code
 
 "vim-easymotion
 map <Leader> <Plug>(easymotion-prefix)
-let g:EasyMotion_do_mapping = 0 " Disable default mappings
+"let g:EasyMotion_do_mapping = 0 " Disable default mappings
 let g:EasyMotion_smartcase = 1
 
 

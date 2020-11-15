@@ -35,6 +35,13 @@ b - jump backwards to the start of a word
 b - jump backwards to the start of a word (words can contain punctuation)
 % - move to matching character (default supported pairs: '()', '{}', '[]' - use :h matchpairs in vim for more info)
 
+% jump to () or {}
+]] jump to next func or class
+[[ jump to prev func or class
+
+} jump to next line trong
+{ jump to prev line trong
+
 
 "jump to line   [count=int]gg
 gg - go to the first line of the document
@@ -96,7 +103,70 @@ gUw: make a word uppercase
 a;<esc> : cuoi line($a) them ; press<esc>
 5@a: titlecase
 
+-------------------------------------------------------------------------------
+                                
+                                targets.vim
+{operator}{i|I|a|A}{text-objects}
 
+{operator}{i|I|a|A}[n]{text-object}
+them [n] dung cho text-object next=right
+
+pair text objects:
+    () {} [] <> '' "" ``
+    ( content haha thong dung )
+
+quote text objects:
+    '' "" ``
+
+separator text object:
+   , . ; : + - = ~ _ * # / | \ & $ 
+
+
+operator:
+    v = visual mode = selete text
+    d = thuoc normal mode = delete text van o current mode
+    c = thuoc normal mode = delete text into insert text de add text=change
+
+{i|I|a|a}:
+    i = all content bao gom space dau cuoi trong pair
+    I = all context KO co space
+    a = lay luon ca pair cursor ngay pair đóng)]}
+    A = lay luon ca pair cursor sau pair dong)]}cursor
+
+cursor into content moi dung i) 2i) or 3i) .... co count=int
+
+i( i) i{ i} iB i[ i] i< i> it
+
+a ( b ( cccccccc ) d ) e
+   │   └── i) ──┘   │
+   └───── 2i) ──────┘
+
+
+a( a) a{ a} aB a[ a] a< > at
+
+a ( b ( cccccccc ) d ) e
+  │   └─── a) ───┘   │
+  └────── 2a) ───────┘
+
+
+I( I) I{ I} IB I[ I] I< > It
+
+a ( b ( cccccccc ) d ) e
+    │   └─ I) ─┘   │
+    └──── 2I) ─────┘
+
+
+A( A) A{ A} AB A[ A] A< > At
+
+a ( b ( cccccccc ) d ) e
+  │   └─── A) ────┘   │
+  └────── 2A) ────────┘a
+
+
+next=right va pre=left
+in( an( In( An( il( al( Il( Al( ...
+
+--------------------------------------------------------------------------------
                         text object
 {operator}{a|i}{text-object}
 
