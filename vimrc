@@ -3,37 +3,51 @@ Plug 'preservim/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'severin-lemaignan/vim-minimap'
 
+
 "autocomplete
 Plug 'valloric/youcompleteme'
 Plug 'govim/govim'
 
+
 "snippet
 Plug 'sirver/ultisnips'
+Plug 'ervandew/supertab'
+
 
 "add text-object delete,change text in (),{}, ...
 Plug 'wellle/targets.vim'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 
+
+"
 Plug 'honza/vim-snippets'
 Plug 'junegunn/fzf'
 Plug 'vim-airline/vim-airline'
+
 
 "colorschemy
 Plug 'altercation/vim-colors-solarized'
 Plug 'https://github.com/rafi/awesome-vim-colorschemes.git'
 
+
 "Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'majutsushi/tagbar'
+
 
 "style code
 Plug 'tpope/vim-sleuth'
 Plug 'editorconfig/editorconfig-vim'
 
+
+"
 Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/syntastic'
 Plug 'mattn/emmet-vim'
-Plug 'majutsushi/tagbar'
 
 
+" search and jump to character, words , line, lines, ... 
 Plug 'easymotion/vim-easymotion'
 Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
@@ -45,8 +59,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
 
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
+"
 Plug 'godlygeek/tabular'
 
 
@@ -90,10 +103,10 @@ hi ColorColumn guibg=#2d2d2d ctermbg=246
 
 syntax on
 
-colo atom
+colo darkblue
 
 "mau=dark
-"gruvbox dogrun atom molokayo space-vim-dark darkblue torte sonokai peachpuff onedark OceanicNext
+"darkblue desert evening  gruvbox dogrun atom molokayo space-vim-dark darkblue torte sonokai peachpuff onedark OceanicNext
 
 "mau=white
 "github
@@ -268,7 +281,7 @@ map <Leader>h <Plug>(easymotion-linebackward)
 let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 
 
-
+" search then jump to
 " <Leader>f{char} to move to {char}
 map  <Leader>f <Plug>(easymotion-bd-f)
 nmap <Leader>f <Plug>(easymotion-overwin-f)
@@ -288,7 +301,7 @@ map  N <Plug>(easymotion-prev)
 "------------------------------------------------------------------------------
 "ultisnips
 " phai map to <C-j> tranh xung dot youcompleteme
-let g:UltiSnipsExpandTrigger="<C-j>" "<ctrl-j> complete snip
+let g:UltiSnipsExpandTrigger="<C-j>" 
 
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<S-tab>"

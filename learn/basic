@@ -106,6 +106,9 @@ a;<esc> : cuoi line($a) them ; press<esc>
 -------------------------------------------------------------------------------
                                 
                                 targets.vim
+operator d delete text nhung van o normal mode
+operator c delete text nhung into insetmode add them text
+
 {operator}{i|I|a|A}{text-objects}
 
 {operator}{i|I|a|A}[l|n]{text-object}
@@ -134,6 +137,10 @@ operator:
     A = lay luon ca pair cursor sau pair dong)]}cursor
 
 cursor into content moi dung i) 2i) or 3i) .... co count=int
+
+
+{v|d|c}{i|I|a|A}{text-object}
+
 
 i( i) i{ i} iB i[ i] i< i> it
 
@@ -164,6 +171,8 @@ a ( b ( cccccccc ) d ) e
 
 
 next=right va pre=left
+{v|d|c}{i|I|a|A}{l|n}{text-object}
+
 in( an( In( An( il( al( Il( Al( ...
 
 
@@ -193,6 +202,31 @@ inb anb Inb Anb ilb alb Ilb Alb
 
 any quote
 inq anq Inq Anq ilq alq Ilq Alq
+
+
+--------------------------------------------------------------------------------
+                                    vim-surround 
+delete, replace {} [] '' "" ``, ...
+ds{pair}            delete pair
+cs{old_p}{new_p}    change new_pair
+ys{text-object}{pair}    add pair
+
+
+"dung thong co de bo trau"
+ds"     delete ""
+cs"{    change " thanh {}
+
+
+dung thong cursor ngay 'dung'
+ysi mapto g@i
+yss mapto 1g@g_
+
+dung thong
+
+ysiw[   add pair [] thanh: [ dung ] thong
+yssb    add pair () thanh: ( dung thong )
+yss(    add pair () thanh: ( dung thong )
+
 
 
 --------------------------------------------------------------------------------
