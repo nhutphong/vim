@@ -108,8 +108,8 @@ a;<esc> : cuoi line($a) them ; press<esc>
                                 targets.vim
 {operator}{i|I|a|A}{text-objects}
 
-{operator}{i|I|a|A}[n]{text-object}
-them [n] dung cho text-object next=right
+{operator}{i|I|a|A}[l|n]{text-object}
+them [l|n] dung cho text-object left=prev next=right
 
 pair text objects:
     () {} [] <> '' "" ``
@@ -165,6 +165,35 @@ a ( b ( cccccccc ) d ) e
 
 next=right va pre=left
 in( an( In( An( il( al( Il( Al( ...
+
+
+Ia      lay context argument one
+a , b ( cccccccc , d ) e
+        └─ Ia ─┘
+
+ia      lay context them 2 space
+a , b ( cccccccc , d ) e
+       └── ia ──┘
+
+aa
+a , b ( cccccccc , d ) e
+        └─── aa ──┘
+
+Aa
+a , b ( cccccccc , d ) e
+      └─── Aa ────┘
+
+left=prev and right=next a=argument
+ina ana Ina Ana ila ala Ila Ala
+
+
+any block
+inb anb Inb Anb ilb alb Ilb Alb
+
+
+any quote
+inq anq Inq Anq ilq alq Ilq Alq
+
 
 --------------------------------------------------------------------------------
                         text object
@@ -222,8 +251,8 @@ j - join line below to the current one with one space in between
 gj - join line below to the current one without space in between
 gwip - reflow paragraph
 g~ - switch case up to motion
-gu - change to lowercase up to motion
-gU - change to uppercase up to motion
+gu{motion} - change to lowercase up to motion
+gU{motion} - change to uppercase up to motion
 cc - change (replace) entire line
 C - change (replace) to the end of the line
 c$ - change (replace) to the end of the line

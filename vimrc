@@ -65,7 +65,7 @@ set shell=/usr/bin/zsh
 
 "size gvim
 set columns=130
-set lines=42
+set lines=41
 
 " Set compatibility to Vim only.
 set nocompatible
@@ -234,7 +234,7 @@ autocmd VimEnter * wincmd p       "thêm màu mè cho code
 
 "vim-easymotion
 map <Leader> <Plug>(easymotion-prefix)
-"let g:EasyMotion_do_mapping = 0 " Disable default mappings
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
 let g:EasyMotion_smartcase = 1
 
 
@@ -256,16 +256,19 @@ map <Leader>L <Plug>(easymotion-bd-jk)
 nmap <Leader>L <Plug>(easymotion-overwin-line)
 
 " show marked words, select marked jump to word
-map  <Leader>w <Plug>(easymotion-bcw)
-nmap <Leader>W <Plug>(easymotion-overwin-w)
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
 
-map <Leader>l <Plug>(easymotion-lineforward) "right cursor 1 line
-map <Leader>j <Plug>(easymotion-j) "down cursor 1 column
-map <Leader>k <Plug>(easymojtion-k) "up cursor 1 column
-map <Leader>h <Plug>(easymotion-linebackward) "left cursor 1 line
+
+map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>h <Plug>(easymotion-linebackward)
+
 let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 
-"
+
+
 " <Leader>f{char} to move to {char}
 map  <Leader>f <Plug>(easymotion-bd-f)
 nmap <Leader>f <Plug>(easymotion-overwin-f)
