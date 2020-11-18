@@ -103,7 +103,13 @@ hi ColorColumn guibg=#2d2d2d ctermbg=246
 
 syntax on
 
-colo darkblue
+if has("gui_running")
+    " setup for gvim
+    colo darkblue
+else
+    " setup for vim=terminal
+    colo koehler
+endif
 
 "mau=dark
 "darkblue desert evening  gruvbox dogrun atom molokayo space-vim-dark darkblue torte sonokai peachpuff onedark OceanicNext
