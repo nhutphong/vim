@@ -14,6 +14,10 @@ Plug 'sirver/ultisnips'
 Plug 'ervandew/supertab'
 
 
+" auto complete quotes parens brackets
+Plug 'raimondi/delimitmate'
+
+
 "add text-object delete,change text in (),{}, ...
 Plug 'wellle/targets.vim'
 Plug 'tpope/vim-surround'
@@ -29,6 +33,10 @@ Plug 'vim-airline/vim-airline'
 "colorschemy
 Plug 'altercation/vim-colors-solarized'
 Plug 'https://github.com/rafi/awesome-vim-colorschemes.git'
+
+
+" color indent line
+Plug 'yggdroot/indentline'
 
 
 "Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
@@ -244,7 +252,7 @@ let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'default'
 
-
+"-------------------------------------------------------------------------------
 
 " NERDTree
 autocmd VimEnter * NERDTree       "tự chạy NERDTree ngay sau khi vào Vim
@@ -305,6 +313,7 @@ map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
 
 "------------------------------------------------------------------------------
+
 "ultisnips
 " phai map to <C-j> tranh xung dot youcompleteme
 let g:UltiSnipsExpandTrigger="<C-j>" 
@@ -314,3 +323,24 @@ let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+
+"-------------------------------------------------------------------------------
+
+" indentline
+" Vim
+let g:indentLine_color_term = 239
+
+" GVim
+let g:indentLine_color_gui = '#A4E57E'
+
+" none X terminal
+let g:indentLine_color_tty_light = 7 " (default: 4)
+let g:indentLine_color_dark = 1 " (default: 2)
+
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
+" Background (Vim, GVim)
+"let g:indentLine_bgcolor_term = 202
+"let g:indentLine_bgcolor_gui = '#FF5F00'
+"-------------------------------------------------------------------------------
+
