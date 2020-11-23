@@ -24,6 +24,10 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 
 
+"title case
+Plug 'christoomey/vim-titlecase'
+
+
 "
 Plug 'honza/vim-snippets'
 Plug 'junegunn/fzf'

@@ -237,6 +237,19 @@ yssb    add pair () thanh: ( dung thong )
 yss(    add pair () thanh: ( dung thong )
 
 
+--------------------------------------------------------------------------------
+                                       title case
+gT is all title current line
+gtw is title 1 word
+gt3w is title w word
+
+gti( is title in pair
+gti' is title in ''
+gta' is title in ''
+...
+
+gt( is prev words file
+gt) is next words file
 
 --------------------------------------------------------------------------------
                         text object
