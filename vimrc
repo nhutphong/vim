@@ -85,35 +85,42 @@ call plug#end()
 
 "PlugUpgrade -> upgrade itself
 
+set nocompatible              " required
+"filetype off                  " required
 
+
+
+set encoding=utf-8
 set shell=/usr/bin/zsh
 
 "size gvim
 set columns=130
 set lines=41
 
-" Set compatibility to Vim only.
-set nocompatible
 
 " Helps force plug-ins to load correctly when it is turned back on below.
 
 
 " For plug-ins to load correctly.
-autocmd FileType plugin indent on
+autocmd filetype plugin indent on
+autocmd FileType * set textwidth=79
 
 " Automatically wrap text that extends beyond the screen length.
 set wrap
 set linebreak
-set nolist
+set showbreak=...
+"set nolist
 set textwidth=79
-"set formatoptions+=a
+set wrapmargin=50
+set formatoptions+=t
+
 
 set colorcolumn=+1
 hi ColorColumn guibg=#2d2d2d ctermbg=246
 
 "hi Visual ctermfg=14 ctermbg=NONE cterm=bold,underline
 
-syntax on
+syntax enable
 
 if has("gui_running")
     " setup for gvim
@@ -122,6 +129,22 @@ else
     " setup for vim=terminal
     colo koehler
 endif
+
+
+au BufNewFile,BufRead *.py
+    \ set tabstop=4
+    \ softtabstop=4 
+    \ shiftwidth=4
+    \ textwidth=79
+    \ expandtab
+    \ autoindent
+    \ fileformat=unix
+
+" For Full stack development 'au' command
+au BufNewFile,BufRead *.js, *.html, *.css
+    \ set tabstop=2
+    \ softtabstop=2
+    \ shiftwidth=2
 
 "mau=dark
 "darkblue desert evening  gruvbox dogrun atom molokayo space-vim-dark darkblue torte sonokai peachpuff onedark OceanicNext
@@ -135,9 +158,6 @@ set showmode
 set showcmd
 
 set cursorline
-
-" Encoding
-set encoding=utf-8
 
 
 " Indentation & Tabs
@@ -161,7 +181,6 @@ set smarttab
 set number
 "set relativenumber
 
-set wrapmargin=2
 
 set showmatch
 
