@@ -109,11 +109,13 @@ autocmd FileType * set textwidth=79
 set wrap
 set linebreak
 set showbreak=...
-"set nolist
+set nolist
+
 set textwidth=79
-set wrapmargin=50
+set wrapmargin=2
 set formatoptions+=t
 
+set whichwrap+=<,>,h,l
 
 set colorcolumn=+1
 hi ColorColumn guibg=#2d2d2d ctermbg=246
