@@ -86,9 +86,12 @@ call plug#end()
 "PlugUpgrade -> upgrade itself
 
 set nocompatible              " required
-"filetype off                  " required
 
+" Helps force plugins to load correctly when it is turned back on below
+filetype off
 
+" For plug-ins to load correctly.
+autocmd filetype plugin indent on
 
 set encoding=utf-8
 set shell=/usr/bin/zsh
@@ -98,25 +101,30 @@ set columns=130
 set lines=41
 
 
-" Helps force plug-ins to load correctly when it is turned back on below.
-
-
-" For plug-ins to load correctly.
-autocmd filetype plugin indent on
-autocmd FileType * set textwidth=79
-
 " Automatically wrap text that extends beyond the screen length.
 set wrap
 set linebreak
 set showbreak=...
 set nolist
+" Indentation & Tabs
 
-set textwidth=79
+set autoindent
+set smartindent
+set tabstop=4
+set shiftwidth=4
+
+"use spaces instead of tabs
+set expandtab
+set smarttab
+
+" textwidth=full screen
+"set textwidth=79
 set wrapmargin=2
 set formatoptions+=t
 
 set whichwrap+=<,>,h,l
 
+" textwidth+=1 add them color
 set colorcolumn=+1
 hi ColorColumn guibg=#2d2d2d ctermbg=246
 
@@ -132,15 +140,14 @@ else
     colo koehler
 endif
 
-
+" chu y khi co file .editorconfig
 au BufNewFile,BufRead *.py
     \ set tabstop=4
     \ softtabstop=4 
     \ shiftwidth=4
     \ textwidth=79
-    \ expandtab
-    \ autoindent
     \ fileformat=unix
+
 
 " For Full stack development 'au' command
 au BufNewFile,BufRead *.js, *.html, *.css
@@ -162,20 +169,6 @@ set showcmd
 set cursorline
 
 
-" Indentation & Tabs
-
-set autoindent
-
-set smartindent
-
-set tabstop=4
-
-set shiftwidth=4
-
-"use spaces instead of tabs
-set expandtab
-
-set smarttab
 
 
 " Display & format
@@ -198,7 +191,7 @@ set ignorecase
 set smartcase
 
 set ruler
-set rulerformat=%l\:%c
+set rulerformat=%l,%v
 
 
 " Browse & Scroll
