@@ -2,7 +2,7 @@ call plug#begin()
 Plug 'preservim/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'severin-lemaignan/vim-minimap'
-
+Plug 'ryanoasis/vim-devicons'
 
 "autocomplete
 Plug 'valloric/youcompleteme'
