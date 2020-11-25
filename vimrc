@@ -106,8 +106,8 @@ set wrap
 set linebreak
 set showbreak=...
 set nolist
-" Indentation & Tabs
 
+" Indentation & Tabs
 set autoindent
 set smartindent
 set tabstop=4
@@ -140,7 +140,7 @@ else
     colo koehler
 endif
 
-" chu y khi co file .editorconfig
+" chu y khi co file .editorconfig se overrive no
 au BufNewFile,BufRead *.py
     \ set tabstop=4
     \ softtabstop=4 

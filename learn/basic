@@ -179,6 +179,7 @@ a ( b ( cccccccc ) d ) e
   └────── 2A) ────────┘a
 
 
+cursor inside in pair current -> next pair ke
 next=right va pre=left
 {v|d|c}{i|I|a|A}{l|n}{text-object}
 
@@ -226,7 +227,7 @@ ds"     delete ""
 cs"{    change " thanh {}
 
 
-dung thong cursor ngay 'dung'
+dung thong cursor inside 'dung'
 ysi mapto g@i
 yss mapto 1g@g_
 
