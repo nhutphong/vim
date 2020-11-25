@@ -73,7 +73,7 @@ Plug 'tpope/vim-fugitive'
 
 "
 Plug 'godlygeek/tabular'
-
+Plug 'plasticboy/vim-markdown'
 
 call plug#end()
 
