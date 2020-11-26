@@ -137,7 +137,7 @@ syntax enable
 
 if has("gui_running")
     " setup for gvim
-    colo darkblue
+    colo evening
 else
     " setup for vim=terminal
     colo koehler
