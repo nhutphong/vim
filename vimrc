@@ -30,7 +30,10 @@ Plug 'christoomey/vim-titlecase'
 
 "
 Plug 'honza/vim-snippets'
+
 Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+
 Plug 'vim-airline/vim-airline'
 
 
