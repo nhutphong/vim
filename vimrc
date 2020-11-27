@@ -132,6 +132,8 @@ set smartindent
 set tabstop=4
 set shiftwidth=4
 
+set foldmethod=indent
+
 "use spaces instead of tabs
 set expandtab
 set smarttab
