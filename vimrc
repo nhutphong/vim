@@ -16,6 +16,8 @@ Plug 'plasticboy/vim-markdown'
 Plug 'govim/govim'
 Plug 'pangloss/vim-javascript'
 Plug 'othree/html5.vim'
+Plug 'mitsuhiko/jinja2'
+Plug 'glench/vim-jinja2-syntax'
 
 
 "snippet
