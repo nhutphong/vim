@@ -1,4 +1,7 @@
 call plug#begin()
+
+
+"
 Plug 'preservim/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'severin-lemaignan/vim-minimap'
@@ -6,7 +9,13 @@ Plug 'ryanoasis/vim-devicons'
 
 "autocomplete
 Plug 'valloric/youcompleteme'
+
+
+"
+Plug 'plasticboy/vim-markdown'
 Plug 'govim/govim'
+Plug 'pangloss/vim-javascript'
+Plug 'othree/html5.vim'
 
 
 "snippet
@@ -30,7 +39,10 @@ Plug 'christoomey/vim-titlecase'
 
 "
 Plug 'honza/vim-snippets'
+Plug 'mattn/emmet-vim'
 
+
+" searching files
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
@@ -59,10 +71,9 @@ Plug 'editorconfig/editorconfig-vim'
 "
 Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/syntastic'
-Plug 'mattn/emmet-vim'
 
 
-" search and jump to character, words , line, lines, ... 
+" search buffer and jump to character, words , line, lines, ... 
 Plug 'easymotion/vim-easymotion'
 Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
@@ -76,9 +87,10 @@ Plug 'tpope/vim-fugitive'
 
 "
 Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
+
 
 call plug#end()
+
 
 "vim-plug
 "source %  -> reload file
@@ -224,6 +236,9 @@ set visualbell
 set errorbells
 
 
+"------------------------------------------------------------------------------
+
+
 "let mapleader='\'         =<leader>
 let mapleader=';'
 " . dot => repeat command truoc do
@@ -254,6 +269,8 @@ nmap <leader>vimrc :e ~/.vim/vimrc<cr>
 nmap <leader>zshrc :e ~/.zshrc<cr>
 nmap <leader>bashrc :e ~/.bashrc<cr>
 
+nmap <F8> :TagbarToggle<CR>
+
 "reload file source file_name
 map <leader>xvimrc :so ~/.vimrc<cr>
 
@@ -264,7 +281,7 @@ map <leader>xvimrc :so ~/.vimrc<cr>
 nmap <leader>cgb :colo gruvbox<cr>
 
 
-"-----------------------------------------------------------------------------
+"------------------------------------------------------------------------------
 
 
 " airline
@@ -273,7 +290,7 @@ let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'default'
 
-"-------------------------------------------------------------------------------
+"------------------------------------------------------------------------------
 
 " NERDTree
 autocmd VimEnter * NERDTree       "tự chạy NERDTree ngay sau khi vào Vim
@@ -345,7 +362,7 @@ let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
-"-------------------------------------------------------------------------------
+"------------------------------------------------------------------------------
 
 " indentline
 " Vim
@@ -363,5 +380,7 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 " Background (Vim, GVim)
 "let g:indentLine_bgcolor_term = 202
 "let g:indentLine_bgcolor_gui = '#FF5F00'
+
 "-------------------------------------------------------------------------------
+
 
