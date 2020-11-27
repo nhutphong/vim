@@ -89,7 +89,7 @@ Plug 'tpope/vim-fugitive'
 
 "
 Plug 'godlygeek/tabular'
-
+Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
 
