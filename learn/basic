@@ -54,6 +54,16 @@ sentences : la 1 cau stop boi dot<.>
 
 
 
+scroll screen
+theo 1 line
+<c-y> up line
+<c-e> down line
+
+half=nua screen
+<c-u> up screen
+<c-d> down screen
+
+
 "jump to line   [count=int]gg
 gg - go to the first line of the document
 g - go to the last line of the document
@@ -480,4 +490,3 @@ find and replace text
 f<char> search char=chu cai can tim
 /{find_text} forward=right=next search
 ?{find_text} backward=left=previous search
-={code vim}

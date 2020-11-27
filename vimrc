@@ -111,6 +111,8 @@ autocmd filetype plugin indent on
 set encoding=utf-8
 set shell=/usr/bin/zsh
 
+set clipboard=unnamedplus 
+
 "size gvim
 set columns=130
 set lines=41
@@ -152,7 +154,7 @@ if has("gui_running")
     colo evening
 else
     " setup for vim=terminal
-    colo koehler
+    colo atom
 endif
 
 " chu y khi co file .editorconfig se overrive no
@@ -381,6 +383,6 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 "let g:indentLine_bgcolor_term = 202
 "let g:indentLine_bgcolor_gui = '#FF5F00'
 
-"-------------------------------------------------------------------------------
+"------------------------------------------------------------------------------
 
 
