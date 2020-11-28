@@ -190,8 +190,6 @@ set showcmd
 set cursorline
 
 
-
-
 " Display & format
 
 set number
@@ -268,7 +266,7 @@ map <C-n> :tabnew  "new tab
 
 "p or shift+p paste vim in vim
 ";p paste  tu program khac vao vim
-nnoremap <leader>p "+gP
+"nnoremap <leader>p "+gP
 
 "open file config
 nmap <leader>vimrc :e ~/.vim/vimrc<cr>
@@ -386,6 +384,17 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 " Background (Vim, GVim)
 "let g:indentLine_bgcolor_term = 202
 "let g:indentLine_bgcolor_gui = '#FF5F00'
+
+"------------------------------------------------------------------------------
+
+" tmux
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> {Left-Mapping} :TmuxNavigateLeft<cr>
+nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
+nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
+nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
+nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
 
 "------------------------------------------------------------------------------
 
