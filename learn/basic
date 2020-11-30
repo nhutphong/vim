@@ -53,17 +53,6 @@ sentences : la 1 cau stop boi dot<.>
 [[ jump to prev func or class
 
 
-
-scroll screen
-theo 1 line
-<c-y> up line
-<c-e> down line
-
-half=nua screen
-<c-u> up screen
-<c-d> down screen
-
-
 "jump to line   [count=int]gg
 gg - go to the first line of the document
 g - go to the last line of the document
@@ -83,12 +72,16 @@ fx - jump to previous occurence of character x
 tx - jump to after previous occurence of character x
 ; - repeat previous f, t, f or t movement
 , - repeat previous f, t, f or t movement, backwards
-zz - center cursor on screen
 
-ctrl + e - move screen down one line (without moving cursor)
+
+move screen
+zz - center cursor on screen
 ctrl + y - move screen up one line (without moving cursor)
-ctrl + b - move back one full screen
+ctrl + e - move screen down one line (without moving cursor)
+
 ctrl + f - move forward one full screen
+ctrl + b - move back one full screen
+
 ctrl + d - move forward 1/2 a screen
 ctrl + u - move back 1/2 a screen
 
@@ -159,10 +152,7 @@ cursor into content moi dung i) 2i) or 3i) .... co count=int
 {v|d|c}{i|I|a|A}{text-object}
 I lay content
 
-I( I) I{ I} IB I[ I] I< > It
-
-a ( b ( cccccccc ) d ) e
-    │   └─ I) ─┘   │
+I( I) I{ I} IB I[ I] I< > It a ( b ( cccccccc ) d ) e │   └─ I) ─┘   │
     └──── 2I) ─────┘
 
 
@@ -415,13 +405,15 @@ dw - delete (cut) the characters of the word from the cursor position to the sta
 D - delete (cut) to the end of the line
 d$ - delete (cut) to the end of the line
 x - delete (cut) character
+dgg     del to start document
+dG      del to end document
 
-
+. dot is current line
 :copy = :t
 :6copy. = :6t. => copy line 6 goto current line=.
 :t6 => current line. paste below line 6
-:t. => duplicate copy and paste vi tri hien tai
-:t$ => paste to end line
+:t. => duplicate current line 
+:t$ => copy current line, paste to end line
 
 # move lines
 :m[ove]
@@ -433,6 +425,12 @@ x - delete (cut) character
 :.,.+4m 21  move 5 lines starting at current line to after line 21
 :,+4m14     same (. for current line is assumed)
 
+# del lines
+syntax :{,}d
+:1,5d del line1 to line5
+:3,$d del lline3 to end document
+:$d     del last line document
+:%d     del all document
 
 Indent text
 >> - indent (move right) line one shiftwidth

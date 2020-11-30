@@ -178,7 +178,8 @@ au BufNewFile,BufRead *.js, *.html, *.css
     \ shiftwidth=2
 
 "mau=dark
-"darkblue desert evening  gruvbox dogrun atom molokayo space-vim-dark darkblue torte sonokai peachpuff onedark OceanicNext
+"darkblue desert evening  gruvbox dogrun atom molokayo space-vim-dark darkblue
+"torte sonokai peachpuff onedark OceanicNext
 
 "mau=white
 "github
@@ -187,7 +188,6 @@ au BufNewFile,BufRead *.js, *.html, *.css
 " display options
 set showmode
 set showcmd
-
 set cursorline
 
 
@@ -201,14 +201,11 @@ set showmatch
 
 
 " Search
-
 set hlsearch
-
 set incsearch
-
 set ignorecase
-
 set smartcase
+
 
 set ruler
 set rulerformat=%l,%v
@@ -229,15 +226,10 @@ set ttyfast
 " Miscellaneous
 
 set nobackup
-
 set noswapfile
-
 set autochdir
-
 set undofile
-
 set visualbell
-
 set errorbells
 
 
