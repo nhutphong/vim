@@ -113,7 +113,8 @@ autocmd filetype plugin indent on
 set encoding=utf-8
 set shell=/usr/bin/zsh
 
-set clipboard=unnamedplus 
+set clipboard=unnamedplus
+set mouse=a
 
 "size gvim
 set columns=130
