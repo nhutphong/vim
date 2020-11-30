@@ -152,6 +152,9 @@ hi ColorColumn guibg=#2d2d2d ctermbg=246
 
 "hi Visual ctermfg=14 ctermbg=NONE cterm=bold,underline
 
+set cursorcolumn 
+hi CursorColumn ctermbg=8
+
 syntax enable
 
 if has("gui_running")
