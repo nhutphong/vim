@@ -252,6 +252,14 @@ gta' is title in ''
 gt( is prev words file
 gt) is next words file
 
+
+--------------------------------------------------------------------------------
+                                    fold
+folder la group cac <tab> khi ve 1 dong nhieu cho gon
+
+zi  open/close all folds
+zo open 1 fold
+zc close 1 fold
 --------------------------------------------------------------------------------
                         text object
 {operator}{a|i}{text-object}
