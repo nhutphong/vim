@@ -115,6 +115,9 @@ set shell=/usr/bin/zsh
 
 set clipboard=unnamedplus
 set mouse=a
+set t_Co=256
+
+syntax on
 
 "size gvim
 set columns=130
@@ -140,7 +143,7 @@ set expandtab
 set smarttab
 
 " textwidth=full screen
-"set textwidth=79
+set textwidth=119
 set wrapmargin=2
 set formatoptions+=t
 
@@ -148,21 +151,36 @@ set whichwrap+=<,>,h,l
 
 " textwidth+=1 add them color
 set colorcolumn=+1
-hi ColorColumn guibg=#2d2d2d ctermbg=246
 
-"hi Visual ctermfg=14 ctermbg=NONE cterm=bold,underline
 
+" color column for cursor chacracter
 set cursorcolumn 
-hi CursorColumn ctermbg=8
 
-syntax enable
+" color select text in visual mode
+" cterm, gui =  bold italic underline reverse none.
+
 
 if has("gui_running")
     " setup for gvim
-    colo evening
+    colo molokayo
+
+    " highlght visual mode
+    hi visual gui=bold guibg=silver guifg=red
+
+    "
+    hi LineNr guifg=yellow
+    hi cursorlinenr guifg=aqua
+    hi colorcolumn guibg=red
 else
     " setup for vim=terminal
-    colo atom
+    colo molokai
+
+    hi visual cterm=bold ctermbg=darkblue ctermfg=red
+
+    "
+    hi LineNr ctermfg=yellow
+    hi cursorlinenr ctermfg=red
+    hi colorcolumn ctermbg=yellow
 endif
 
 " chu y khi co file .editorconfig se overrive no
