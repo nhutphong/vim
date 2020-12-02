@@ -74,6 +74,7 @@ tx - jump to after previous occurence of character x
 , - repeat previous f, t, f or t movement, backwards
 
 
+#screen
 move screen
 zz - center cursor on screen
 ctrl + y - move screen up one line (without moving cursor)
@@ -113,6 +114,21 @@ gUw: make a word uppercase
 >g: tab word
 a;<esc> : cuoi line($a) them ; press<esc>
 
+
+
+{d,c,y}{i,a,t,f}
+{dc,y}{t,f}{letter}
+t gap letter thi stop
+f lay lun letter roi stop
+
+dtp     del letters to khi gap 'p'
+ct,     del letters to khi gap ',' roi into insert mode
+yt;     copy letters to khi gap ';' thi stop
+
+giong use voi searching
+d/{words}   del letters den khi gap 'words'
+c/{words}   del letters den khi gap 'words' roi into insert mode
+y/{words}   copy letters den khi gap 'words' thi stop
 -------------------------------------------------------------------------------
                                 
                                 targets.vim
