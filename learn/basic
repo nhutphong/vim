@@ -248,8 +248,10 @@ ysi mapto g@i
 yss mapto 1g@g_
 
 dung thong
-
+add pair vao 1 word
 ysiw[   add pair [] thanh: [ dung ] thong
+
+add pair vao start va and line
 yssb    add pair () thanh: ( dung thong )
 yss(    add pair () thanh: ( dung thong )
 
