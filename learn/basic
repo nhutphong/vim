@@ -106,15 +106,29 @@ ggdG: gg=nhau ve dau file - dG xoa den cuoi file
 x: cut 1 letter
 c3w new_string<esc>: override 3 tu= new_string
 yy: copy 1 line
-~: invert case current letter
-g~<cr>: invert case letters end paragraph=nhieu line
-g~~: invert case letters to end 1 line
-guw: make a word lowercase
-gUw: make a word uppercase
->g: tab word
-a;<esc> : cuoi line($a) them ; press<esc>
 
 
+--------------------------------------------------------------------------------
+                                    easymotion
+
+/[words]        searching full file 
+;f              search 1 letter full file
+s               search 2 letter full file
+t               search 2 letter down cursor jumpto space truoc 2letter
+
+
+
+;L              jump to mark line
+;w              jump to 2 letter mark words
+
+;h              jump to word left curosr tren 1 line
+;l              jump to word right cursor tren 1 line 
+;j              jump to word down curosr tren nhieu lines
+;k              jump to word up cursor tren nhieu lines
+
+
+
+--------------------------------------------------------------------------------
 
 {d,c,y}{i,a,t,f}
 {dc,y}{t,f}{letter}
@@ -271,6 +285,17 @@ gt( is prev words file
 gt) is next words file
 
 
+vim system
+
+~: invert case current 1 letter
+gu<cr>: lowercase i line
+gU<cr>: upeercase 1 line
+g~<cr>: invert case letters end paragraph=nhieu line
+g~~: invert case letters to end 1 line
+guw: make a word lowercase
+gUw: make a word uppercase
+>g: tab word
+
 --------------------------------------------------------------------------------
                                     fold
 folder la group cac <tab> khi ve 1 dong nhieu cho gon
@@ -347,8 +372,10 @@ Ctrl + r - redo
 
 SEARCH TEXT AND REPLACE occurrence 
 search text sau do move cursor den position can thay the
-press cgn [text can thay the] exit
-repeat = .
+
+cgn [text can thay the] exit
+n   next to word
+.   repeat
 
 
 Visual commands
@@ -374,7 +401,7 @@ set names de luu lai cac command delete and copy de dung lai
 "xyy - yank into register x
 "xp - paste contents of register x
 "+y - yank into the system clipboard register
-"+p - paste from the system clipboard kegister
+"+p - paste from the system clipboard register
      0 - last yank
      " - unnamed register, last delete or yank
      % - current file name
@@ -412,11 +439,17 @@ Ctrl + ] - jump to the tag under cursor
 
 
 Macros
-qa - record macro a
-q - stop recording macro
-@a - run macro a
-@@ - rerun last run macro
+luu nhieu acitons trong vim, dung dot. de repeat
+nen dung omap: 0 $ w e b
+tranh dung h j k l => vi khong biet do lai cua line 
 
+qa - record macro a name
+q - stop=quit recording macro
+@a - run macro a name
+@@ - run lai macros
+
+
+--------------------------------------------------------------------------------
 
 Cut and paste   
 yy - yank (copy) a line

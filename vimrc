@@ -91,6 +91,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'godlygeek/tabular'
 Plug 'christoomey/vim-tmux-navigator'
 
+
+" macros store name
+Plug 'vim-scripts/marvim'
+
 call plug#end()
 
 
