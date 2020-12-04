@@ -294,14 +294,25 @@ gt) is next words file
 
 vim system
 
-~: invert case current 1 letter
-gu<cr>: lowercase i line
-gU<cr>: upeercase 1 line
-g~<cr>: invert case letters end paragraph=nhieu line
-g~~: invert case letters to end 1 line
-guw: make a word lowercase
-gUw: make a word uppercase
->g: tab word
+~       invert case current 1 letter
+Vu      lowercase 1 line
+VU      uppercase 1 line
+
+gu{motion}
+gu{w ( )}
+
+gu{searching}{letter}
+gu{t f}{letter}
+
+gu<cr>  lowercase 2 line
+gU<cr>  upeercase 2 line
+
+g~<cr>   invert case letters 2 line
+g~~      invert case letters to end 1 line
+
+guw      make a word lowercase
+gUw      make a word uppercase
+>g       tab word
 
 --------------------------------------------------------------------------------
                                     fold
@@ -337,14 +348,6 @@ ciB jump to {} into insert-mdoe change text
 
 ca" delete tat ca ,lun ca "" gap dau tien, sau on into insert-mode
 
-insert mode - inserting/appending text
-i - insert left the cursor
-i - insert at the beginning of the line
-a - insert (append) after the cursor
-a - insert (append) at the end of the line
-o - append (open) a new line below the current line
-o - append (open) a new line above the current line
-ea - insert (append) at the end of the word
 ctrl + h - delete the character left the cursor during insert mode
 ctrl + w - delete word left the cursor during insert mode
 ctrl + j - begin new line during insert mode
@@ -359,26 +362,19 @@ editing
 r{char} - replace a single character
 j - join line below to the current one with one space in between
 gj - join line below to the current one without space in between
-gwip - reflow paragraph
-g~ - switch case up to motion
-gu{motion} - change to lowercase up to motion
-gU{motion} - change to uppercase up to motion
+
+gwip        format paragraph textwidth=79
+gqip        format paragraph textwidth=79
+
 cc - change (replace) entire line
 C - change (replace) to the end of the line
 c$ - change (replace) to the end of the line
-ciw - change (replace) entire word
-cw - change (replace) to the end of the word
-s - delete character and substitute text
-S - delete line and substitute text (same as cc)
 xp - transpose two letters (delete and paste)
 u - undo
 U - restore (undo) last changed line
 Ctrl + r - redo
-. - repeat last command
 
 
-SEARCH TEXT AND REPLACE occurrence 
-search text sau do move cursor den position can thay the
 
 cgn [text can thay the] exit
 n   next to word
@@ -546,11 +542,8 @@ gT or :tabp[revious] - move to the previous tab
 :tabo[nly] - close all tabs except for the current one
 :tabdo command - run the command on all tabs (e.g. :tabdo q - closes all opened tabs)
 
-
 find and replace text
 :5,12s/foo/bar/g
 
-
-f<char> search char=chu cai can tim
 /{find_text} forward=right=next search
 ?{find_text} backward=left=previous search
