@@ -139,6 +139,13 @@ dtp     del letters to khi gap 'p'
 ct,     del letters to khi gap ',' roi into insert mode
 yt;     copy letters to khi gap ';' thi stop
 
+copy    del=d  change=c  visual=v cung vay 
+yis     copy 1 cau=sentence
+yas     copy 1 cau=sentence them spaces step sentence 2
+yip     copy 1 paragraph=sentences
+yap     copy 1 paragraph=sentences them \n=xuong dong
+
+
 giong use voi searching
 d/{words}   del letters den khi gap 'words'
 c/{words}   del letters den khi gap 'words' roi into insert mode
