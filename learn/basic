@@ -30,15 +30,14 @@ h - move to top of screen
 m - move to middle of screen
 l - move to bottom of screen
 
-w - jump forwards to the start of a word
-w - jump forwards to the start of a word (words can contain punctuation)
-e - jump forwards to the end of a word
-e - jump forwards to the end of a word (words can contain punctuation)
-b - jump backwards to the start of a word
-b - jump backwards to the start of a word (words can contain punctuation)
+w   next start word
+b   prev start word 
 
-*: select all word giong nhau 
-*: next hightlight text
+e   next end word
+ge  prev end word
+
+*    select all word giong nhau 
+*    next hightlight text
 
 sentences : la 1 cau stop boi dot<.>
 
@@ -66,10 +65,6 @@ $ - jump to the end of the line
 g_ - jump to the last non-blank character of the line
      bay nhay di nao         
 
-tx - jump to left next occurrence of character x
-fx - jump to next occurrence of character x
-fx - jump to previous occurence of character x
-tx - jump to after previous occurence of character x
 ; - repeat previous f, t, f or t movement
 , - repeat previous f, t, f or t movement, backwards
 
@@ -85,6 +80,9 @@ ctrl + b - move back one full screen
 
 ctrl + d - move forward 1/2 a screen
 ctrl + u - move back 1/2 a screen
+
+gm      jumpto center screen
+gM      jumpto center line
 
 
 --------------------------------------------------------------------------------
@@ -135,8 +133,9 @@ t               search 2 letter down cursor jumpto space truoc 2letter
 t gap letter thi stop
 f lay lun letter roi stop
 
-dtp     del letters to khi gap 'p'
-ct,     del letters to khi gap ',' roi into insert mode
+del=cut=d change=c visual=v deu giong nhau
+ytp     copy letters to khi gap 'p'
+yt,     copy letters to khi gap ',' roi into insert mode
 yt;     copy letters to khi gap ';' thi stop
 
 copy    del=d  change=c  visual=v cung vay 
@@ -189,7 +188,9 @@ cursor into content moi dung i) 2i) or 3i) .... co count=int
 {v|d|c}{i|I|a|A}{text-object}
 I lay content
 
-I( I) I{ I} IB I[ I] I< > It a ( b ( cccccccc ) d ) e │   └─ I) ─┘   │
+I( I) I{ I} IB I[ I] I< > It 
+a ( b ( cccccccc ) d ) e 
+    |   └─ I) ─┘   │
     └──── 2I) ─────┘
 
 
