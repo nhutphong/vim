@@ -189,10 +189,15 @@ cursor into content moi dung i) 2i) or 3i) .... co count=int
 I lay content
 
 I( I) I{ I} IB I[ I] I< > It 
-a ( b ( cccccccc ) d ) e 
-    |   └─ I) ─┘   │
-    └──── 2I) ─────┘
-
+a ( b (    abccontent     )      wordhaha ) e 
+      ||   |        |    ||     |
+      ||   ----I)----    ||     |
+      ||                 ||     |
+      ||-------i)--------||     |
+      |                   |     |
+      |--------a)---------|     |
+      |                         |
+      |--------A)---------------|
 
 i lay content them spaces first va last
 i( i) i{ i} iB i[ i] i< i> it
@@ -224,31 +229,34 @@ next=right va pre=left
 in( an( In( An( il( al( Il( Al( ...
 
 
+argument=a
+{I i a A}{a}
 Ia      lay context argument one
 a , b ( cccccccc , d ) e
-        └─ Ia ─┘
+        └─ ia ─┘
 
-ia      lay context them 2 space
+ia      lay context them spaces
 a , b ( cccccccc , d ) e
        └── ia ──┘
 
-aa
-a , b ( cccccccc , d ) e
-        └─── aa ──┘
+aa      lay content1 to spaces content2
+a , b ( cccccccc ,      content2 ) e
+        └─── aa ──-----|
 
-Aa
-a , b ( cccccccc , d ) e
-      └─── Aa ────┘
+Aa      lay tu ( to spaces content2
+a , b ( cccccccc ,      content2 ) e
+      └─── Aa ────-----|
 
 left=prev and right=next a=argument
 ina ana Ina Ana ila ala Ila Ala
 
-
+left next
 any block
 inb anb Inb Anb ilb alb Ilb Alb
 
 
-any quote
+left next
+any quote ' "
 inq anq Inq Anq ilq alq Ilq Alq
 
 
