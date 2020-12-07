@@ -47,7 +47,7 @@ sentences : la 1 cau stop boi dot<.>
 ( jump to prev sentences
 ) jump to next sentences
 
-% jump to () or {}
+% jump to () or {}, [], ...
 ]] jump to next func or class
 [[ jump to prev func or class
 
@@ -232,19 +232,19 @@ in( an( In( An( il( al( Il( Al( ...
 argument=a
 {I i a A}{a}
 Ia      lay context argument one
-a , b ( cccccccc , d ) e
-        └─ ia ─┘
+a , b ( contentx , d ) e
+        └─ Ia ─┘
 
 ia      lay context them spaces
-a , b ( cccccccc , d ) e
+a , b ( contentx , d ) e
        └── ia ──┘
 
-aa      lay content1 to spaces content2
-a , b ( cccccccc ,      content2 ) e
+aa      lay contentx to spaces content2
+a , b ( contentx ,      content2 ) e
         └─── aa ──-----|
 
 Aa      lay tu ( to spaces content2
-a , b ( cccccccc ,      content2 ) e
+a , b ( contentx ,      content2 ) e
       └─── Aa ────-----|
 
 left=prev and right=next a=argument
@@ -462,32 +462,65 @@ q - stop=quit recording macro
 
 
 --------------------------------------------------------------------------------
+buffer
 
-Cut and paste   
-yy - yank (copy) a line
-2yy - yank (copy) 2 lines
-yw - yank (copy) the characters of the word from the cursor position to the start of the next word
-y$ - yank (copy) to end of line
-p - put (paste) the clipboard after cursor
-P - put (paste) left cursor
-dd - delete (cut) a line
-2dd - delete (cut) 2 lines
-dw - delete (cut) the characters of the word from the cursor position to the start of the next word
-D - delete (cut) to the end of the line
-d$ - delete (cut) to the end of the line
-x - delete (cut) character
-dgg     del to start document
-dG      del to end document
+:ls<cr>     list buffers set(1 2 3 4 5 ...)
+:bp<cr>     prev buffer
+:bn<cr>     next buffer
+:1b<cr>     select buffer 1
+:2b<cr>     select buffer 2
 
+--------------------------------------------------------------------------------
+
+replace
+%s      all lines
+s       chi 1 line
+gi      khong phan biet lower upper
+gc      thong bao truoc khi action
+gic     aciton cua 2 line tren
+
+
+:%s/old/new/g           Replace all occurences of old by new in file
+:%s/onward/forward/gi	Replace onward by forward, case unsensitive=ko phan biet lower upper
+:%s/old/new/gc          Replace all occurences with confirmation=thong bao
+:%s/^/hello/g	        Replace the begining of each line by hello
+:%s/$/Harry/g           Replace the end of each line by Harry
+:36,42s/Unix/Linux/g    Replace Unix by Linux, line36 to  line42
+
+del lines containing "string"
+:%s/ *$//g	            Delete all white spaces
+:g/string/d	            Delete all lines containing "string"
+:g!/string/d	        Delete all lines containing which didn’t contain "string"
+:v/string/d	            Delete all lines containing which didn’t contain "string"
+
+:s/Bill/Steve/	        Replace the first occurence of Bill by Steve in current line
+:s/Bill/Steve/g	        Replace Bill by Steve in current line
+:%s/Bill/Steve/g	    Replace Bill by Steve in all the file
+:%s/^M//g	            Delete DOS carriage returns (^M)
+:%s/\r/\r/g	            Transform DOS carriage returns in returns
+:%s#<[^>]\+>##g	        Delete HTML tags but keeps text
+:%s/^\(.*\)\n\1$/\1/	Delete lines which appears twice
+
+Ctrl+a	Increment number under the cursor
+Ctrl+x	Decrement number under cursor
+ggVGg?	Change text to Rot13
+
+
+copy and paste
 . dot is current line
+:[int,int]t{motion . $ .....}
+
 :copy = :t
 :6copy. = :6t. => copy line 6 goto current line=.
 :t6 => current line. paste below line 6
 :t. => duplicate current line 
 :t$ => copy current line, paste to end line
 
+
 # move lines
 :m[ove]
+:{int,int}m {to line=int motion=0 $ }
+
 :'<,'>m$ : move select contents to end lines
 :!{cmd}
 :5,7m 21    move lines 5, 6 and 7 to after line 21
@@ -495,6 +528,7 @@ dG      del to end document
 :5,7m $     move lines 5, 6 and 7 to after last line
 :.,.+4m 21  move 5 lines starting at current line to after line 21
 :,+4m14     same (. for current line is assumed)
+
 
 # del lines
 syntax :{,}d
@@ -526,10 +560,6 @@ Search and replace
 n - repeat search in same direction
 N - repeat search in opposite direction
 
-:s/old_string/new_string/g      - replace on 1 line
-:%s/old_string/new_string/g     - replace all old with new throughout file
-:%s/old_string/new_string/gc    - replace all old with new throughout file with confirmations
-
 :noh[lsearch] - remove highlighting of search matches
 
 
@@ -551,8 +581,6 @@ gT or :tabp[revious] - move to the previous tab
 :tabo[nly] - close all tabs except for the current one
 :tabdo command - run the command on all tabs (e.g. :tabdo q - closes all opened tabs)
 
-find and replace text
-:5,12s/foo/bar/g
 
 /{find_text} forward=right=next search
 ?{find_text} backward=left=previous search
