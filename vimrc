@@ -87,8 +87,10 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
 
-"
+" aligning text
 Plug 'godlygeek/tabular'
+
+
 Plug 'christoomey/vim-tmux-navigator'
 
 

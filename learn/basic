@@ -323,6 +323,22 @@ guw      make a word lowercase
 gUw      make a word uppercase
 >g       tab word
 
+
+
+--------------------------------------------------------------------------------
+                                    tabular.vim
+align text=can chinh text
+'<,'>   la select text = visual mode
+r   right
+c   center
+l   left
+
+:'<,'>Tabularize /|     cang chinh theo |
+:'<,'>Tabularize /=     cang chinh theo =
+:'<,'>Tabularize /:/r0  cang chinh theo : right 0 space
+:'<,'>Tabularize /:\zs  theo space ignoze :  content right, align left for content 
+
+
 --------------------------------------------------------------------------------
                                     fold
 folder la group cac <tab> khi ve 1 dong nhieu cho gon
