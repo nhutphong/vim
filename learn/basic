@@ -17,6 +17,13 @@ vim command -> sau
 :wq: lưu xong thoát
 
 
+left         |     right
+previous     |     next
+up           |     down
+top          |     bottom
+backward     |     forward
+
+
 --------------------------------------------------------------------------------
                             motion
 
@@ -30,26 +37,26 @@ h - move to top of screen
 m - move to middle of screen
 l - move to bottom of screen
 
-w   next start word
 b   prev start word 
+w   next start word
 
-e   next end word
 ge  prev end word
+e   next end word
 
 *    select all word giong nhau 
 *    next hightlight text
 
 sentences : la 1 cau stop boi dot<.>
 
-} jump to next line empty giua cac paragraph=1 doan=nhieu sentences 
 { jump to prev line empty giua cac paragraph=1 doan=nhieu sentencess
+} jump to next line empty giua cac paragraph=1 doan=nhieu sentences 
 
 ( jump to prev sentences
 ) jump to next sentences
 
 % jump to () or {}, [], ...
-]] jump to next func or class
 [[ jump to prev func or class
+]] jump to next func or class
 
 
 "jump to line   [count=int]gg
@@ -69,17 +76,17 @@ g_ - jump to the last non-blank character of the line
 , - repeat previous f, t, f or t movement, backwards
 
 
-#screen
+#screen #croll
 move screen
 zz - center cursor on screen
 ctrl + y - move screen up one line (without moving cursor)
 ctrl + e - move screen down one line (without moving cursor)
 
-ctrl + f - move forward one full screen
-ctrl + b - move back one full screen
-
-ctrl + d - move forward 1/2 a screen
 ctrl + u - move back 1/2 a screen
+ctrl + d - move forward 1/2 a screen
+
+ctrl + b - move back one full screen
+ctrl + f - move forward one full screen
 
 gm      jumpto center screen
 gM      jumpto center line
@@ -340,6 +347,17 @@ l   left
 
 
 --------------------------------------------------------------------------------
+
+#undo u
+:ea[rlier] {int}{s m h d f}
+f là buffer file
+:ea 3d      undo 3day before
+
+#redo <c-y> 
+:lat[er] {int}{s m h d f}
+:lat 3h     redo 3hour after
+
+--------------------------------------------------------------------------------
                                     fold
 folder la group cac <tab> khi ve 1 dong nhieu cho gon
 
@@ -444,6 +462,17 @@ set names de luu lai cac command delete and copy de dung lai
      _ - black hole register
 
 
+Macros
+luu nhieu acitons trong vim, dung dot. de repeat
+nen dung omap: 0 $ w e b
+tranh dung h j k l => vi khong biet do lai cua line 
+
+qa - record macro a name
+q - stop=quit recording macro
+@a - run macro a name
+@@ - run lai macros
+
+
 --------------------------------------------------------------------------------
                                 Marks and positions
 set name= 1 vi tri nao do, de jump to
@@ -464,17 +493,6 @@ Ctrl + o - go to older position in jump list
 g, - go to newer position in change list
 g; - go to older position in change list
 Ctrl + ] - jump to the tag under cursor
-
-
-Macros
-luu nhieu acitons trong vim, dung dot. de repeat
-nen dung omap: 0 $ w e b
-tranh dung h j k l => vi khong biet do lai cua line 
-
-qa - record macro a name
-q - stop=quit recording macro
-@a - run macro a name
-@@ - run lai macros
 
 
 --------------------------------------------------------------------------------
@@ -577,26 +595,6 @@ n - repeat search in same direction
 N - repeat search in opposite direction
 
 :noh[lsearch] - remove highlighting of search matches
-
-
-Search in multiple files
-:vim[grep] /pattern/ {`{file}`} - search for pattern in multiple files
-e.g. :vim[grep] /foo/ **/*
-:cn[ext] - jump to the next match
-:cp[revious] - jump to the previous match
-:cope[n] - open a window containing the list of matches
-:ccl[ose] - close the quickfix window
-Tabs
-:tabnew or :tabnew {page.words.file} - open a file in a new tab
-Ctrl + wT - move the current split window into its own tab
-gt or :tabn[ext] - move to the next tab
-gT or :tabp[revious] - move to the previous tab
-#gt - move to tab number #
-:tabm[ove] # - move current tab to the #th position (indexed from 0)
-:tabc[lose] - close the current tab and all its windows
-:tabo[nly] - close all tabs except for the current one
-:tabdo command - run the command on all tabs (e.g. :tabdo q - closes all opened tabs)
-
 
 /{find_text} forward=right=next search
 ?{find_text} backward=left=previous search
