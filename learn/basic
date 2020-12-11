@@ -4,7 +4,7 @@ important
 
     number = int
     operator=command -> i,a,r,c,d,y -> them xoa sua, ....
-    motion -> phim hjkl, w,e,b ,, ^ 0 $ g_
+    motion -> phim h j k l w e b  ^ 0 $ g_
     text object:     
 vim command -> sau
 :! cmd_bash
@@ -56,7 +56,6 @@ sentences : la 1 cau stop boi dot<.>
 
 % jump to () or {}, [], ...
 [[ jump to prev func or class
-]] jump to next func or class
 
 
 "jump to line   [count=int]gg
@@ -110,9 +109,14 @@ ggdG: gg=nhau ve dau file - dG xoa den cuoi file
 
 x: cut 1 letter
 c3w new_string<esc>: override 3 tu= new_string
-yy: copy 1 line
 
+yy      -     copy 1 line
+dd      -     cut 1 line
+cc      -     delete all words current line into insert mode
 
+dj      -     cut 2 line, current line and down line
+dk      -     cut 2 line, curernt line and up line
+y c     -     tuong tu
 --------------------------------------------------------------------------------
                                     easymotion
 
@@ -336,9 +340,9 @@ gUw      make a word uppercase
                                     tabular.vim
 align text=can chinh text
 '<,'>   la select text = visual mode
-r   right
-c   center
-l   left
+r{int}   right
+c(int)   center
+l(int)   left
 
 :'<,'>Tabularize /|     cang chinh theo |
 :'<,'>Tabularize /=     cang chinh theo =
@@ -379,17 +383,6 @@ B (or {, }) for block surrounded by {}
 [, ] for a block surrounded by []
 t for tag.
 
-daw - xoa 1 tu gap space stop
-dab da( or da) to delete a block surrounded by (
-daB da{ or da} to delete a block surrounded by {
-dat to delete an HTML tag
-cit to change the contents of an HTML tag
-
-ci" jump to "" into insert-mode change text
-cib jumpt to () into insert-mode change text
-ciB jump to {} into insert-mdoe change text
-
-ca" delete tat ca ,lun ca "" gap dau tien, sau on into insert-mode
 
 ctrl + h - delete the character left the cursor during insert mode
 ctrl + w - delete word left the cursor during insert mode
@@ -409,12 +402,12 @@ gj - join line below to the current one without space in between
 gwip        format paragraph textwidth=79
 gqip        format paragraph textwidth=79
 
-cc - change (replace) entire line
-C - change (replace) to the end of the line
-c$ - change (replace) to the end of the line
-xp - transpose two letters (delete and paste)
-u - undo
-U - restore (undo) last changed line
+cc     -     remove all words current line into insert mode
+C      -     change (replace) to the end of the line
+c$     -     change (replace) to the end of the line
+xp     -     transpose two letters (delete and paste)
+u      -     undo
+U      -     restore (undo) last changed line
 Ctrl + r - redo
 
 
@@ -468,7 +461,8 @@ nen dung omap: 0 $ w e b
 tranh dung h j k l => vi khong biet do lai cua line 
 
 qa - record macro a name
-q - stop=quit recording macro
+motion,d c y p  ... sau do q
+q - stop=quit=save recording macro
 @a - run macro a name
 @@ - run lai macros
 
@@ -523,6 +517,7 @@ gic     aciton cua 2 line tren
 
 del lines containing "string"
 :%s/ *$//g	            Delete all white spaces
+:g/^$/d                 delete all lines empty
 :g/string/d	            Delete all lines containing "string"
 :g!/string/d	        Delete all lines containing which didn’t contain "string"
 :v/string/d	            Delete all lines containing which didn’t contain "string"
@@ -598,3 +593,168 @@ N - repeat search in opposite direction
 
 /{find_text} forward=right=next search
 ?{find_text} backward=left=previous search
+
+
+================================================================================
+#tmux #linux
+
+
+session sẽ run lại nếu open tmux
+dùng option <attach> đê restore session đó
+do dung tmux oh-my-god, vai key da dc remap
+
+<prefix> = <c-b> = <>
+tmux-oh-my
+tmux-plugins-manager phải fix lại
+~\.tmux.conf.local
+
+#plugin
+#install
+bind <s>
+
+#tmux-plugin-manager
+ # List of plugins
+ set -g @tpm_plugins '
+    \ tmux-plugins/tpm
+    \ tmux-plugins/tmux-sensible
+    \ tmux-plugins/tmux-resurrect
+    \ tmux-plugins/tmux-continuum
+    \ user-github/repository-name
+  '
+set -g @continuum-restore 'on
+
+#copy #paste
+#tmux-yank
+quick: mouse drag select text + y  => copy text
+copy mode: <prefix> [
+v  vao visual mode selete text
+y copy
+
+#paste 
+<prefix> p    => paste=put
+<prefix> P    => show list copy
+
+
+15p save 1 lan
+nen save lan dau
+bind <c-s>
+bind <c-r>
+
+
+# session > window > pane
+#session 
+bind=<prefix> = <c-b> = <c-a>
+s     list sessions
+w    list windows
+
+f    searching sessions
+<c-f>    searching windows
+
+#rename
+$     rename the current session
+,     rename the current window
+
+d     detach from the current session
+
+c    create a new window
+%     create a horizontal pane
+"     create a vertical pane
+
+&    close window
+
+x    Xoá panel
+
+0 to 9 select windows 0 through 9
+
+#panes
+
+q     show pane numbers
+o     toggle between panes
+}     swap with next pane
+{     swap with previous pane
+!     break the pane out of the window
+
+#new
+tmux
+tmux new
+tmux new -s [session_name]
+
+# login 
+tmux a
+tmux at
+tmux attach
+tmux attach-session
+
+# restore session_name
+tmux a[ttach] -t {session_name}
+
+
+#default=0
+tmux attach -t 0
+
+#del
+tmux kill-session -t s_name
+
+
+# session 1
+<c-b> 1
+
+#motion
+<prefix> muoi ten     jumpto pane
+
+<prefix>+n     change to the next window
+<prefix>+p     change to the previous window
+
+<prefix> (    jump to prev session
+<prefix> )    jump to next session
+
+================================================================================
+#window 
+
+
+panel
+#split #horizontally
+<c-b> "
+
+#vertically
+<c-b> %
+
+
+Ctrl+b % or -  # chia đôi màn hình theo chiều dọc
+Ctrl+b "  or _ # chia đôi màn hình theo chiều ngang
+
+Ctrl+b q  # Hiện số thứ tự trên
+
+================================================================================
+#terminal
+
+#motion 
+ctrl-a begging line
+ctrl-e end line
+Alt+B: Go left (back) one word.
+Alt+F: Go right (forward) one word.
+
+Ctrl+B: Go left (back) one character.
+Ctrl+F: Go right (forward) one character
+
+ctrl-p prev cmd history
+ctrl-n next cmd history
+ctrl-r searching cmd history
+ctrl-o == ctrl-g
+ctrl-g exit searching history mode
+
+
+#delete 
+ctrl-w     del word left cursor
+alt-d    cut word right cursor
+ctrl-d    del character right cursor
+ctrl-y paste for alt-d
+
+#case 
+alt+u upper
+alt+l lower
+alt+c capitalize
+
+#swap 
+alt+t     swap word with prev word
+ctrl+t
