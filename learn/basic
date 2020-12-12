@@ -118,9 +118,9 @@ dd: xoa 1 dong
 d3d: xoa 3 dong
 3d3d: del 9 line
 ddp: swap current line with below line= cut current line paste below cursor
-d3w: delete 3 word(tinh tu vi tri cursor)
+d3w: cut 3 word(tinh tu vi tri cursor)
 dfp: xoa den khi gap 'p' xoa lun 'p' thi stop on line
-dtp: xoa den khi gap 'p' thi stop NO delete 'p'
+dtp: xoa den khi gap 'p' thi stop NO cut 'p'
 d/haha: xoa den khi gap 'haha' thi stop all lines
 ggdG: gg=nhau ve dau file - dG xoa den cuoi file
 
@@ -189,7 +189,7 @@ y/{words}   copy letters den khi gap 'words' thi stop
 -------------------------------------------------------------------------------
                                 
                                 targets.vim
-operator d delete text nhung van o normal mode
+operator d cut text nhung van o normal mode
 operator c delete text nhung into insetmode add them text
 
 {operator}{i|I|a|A}{text-objects}
@@ -210,7 +210,7 @@ separator text object:
 
 operator:
     v = visual mode = selete text
-    d = thuoc normal mode = delete text van o current mode
+    d = thuoc normal mode = cut text van o current mode
     c = thuoc normal mode = delete text into insert text de add text=change
 
 {i|I|a|a}:
@@ -300,13 +300,13 @@ inq anq Inq Anq ilq alq Ilq Alq
 --------------------------------------------------------------------------------
                                     vim-surround 
 delete, replace {} [] '' "" ``, ...
-ds{pair}            delete pair
+ds{pair}            cut pair
 cs{old_p}{new_p}    change new_pair
 ys{text-object}{pair}    add pair
 
 
 "dung thong co de bo trau"
-ds"     delete ""
+ds"     cut ""
 cs"{    change " thanh {}
 
 
@@ -410,8 +410,9 @@ B (or {, }) for block surrounded by {}
 t for tag.
 
 
-ctrl + h - delete the character left the cursor during insert mode
-ctrl + w - delete word left the cursor during insert mode
+insert mode
+ctrl + h - del prev word
+ctrl + w - del prev letter
 ctrl + j - begin new line during insert mode
 ctrl + t - indent (move right) line one shiftwidth during insert mode
 ctrl + d - de-indent (move left) line one shiftwidth during insert mode
@@ -447,7 +448,7 @@ Visual commands
 >> - shift text right
 << - shift text left
 y - yank (copy) marked text
-d - delete marked text
+d - cut marked text
 ~ - switch case
 u - change marked text to lowercase
 U - change marked text to uppercase
@@ -456,7 +457,7 @@ U - change marked text to uppercase
 --------------------------------------------------------------------------------
                                 Registers
 
-set names de luu lai cac command delete and copy de dung lai
+set names de luu lai cac command cut and copy de dung lai
 "xyy save context cua command=yy toi name=x
 "xp paste context cua name=x
 "wdd save context cua command=dd toi name=w
@@ -797,7 +798,7 @@ ctrl-g exit searching history mode
 
 
 #delete 
-ctrl-w     del word left cursor
+ctrl-w     cut word left cursor
 alt-d    cut word right cursor
 ctrl-d    del character right cursor
 ctrl-y paste for alt-d
