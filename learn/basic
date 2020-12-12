@@ -16,8 +16,28 @@ vim command -> sau
 :w!: bắt buộc ghi file (ghi đè)
 :wq: lưu xong thoát
 
+:r file.txt Insert the ile ile.txt below the cursor in current buffer.
+:0r file.txt Insert the ile ile.txt before the irst line.
+:r!sed -n 2,8p file.txt Insert lines 2 to 8 from ile ile.txt below the cursor.
+:r !ls Insert a directory listing below the cursor
 
-tips
+gf
+gx
+
+:wq Save currently opened ile and exit Vim (even if ile is not changed).
+:x Exit Vim but write only when changes have been made.
+ZZ Equivalent to :x. Notice there’s no :. This is a key press.
+:q! Exit Vim without saving currently opened ile.
+:qa Exit all open iles in current Vim session
+
+
+:w Save currently opened ile (which was previously saved).
+:w file.txt Save currently opened ile as file.txt.
+:w! file.txt Save ile as file.txt with overwrite option.
+:sav file.txt Save current buffer as a new ile file.txt.
+:up[date] file.txt Like :w but only save when the buffer has been motips
+
+
 ctrl+o+o          -     open file edited
 :argdo update     -     save all buffers
 :bufdo
