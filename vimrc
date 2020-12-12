@@ -13,7 +13,7 @@ Plug 'valloric/youcompleteme'
 
 "
 Plug 'plasticboy/vim-markdown'
-Plug 'govim/govim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'pangloss/vim-javascript'
 Plug 'othree/html5.vim'
 Plug 'mitsuhiko/jinja2'

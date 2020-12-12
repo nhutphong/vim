@@ -16,6 +16,8 @@ vim command -> sau
 :w!: bắt buộc ghi file (ghi đè)
 :wq: lưu xong thoát
 
+<c-o-o> open file prev
+
 
 left         |     right
 previous     |     next
@@ -117,6 +119,15 @@ cc      -     delete all words current line into insert mode
 dj      -     cut 2 line, current line and down line
 dk      -     cut 2 line, curernt line and up line
 y c     -     tuong tu
+
+
+tips
+<esc>==jj
+[int]i{letter}jj
+
+8i<cr>jj    add 8 line
+20i-jj      add 20 '-'
+
 --------------------------------------------------------------------------------
                                     easymotion
 
@@ -466,6 +477,14 @@ q - stop=quit=save recording macro
 @a - run macro a name
 @@ - run lai macros
 
+recursive
+100@v           run 100 lines
+
+norm[al]
+:6,16norm @v    run macros name=v for line6 to line16
+:10,$norm @v    run macros for line10 to end line of file
+:%norm @v       run all lines
+:'<'>norm @v    run for select context
 
 --------------------------------------------------------------------------------
                                 Marks and positions
@@ -504,8 +523,12 @@ replace
 %s      all lines
 s       chi 1 line
 gi      khong phan biet lower upper
+gI      phan biet lower upper
 gc      thong bao truoc khi action
 gic     aciton cua 2 line tren
+
+'<,'>   select content visual mode
+
 
 
 :%s/old/new/g           Replace all occurences of old by new in file
@@ -513,7 +536,21 @@ gic     aciton cua 2 line tren
 :%s/old/new/gc          Replace all occurences with confirmation=thong bao
 :%s/^/hello/g	        Replace the begining of each line by hello
 :%s/$/Harry/g           Replace the end of each line by Harry
+:.,$s/dung/thong/g      replace "dung" by thong from current line to end line of file
+:.+4,$s/dung/thong/g
+:.,+4/dung/thong/g
 :36,42s/Unix/Linux/g    Replace Unix by Linux, line36 to  line42
+
+\<str_old\>
+\(bad|good\)
+:s/\<is\>/was/g         replace chinh xac word=is = was
+:s/\(bad|godd\)/haha/g  replace 'bad' or 'good' by 'haha'
+
+
+g and d
+^   start of line
+$   end of line
+\s* zero or more space characters
 
 del lines containing "string"
 :%s/ *$//g	            Delete all white spaces
@@ -548,14 +585,14 @@ copy and paste
 
 # move lines
 :m[ove]
-:{int,int}m {to line=int motion=0 $ }
+:{int,int}m{to line=int motion=0 $ }
 
 :'<,'>m$ : move select contents to end lines
 :!{cmd}
-:5,7m 21    move lines 5, 6 and 7 to after line 21
-:5,7m 0     move lines 5, 6 and 7 to left first line
-:5,7m $     move lines 5, 6 and 7 to after last line
-:.,.+4m 21  move 5 lines starting at current line to after line 21
+:5,7m21    move lines 5, 6 and 7 to after line 21
+:5,7m0     move lines 5, 6 and 7 to left first line
+:5,7m$     move lines 5, 6 and 7 to after last line
+:.,.+4m21  move 5 lines starting at current line to after line 21
 :,+4m14     same (. for current line is assumed)
 
 
