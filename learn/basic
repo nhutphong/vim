@@ -16,28 +16,43 @@ vim command -> sau
 :w!: bắt buộc ghi file (ghi đè)
 :wq: lưu xong thoát
 
-<c-o-o> open file prev
+
+tips
+ctrl+o+o          -     open file edited
+:argdo update     -     save all buffers
+:bufdo
+:windo
 
 
-left         |     right
-previous     |     next
-up           |     down
-top          |     bottom
-backward     |     forward
+range
+% all lines
 
+:[range]{mode} [cmd=motion ...]
+:%norm[al] A;          -     add ';' vao end all lines
+:%norm di'             -     delete content in ''
+:28put=range(5,55)     -     list numbers into lines after line28
+
+:for i in range(1,20) | put='192.168.1'.i | endfor
+
+left         -     right
+previous     -     next
+up           -     down
+top          -     bottom
+backward     -     forward
+first        -     last
 
 --------------------------------------------------------------------------------
                             motion
 
 cursor movement [count=int][operator]
-h - move cursor left
-j - move cursor down
-k - move cursor up
-l - move cursor right
+h     -     move cursor left
+j     -     move cursor down
+k     -     move cursor up
+l     -     move cursor right
 
-h - move to top of screen
-m - move to middle of screen
-l - move to bottom of screen
+h     -     move to top of screen
+m     -     move to middle of screen
+l     -     move to bottom of screen
 
 b   prev start word 
 w   next start word
