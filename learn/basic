@@ -7,35 +7,36 @@ important
     motion -> phim h j k l w e b  ^ 0 $ g_
     text object:     
 vim command -> sau
-:! cmd_bash
+cham than
+:!cmd_bash
+
+:e file.txt     -     open file in current buffer
+:q              -     thoát khỏi vim
+:q!             -     bắt buộc thoát không cần lưu
+:w              -     lưu file
+:w!             -     bắt buộc ghi file (ghi đè)
+:wq             -     lưu xong thoát
+
+:[range]r[ead] {filename}
+range = 0 dau file, $ cuoi file, int= int line
+:r file.txt                -     Insert content file.txt below the cursor in current buffer.
+:0r file.txt               -     Insert content file.txt above the first line.
+:5r file.txt               -     insert content file above line5
+:$r file                   -     insert content file after last line
+:r!sed n 2,8p file.txt     -     Insert lines 2 to 8 of file.txt below the cursor.
+:r !ls                     -     Insert a directory listing below the cursor
+
+gf          =     open in the same window ("goto file")
+<c-w>f      =     open in a new window (Ctrl-w f)
+<c-w>gf     =     open in a new tab (Ctrl-w gf)
+gx          =     open deffault webbrowser
+
+:x                     -     Exit vim but write only when changes have been made.
+:qa                    -     exit all open iles in current vim session
 
 
-:q: thoát khỏi vim
-:q!: bắt buộc thoát không cần lưu
-:w: lưu file
-:w!: bắt buộc ghi file (ghi đè)
-:wq: lưu xong thoát
-
-:r file.txt Insert the ile ile.txt below the cursor in current buffer.
-:0r file.txt Insert the ile ile.txt before the irst line.
-:r!sed -n 2,8p file.txt Insert lines 2 to 8 from ile ile.txt below the cursor.
-:r !ls Insert a directory listing below the cursor
-
-gf
-gx
-
-:wq Save currently opened ile and exit Vim (even if ile is not changed).
-:x Exit Vim but write only when changes have been made.
-ZZ Equivalent to :x. Notice there’s no :. This is a key press.
-:q! Exit Vim without saving currently opened ile.
-:qa Exit all open iles in current Vim session
-
-
-:w Save currently opened ile (which was previously saved).
-:w file.txt Save currently opened ile as file.txt.
-:w! file.txt Save ile as file.txt with overwrite option.
-:sav file.txt Save current buffer as a new ile file.txt.
-:up[date] file.txt Like :w but only save when the buffer has been motips
+:sav file.txt          -     save current buffer as a new ile file.txt.
+:up[date] file.txt     -     like :w but only save when the buffer has been motips
 
 
 ctrl+o+o          -     open file edited
@@ -48,7 +49,7 @@ range
 % all lines
 
 :[range]{mode} [cmd=motion ...]
-:%norm[al] A;          -     add ';' vao end all lines
+:%norm[al] a;          -     add ';' vao end all lines
 :%norm di'             -     delete content in ''
 :28put=range(5,55)     -     list numbers into lines after line28
 
@@ -60,6 +61,8 @@ up           -     down
 top          -     bottom
 backward     -     forward
 first        -     last
+above        -     below
+-under
 
 --------------------------------------------------------------------------------
                             motion
@@ -738,6 +741,10 @@ c    create a new window
 x    Xoá panel
 
 0 to 9 select windows 0 through 9
+ctrl+h  prev window
+ctrl+l  next window
+tab     last window
+
 
 #panes
 
