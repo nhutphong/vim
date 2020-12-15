@@ -54,7 +54,7 @@ Plug 'vim-airline/vim-airline'
 "colorschemy
 Plug 'altercation/vim-colors-solarized'
 Plug 'https://github.com/rafi/awesome-vim-colorschemes.git'
-
+Plug 'kabbamine/vcoolor.vim'
 
 " color indent line
 Plug 'yggdroot/indentline'
@@ -418,5 +418,9 @@ nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
 nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
 
 "------------------------------------------------------------------------------
+"gitgutter
+highlight GitGutterAdd    guifg=#009900 ctermfg=green
+highlight GitGutterChange guifg=#bbbb00 ctermfg=yellow
+highlight GitGutterDelete guifg=#ff2222 ctermfg=red
 
-
+"------------------------------------------------------------------------------
