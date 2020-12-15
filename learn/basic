@@ -686,7 +686,9 @@ tmux-plugins-manager phải fix lại
 
 #plugin
 #install
-bind <s>
+bind I         -     install plugin
+bind U         -     update plugin
+bind alt u     -     remove plugin
 
 #tmux-plugin-manager
  # List of plugins
@@ -706,10 +708,15 @@ copy mode: <prefix> [
 v  vao visual mode selete text
 y copy
 
-#paste 
-<prefix> p    => paste=put
-<prefix> P    => show list copy
+bind <cr>     -     into copy mode
+bind e        -     open ~/.tmux.config.local
+bind r        -     reload config
+ctrl+l        -     clear
 
+#paste 
+bind b         -     list paste buffer
+<prefix> p     -     paste=put
+<prefix> P     -     show list copy
 
 15p save 1 lan
 nen save lan dau
@@ -720,11 +727,11 @@ bind <c-r>
 # session > window > pane
 #session 
 bind=<prefix> = <c-b> = <c-a>
-s     list sessions
-w    list windows
+s     -     list sessions
+w     -     list windows
 
-f    searching sessions
-<c-f>    searching windows
+f         =     searching sessions
+<c-f>     =     searching windows
 
 #rename
 $     rename the current session
@@ -732,19 +739,25 @@ $     rename the current session
 
 d     detach from the current session
 
-c    create a new window
-%     create a horizontal pane
-"     create a vertical pane
+bind c     =     create a new window
+bind -     =     create a horizontal pane
+bind _     =     create a vertical pane
 
-&    close window
-
-x    Xoá panel
+bind &     -     close window
+bind x     -     Xoá panel
 
 0 to 9 select windows 0 through 9
-ctrl+h  prev window
-ctrl+l  next window
-tab     last window
+bind ctrl+h     -     prev window
+bind ctrl+l     -     next window
+bind tab        -     last window
 
+bind <     -     swap panes
+bind >     -     swap panes
+
+bind muoi ten-jumpto pane
+
+bind (     -     jump to prev session
+bind )     -     jump to next session
 
 #panes
 
@@ -776,17 +789,26 @@ tmux attach -t 0
 tmux kill-session -t s_name
 
 
-# session 1
-<c-b> 1
+#copycat
+bind /     =     searching
+        string
+        [0-9]+
 
-#motion
-<prefix> muoi ten     jumpto pane
+bind + ctrl-f     =     simple file search
+bind + ctrl-g     =     jumping over git status files (best used after git status command)
+bind + alt-h      =     jumping over SHA-1/SHA-256 hashes (best used after git log command)
+bind + ctrl-u     =     url search (http, ftp and git urls)
+bind + ctrl-d     =     number search (mnemonic d, as digit)
+bind + alt-i      =     ip address search
 
-<prefix>+n     change to the next window
-<prefix>+p     change to the previous window
+n     =     jumpto next match
+N     =     jumpto prev match
 
-<prefix> (    jump to prev session
-<prefix> )    jump to next session
+
+copy mode = bind <cr>
+o           =     "open" a highlighted selection
+Ctrl-o      =     open a highlighted selection with the $EDITOR
+Shift-s     =     search the highlighted selection directly inside a search engine (defaults to google).
 
 ================================================================================
 #window 
@@ -798,13 +820,6 @@ panel
 
 #vertically
 <c-b> %
-
-
-Ctrl+b % or -  # chia đôi màn hình theo chiều dọc
-Ctrl+b "  or _ # chia đôi màn hình theo chiều ngang
-
-Ctrl+b q  # Hiện số thứ tự trên
-
 ================================================================================
 #terminal
 

@@ -179,7 +179,8 @@ if has("gui_running")
     hi colorcolumn guibg=red
 else
     " setup for vim=terminal
-    colo molokai
+    set background=dark
+    colo sonokai
 
     hi visual cterm=bold ctermbg=darkblue ctermfg=red
 
