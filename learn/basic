@@ -163,9 +163,10 @@ tips
 <esc>==jj
 [int]i{letter}jj
 
-8i<cr>jj    add 8 line
-20i-jj      add 20 '-'
-
+8i<cr>jj     =     add 8 line
+20i-jj       =     add 20 '-'
+d18|         =     cut words to column 18
+c y          =     giong voi cut=d
 --------------------------------------------------------------------------------
                                     easymotion
 
@@ -824,32 +825,35 @@ panel
 #terminal
 
 #motion 
-ctrl-a begging line
-ctrl-e end line
-Alt+B: Go left (back) one word.
-Alt+F: Go right (forward) one word.
+ctrl a      -     begging line
+ctrl e      -     end line
+ctrl b      -     Go left (back) one character.
+ctrl f      -     Go right (forward) one character
+alt b       -     Go left (back) one word.
+alt f       -     Go right (forward) one word.
 
-Ctrl+B: Go left (back) one character.
-Ctrl+F: Go right (forward) one character
-
-ctrl-p prev cmd history
-ctrl-n next cmd history
-ctrl-r searching cmd history
-ctrl-o == ctrl-g
-ctrl-g exit searching history mode
+ctrl p      -     prev cmd history
+ctrl n      -     next cmd history
+ctrl r      -     searching cmd history
+ctrl g      -     exit searching history mode
+ctrl o      -     ctrl g
 
 
-#delete 
-ctrl-w     cut word left cursor
-alt-d    cut word right cursor
-ctrl-d    del character right cursor
-ctrl-y paste for alt-d
+#delete
+ctrl w      -     cut word left cursor
+alt d       -     cut word right lay lun letter tai current cursor
+ctrl u      -     cut 1 line
+ctrl k      -     cut current cursor to end line
+ctrl y      -     paste
 
-#case 
-alt+u upper
-alt+l lower
-alt+c capitalize
+ctrl d      -     del character right cursor
 
-#swap 
-alt+t     swap word with prev word
-ctrl+t
+
+#case
+alt u       -     upper
+alt l       -     lower
+alt c       -     capitalize
+
+#swap
+alt t       -     swap word with prev word
+ctrl t      -     swap letter with prev letter
