@@ -97,6 +97,12 @@ Plug 'christoomey/vim-tmux-navigator'
 " macros store name
 Plug 'vim-scripts/marvim'
 
+" marks
+Plug 'kshenoy/vim-signature'
+
+" undo redo
+Plug 'mbbill/undotree'
+
 call plug#end()
 
 
@@ -295,6 +301,7 @@ nmap <leader>zshrc :e ~/.zshrc<cr>
 nmap <leader>bashrc :e ~/.bashrc<cr>
 
 nmap <F8> :TagbarToggle<CR>
+nnoremap <F5> :UndotreeToggle<CR>
 
 "reload file source file_name
 map <leader>xvimrc :so ~/.vimrc<cr>

@@ -55,6 +55,7 @@ range
 
 :for i in range(1,20) | put='192.168.1'.i | endfor
 
+
 left         -     right
 previous     -     next
 up           -     down
@@ -62,7 +63,38 @@ top          -     bottom
 backward     -     forward
 first        -     last
 above        -     below
--under
+undo         -     redo
+
+
+`      :     backtick
+'      :     apostrophe
+"      :     double quotes
+()     :     parentheses
+{}     :     braces
+[]     :     square brackets
+<>     :     angle brackets
+!      :     exclamation
+:      :     colon
+;      :     semicolon
+#      :     number sign - hash
+%      :     percent
+&      :     ampersand
+•      :     asterisk - dau nhan
++      :     plus
+-      :     minus = dau tru
+,      :     comma
+.      :     full stop = dot
+=      :     equal sign
+<      :     less than
+>      :     greater than
+?      :     question mark
+@      :     at sign
+/      :     slash
+\      :     backslash
+|      :     pipe
+^      :     caret
+_      :     underscore
+~      :     tilde
 
 --------------------------------------------------------------------------------
                             motion
@@ -77,58 +109,55 @@ h     -     move to top of screen
 m     -     move to middle of screen
 l     -     move to bottom of screen
 
-b   prev start word 
-w   next start word
+b      -     prev start word
+w      -     next start word
 
-ge  prev end word
-e   next end word
+ge     -     prev end word
+e      -     next end word
 
-*    select all word giong nhau 
-*    next hightlight text
+*      -     select all word giong nhau
+*      -     next hightlight text
 
 sentences : la 1 cau stop boi dot<.>
 
-{ jump to prev line empty giua cac paragraph=1 doan=nhieu sentencess
-} jump to next line empty giua cac paragraph=1 doan=nhieu sentences 
+{      -     jump to prev line empty giua cac paragraph=1 doan=nhieu sentencess
+}      -     jump to next line empty giua cac paragraph=1 doan=nhieu sentences
 
-( jump to prev sentences
-) jump to next sentences
+(      -     jump to prev sentences
+)      -     jump to next sentences
 
-% jump to () or {}, [], ...
-[[ jump to prev func or class
+%      -     jump to () or {}, [], ...
+[[     -     jump to prev func or class
 
 
 "jump to line   [count=int]gg
-gg - go to the first line of the document
-g - go to the last line of the document
-50g: nhảy tới dòng 50 của file
-5gg or 5g - go to line 5
-ctrl + g: xem thông tin dòng hiện tại
+gg         -     go to the first line of the document
+5gg        -     go to line 5
+ctrl g     -     xem thông tin dòng hiện tại
 
-0 - jump to the start of the line
-$ - jump to the end of the line
-^ - jump to the first non-blank character of the line
-g_ - jump to the last non-blank character of the line
-     bay nhay di nao         
+0          -     jump to the start of the line
+$          -     jump to the end of the line
+^          -     jump to the first non_blank character of the line
+g_         -     jump to the last non_blank character of the line
 
-; - repeat previous f, t, f or t movement
-, - repeat previous f, t, f or t movement, backwards
+;          -     repeat previous f, t, f or t movement
+,          -     repeat previous f, t, f or t movement, backwards
 
 
 #screen #croll
 move screen
-zz - center cursor on screen
-ctrl + y - move screen up one line (without moving cursor)
-ctrl + e - move screen down one line (without moving cursor)
+zz         -     center cursor on screen
+ctrl y     -     move screen up one line (without moving cursor)
+ctrl e     -     move screen down one line (without moving cursor)
 
-ctrl + u - move back 1/2 a screen
-ctrl + d - move forward 1/2 a screen
+ctrl u     -     move back 1/2 a screen
+ctrl d     -     move forward 1/2 a screen
 
-ctrl + b - move back one full screen
-ctrl + f - move forward one full screen
+ctrl b     -     move back one full screen
+ctrl f     -     move forward one full screen
 
-gm      jumpto center screen
-gM      jumpto center line
+gm         -     jumpto center screen
+gM         -     jumpto center line
 
 
 --------------------------------------------------------------------------------
@@ -136,16 +165,17 @@ gM      jumpto center line
                             normal mode:
 
                             DELETE=CUT
-p: paste
-dd: xoa 1 dong
-d3d: xoa 3 dong
-3d3d: del 9 line
-ddp: swap current line with below line= cut current line paste below cursor
-d3w: cut 3 word(tinh tu vi tri cursor)
-dfp: xoa den khi gap 'p' xoa lun 'p' thi stop on line
-dtp: xoa den khi gap 'p' thi stop NO cut 'p'
-d/haha: xoa den khi gap 'haha' thi stop all lines
-ggdG: gg=nhau ve dau file - dG xoa den cuoi file
+p          :     paste
+dd         :     xoa 1 dong
+d3d        :     xoa 3 dong
+3d3d       :     del 9 line
+ddp        :     swap current line with below line= cut current line paste below cursor
+d3w        :     cut 3 word(tinh tu vi tri cursor)
+dfp        :     cut den khi gap 'p' cut lun 'p' thi stop on line
+dtp        :     cut den khi gap 'p' thi stop NO cut 'p'
+d18|       :     cut toi screen column 18
+d/haha     :     xoa den khi gap 'haha' thi stop all lines
+ggdG       :     gg=nhau ve dau file - dG xoa den cuoi file
 
 x: cut 1 letter
 c3w new_string<esc>: override 3 tu= new_string
@@ -167,6 +197,9 @@ tips
 20i-jj       =     add 20 '-'
 d18|         =     cut words to column 18
 c y          =     giong voi cut=d
+
+ctrl a     =     int+1
+ctrl x     =     int-1
 --------------------------------------------------------------------------------
                                     easymotion
 
@@ -174,7 +207,6 @@ c y          =     giong voi cut=d
 ;f              search 1 letter full file
 s               search 2 letter full file
 t               search 2 letter down cursor jumpto space truoc 2letter
-
 
 
 ;L              jump to mark line
@@ -186,8 +218,8 @@ t               search 2 letter down cursor jumpto space truoc 2letter
 ;k              jump to word up cursor tren nhieu lines
 
 
-
 --------------------------------------------------------------------------------
+#sentence #paragraph
 
 {d,c,y}{i,a,t,f}
 {dc,y}{t,f}{letter}
@@ -195,15 +227,15 @@ t gap letter thi stop
 f lay lun letter roi stop
 
 del=cut=d change=c visual=v deu giong nhau
-ytp     copy letters to khi gap 'p'
-yt,     copy letters to khi gap ',' roi into insert mode
-yt;     copy letters to khi gap ';' thi stop
+ytp     -     copy letters to khi gap 'p'
+yt,     -     copy letters to khi gap ',' roi into insert mode
+yt;     -     copy letters to khi gap ';' thi stop
 
 copy    del=d  change=c  visual=v cung vay 
-yis     copy 1 cau=sentence
-yas     copy 1 cau=sentence them spaces step sentence 2
-yip     copy 1 paragraph=sentences
-yap     copy 1 paragraph=sentences them \n=xuong dong
+yis     -     copy 1 cau=sentence
+yas     -     copy 1 cau=sentence them spaces step sentence 2
+yip     -     copy 1 paragraph=sentences
+yap     -     copy 1 paragraph=sentences them \n=xuong dong
 
 
 giong use voi searching
@@ -349,17 +381,17 @@ yss(    add pair () thanh: ( dung thong )
 
 --------------------------------------------------------------------------------
                                        title case
-gT is all title current line
-gtw is title 1 word
-gt3w is title w word
+gT       -     is all title current line
+gtw      -     is title 1 word
+gt3w     -     is title w word
 
-gti( is title in pair
-gti' is title in ''
-gta' is title in ''
+gti(     -     is title in pair
+gti'     -     is title in ''
+gta'     -     is title in ''
 ...
 
-gt( is prev words file
-gt) is next words file
+gt(     -     is prev words file
+gt)     -     is next words file
 
 
 vim system
@@ -394,10 +426,10 @@ r{int}   right
 c(int)   center
 l(int)   left
 
-:'<,'>Tabularize /|     cang chinh theo |
-:'<,'>Tabularize /=     cang chinh theo =
-:'<,'>Tabularize /:/r0  cang chinh theo : right 0 space
-:'<,'>Tabularize /:\zs  theo space ignoze :  content right, align left for content 
+:'<,'>Tabularize /|        -     cang chinh theo |
+:'<,'>Tabularize /=        -     cang chinh theo =
+:'<,'>Tabularize /:/r0     -     cang chinh theo : right 0 space
+:'<,'>Tabularize /:\zs     -     theo space ignoze :  content right, align left for content
 
 
 --------------------------------------------------------------------------------
@@ -415,9 +447,9 @@ f là buffer file
                                     fold
 folder la group cac <tab> khi ve 1 dong nhieu cho gon
 
-zi  open/close all folds
-zo open 1 fold
-zc close 1 fold
+zi     -     open/close all folds
+zo     -     open 1 fold
+zc     -     close 1 fold
 --------------------------------------------------------------------------------
                         text object
 {operator}{a|i}{text-object}
@@ -435,31 +467,25 @@ t for tag.
 
 
 insert mode
-ctrl + h - del prev word
-ctrl + w - del prev letter
-ctrl + j - begin new line during insert mode
-ctrl + t - indent (move right) line one shiftwidth during insert mode
-ctrl + d - de-indent (move left) line one shiftwidth during insert mode
-ctrl + n - insert (auto-complete) next match left the cursor during insert mode
-ctrl + p - insert (auto-complete) previous match left the cursor during insert mode
-ctrl + rx - insert the contents of register x
+ctrl h      -     del prev word
+ctrl w      -     del prev letter
+ctrl j      -     begin new line during insert mode
+ctrl t      -     indent (move right) line one shiftwidth during insert mode
+ctrl d      -     de indent (move left) line one shiftwidth during insert mode
+ctrl n      -     insert (auto complete) next match left the cursor during insert mode
+ctrl p      -     insert (auto complete) previous match left the cursor during insert mode
+ctrl rx     -     insert the contents of register x
 
+gwip     -     format paragraph textwidth=79
+gqip     -     format paragraph textwidth=79
 
-editing
-r{char} - replace a single character
-j - join line below to the current one with one space in between
-gj - join line below to the current one without space in between
-
-gwip        format paragraph textwidth=79
-gqip        format paragraph textwidth=79
-
-cc     -     remove all words current line into insert mode
-C      -     change (replace) to the end of the line
-c$     -     change (replace) to the end of the line
-xp     -     transpose two letters (delete and paste)
-u      -     undo
-U      -     restore (undo) last changed line
-Ctrl + r - redo
+cc         -     remove all words current line into insert mode
+C          -     change (replace) to the end of the line
+c$         -     change (replace) to the end of the line
+xp         -     transpose two letters (delete and paste)
+u          -     undo
+U          -     restore (undo) last changed line
+Ctrl r     -     redo
 
 
 
@@ -469,29 +495,29 @@ n   next to word
 
 
 Visual commands
->> - shift text right
-<< - shift text left
-y - yank (copy) marked text
-d - cut marked text
-~ - switch case
-u - change marked text to lowercase
-U - change marked text to uppercase
+>>     -     shift text right
+<<     -     shift text left
+y      -     yank (copy) marked text
+d      -     cut marked text
+~      -     switch case
+u      -     change marked text to lowercase
+U      -     change marked text to uppercase
 
 
 --------------------------------------------------------------------------------
                                 Registers
 
 set names de luu lai cac command cut and copy de dung lai
-"xyy save context cua command=yy toi name=x
-"xp paste context cua name=x
-"wdd save context cua command=dd toi name=w
-"wp paste context cua name=w
+"xyy     -     save context cua command=yy toi name=x
+"xp      -     paste context cua name=x
+"wdd     -     save context cua command=dd toi name=w
+"wp      -     paste context cua name=w
 
-:reg[isters] - show registers content
-"xyy - yank into register x
-"xp - paste contents of register x
-"+y - yank into the system clipboard register
-"+p - paste from the system clipboard register
+:reg[isters]     -     show registers content
+"xyy             -     yank into register x
+"xp              -     paste contents of register x
+"+y              -     yank into the system clipboard register
+"+p              -     paste from the system clipboard register
      0 - last yank
      " - unnamed register, last delete or yank
      % - current file name
@@ -511,42 +537,80 @@ luu nhieu acitons trong vim, dung dot. de repeat
 nen dung omap: 0 $ w e b
 tranh dung h j k l => vi khong biet do lai cua line 
 
-qa - record macro a name
+qa                               -     record macro a name
 motion,d c y p  ... sau do q
-q - stop=quit=save recording macro
-@a - run macro a name
-@@ - run lai macros
+q                                -     stop=quit=save recording macro
+@a                               -     run macro a name
+@@                               -     run lai macros
 
 recursive
 100@v           run 100 lines
 
-norm[al]
-:6,16norm @v    run macros name=v for line6 to line16
-:10,$norm @v    run macros for line10 to end line of file
-:%norm @v       run all lines
-:'<'>norm @v    run for select context
+:[range]norm[al] [cmd=@v, motion, ...]
+:6,16norm @v     -     run macros name=v for line6 to line16
+:10,$norm @v     -     run macros for line10 to end line of file
+:%norm @v        -     run all lines
+:'<'>norm @v     -     run for select context
 
 --------------------------------------------------------------------------------
                                 Marks and positions
 set name= 1 vi tri nao do, de jump to
 
-:marks - list of marks
-m{a-zA-Z} - set current position for mark A
-`a - jump to position co name=a
+:marks        |     list of marks
+m{a-zA-Z}     |     set current position for mark A
+`a            |     jump to position co name=a
 
-y`a - yank text to position of mark A
-`0 - go to the position where Vim was previously exited
-`" - go to the position when last editing this file
-`. - go to the position of the last change in this file
-`` - go to the position left the last jump
-:ju[mps] - list of jumps
-Ctrl + i - go to newer position in jump list
-Ctrl + o - go to older position in jump list
-:changes - list of changes
-g, - go to newer position in change list
-g; - go to older position in change list
-Ctrl + ] - jump to the tag under cursor
 
+:delmarks a        |     delete mark a
+:delmarks a-d      |     delete marks a, b, c, d
+:delmarks abxy     |     delete marks a, b, x, y
+:delmarks aA       |     delete marks a, A
+:delmarks!         |     delete all lowercase marks for the current buffer (a-z)
+
+
+y`a          -     yank text to position of mark A
+`0           -     go to the position where Vim was previously exited
+`"           -     go to the position when last editing this file
+`.           -     go to the position of the last change in this file
+``           -     go to the position left the last jump
+:ju[mps]     -     list of jumps
+Ctrl i       -     go to newer position in jump list
+Ctrl o       -     go to older position in jump list
+:changes     -     list of changes
+g,           -     go to newer position in change list
+g;           -     go to older position in change list
+Ctrl  ]      -     jump to the tag under cursor
+
+--------------------------------------------------------------------------------
+                                    vim-signature
+marks: place, toggle and display
+
+mx           Toggle mark 'x' and display it in the leftmost column
+
+dmx          Remove mark 'x' where x is a-zA-Z
+m-           Delete all marks from the current line
+m<Space>     Delete all marks from the current buffer
+m<BS>        Remove all markers
+m<S-[0-9]>   Remove all markers of the same type
+
+m,           Place the next available mark
+m.           If no mark on line, place the next available mark. Otherwise, remove (first) existing mark.
+]`           Jump to next mark
+[`           Jump to prev mark
+]'           Jump to start of next line containing a mark
+['           Jump to start of prev line containing a mark
+`]           Jump by alphabetical order to next mark
+`[           Jump by alphabetical order to prev mark
+']           Jump by alphabetical order to start of next line having a mark
+'[           Jump by alphabetical order to start of prev line having a mark
+m/           Open location list and display marks from current buffer
+
+m[0-9]       Toggle the corresponding marker !@#$%^&*()
+]-           Jump to next line having a marker of the same type
+[-           Jump to prev line having a marker of the same type
+]=           Jump to next line having a marker of any type
+[=           Jump to prev line having a marker of any type
+m?           Open location list and display markers from current buffer
 
 --------------------------------------------------------------------------------
 buffer
@@ -607,9 +671,9 @@ del lines containing "string"
 :%s#<[^>]\+>##g	        Delete HTML tags but keeps text
 :%s/^\(.*\)\n\1$/\1/	Delete lines which appears twice
 
-Ctrl+a	Increment number under the cursor
-Ctrl+x	Decrement number under cursor
-ggVGg?	Change text to Rot13
+Ctrl a     -     Increment number under the cursor
+Ctrl x     -     Decrement number under cursor
+ggVGg?     -     Change text to Rot13
 
 
 copy and paste
@@ -617,41 +681,41 @@ copy and paste
 :[int,int]t{motion . $ .....}
 
 :copy = :t
-:6copy. = :6t. => copy line 6 goto current line=.
-:t6 => current line. paste below line 6
-:t. => duplicate current line 
-:t$ => copy current line, paste to end line
+:6t.     -     copy line 6 goto current line=.
+:t6      -     current line. paste below line 6
+:t.      -     duplicate current line
+:t$      -     copy current line, paste to end line of document
 
 
 # move lines
 :m[ove]
 :{int,int}m{to line=int motion=0 $ }
 
-:'<,'>m$ : move select contents to end lines
+:'<,'>m$      -     move select contents to end lines
 :!{cmd}
-:5,7m21    move lines 5, 6 and 7 to after line 21
-:5,7m0     move lines 5, 6 and 7 to left first line
-:5,7m$     move lines 5, 6 and 7 to after last line
-:.,.+4m21  move 5 lines starting at current line to after line 21
-:,+4m14     same (. for current line is assumed)
+:5,7m21       -     move lines 5, 6 and 7 to after line 21
+:5,7m0        -     move lines 5, 6 and 7 to left first line
+:5,7m$        -     move lines 5, 6 and 7 to after last line
+:.,.+4m21     -     move 5 lines starting at current line to after line 21
+:,+4m14       -     same (. for current line is assumed)
 
 
 # del lines
 syntax :{,}d
-:1,5d del line1 to line5
-:3,$d del lline3 to end document
-:$d     del last line document
-:%d     del all document
+:1,5d     -     del line1 to line5
+:3,$d     -     del lline3 to end document
+:$d       -     del last line document
+:%d       -     del all document
 
 Indent text
->> - indent (move right) line one shiftwidth
-<< - de-indent (move left) line one shiftwidth
->% - indent a block with () or {} (cursor on brace)
->ib - indent inner block with ()
->at - indent a block with <> tags
-3== - re-indent 3 lines
-=% - re-indent a block with () or {} (cursor on brace)
-=iB - re-indent inner block with {}
+>>      -     indent (move right) line one shiftwidth
+<<      -     de indent (move left) line one shiftwidth
+>%      -     indent a block with () or {} (cursor on brace)
+>ib     -     indent inner block with ()
+>at     -     indent a block with <> tags
+3==     -     re indent 3 lines
+=%      -     re indent a block with () or {} (cursor on brace)
+=iB     -     re indent inner block with {}
 
 
 Exiting
@@ -661,8 +725,8 @@ Exiting
 :q - quit (fails if there are unsaved changes)
 :q! or ZQ - quit and throw away unsaved changes
 :wqa - write (save) and quit on all tabs
+
 Search and replace
-\vpattern - 'very magic' pattern: non-alphanumeric characters are interpreted as special regex symbols (no escaping needed)
 n - repeat search in same direction
 N - repeat search in opposite direction
 
@@ -680,7 +744,7 @@ session sẽ run lại nếu open tmux
 dùng option <attach> đê restore session đó
 do dung tmux oh-my-god, vai key da dc remap
 
-<prefix> = <c-b> = <>
+bind = <prefix> = <c-b> = <c-a>
 tmux-oh-my
 tmux-plugins-manager phải fix lại
 ~\.tmux.conf.local
@@ -795,12 +859,12 @@ bind /     =     searching
         string
         [0-9]+
 
-bind + ctrl-f     =     simple file search
-bind + ctrl-g     =     jumping over git status files (best used after git status command)
-bind + alt-h      =     jumping over SHA-1/SHA-256 hashes (best used after git log command)
-bind + ctrl-u     =     url search (http, ftp and git urls)
-bind + ctrl-d     =     number search (mnemonic d, as digit)
-bind + alt-i      =     ip address search
+bind ctrl f     =     simple file search
+bind ctrl g     =     jumping over git status files (best used after git status command)
+bind alt h      =     jumping over SHA-1/SHA-256 hashes (best used after git log command)
+bind ctrl u     =     url search (http, ftp and git urls)
+bind ctrl d     =     number search (mnemonic d, as digit)
+bind alt i      =     ip address search
 
 n     =     jumpto next match
 N     =     jumpto prev match
@@ -808,8 +872,8 @@ N     =     jumpto prev match
 
 copy mode = bind <cr>
 o           =     "open" a highlighted selection
-Ctrl-o      =     open a highlighted selection with the $EDITOR
-Shift-s     =     search the highlighted selection directly inside a search engine (defaults to google).
+Ctrl o      =     open a highlighted selection with the $EDITOR
+Shift s     =     search the highlighted selection directly inside a search engine (defaults to google).
 
 ================================================================================
 #window 
