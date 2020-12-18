@@ -5,7 +5,7 @@ mode = map, imap, nmap, vmap, ...
 
 keyname = 
 
-<BS>           Backspace
+<BS>           Backspace <--
 <Tab>          Tab
 <CR>           Enter
 <Enter>        Enter

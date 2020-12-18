@@ -6,9 +6,14 @@ important
     operator=command -> i,a,r,c,d,y -> them xoa sua, ....
     motion -> phim h j k l w e b  ^ 0 $ g_
     text object:     
-vim command -> sau
-cham than
-:!cmd_bash
+
+#map #noremap
+<f2>     =     macros searching
+<f5>     =     :UndotreeToggle
+<f8>     =     :TagbarToggle
+
+
+:!cmd_bash_terminal
 
 :e file.txt     -     open file in current buffer
 :q              -     thoát khỏi vim
@@ -39,7 +44,7 @@ gx          =     open deffault webbrowser
 :up[date] file.txt     -     like :w but only save when the buffer has been motips
 
 
-ctrl+o+o          -     open file edited
+ctrl o o          -     open file edited
 :argdo update     -     save all buffers
 :bufdo
 :windo
@@ -97,7 +102,7 @@ _      :     underscore
 ~      :     tilde
 
 --------------------------------------------------------------------------------
-                            motion
+                           #motion
 
 cursor movement [count=int][operator]
 h     -     move cursor left
@@ -189,7 +194,7 @@ dk      -     cut 2 line, curernt line and up line
 y c     -     tuong tu
 
 
-tips
+#tips
 <esc>==jj
 [int]i{letter}jj
 
@@ -201,7 +206,7 @@ c y          =     giong voi cut=d
 ctrl a     =     int+1
 ctrl x     =     int-1
 --------------------------------------------------------------------------------
-                                    easymotion
+                                    #easymotion
 
 /[words]        searching full file 
 ;f              search 1 letter full file
@@ -381,9 +386,11 @@ yss(    add pair () thanh: ( dung thong )
 
 --------------------------------------------------------------------------------
                                        title case
+<leader>cmd
+
 gT       -     is all title current line
 gtw      -     is title 1 word
-gt3w     -     is title w word
+gt3w     -     is title 3 word
 
 gti(     -     is title in pair
 gti'     -     is title in ''
@@ -466,7 +473,7 @@ B (or {, }) for block surrounded by {}
 t for tag.
 
 
-insert mode
+#insert mode
 ctrl h      -     del prev word
 ctrl w      -     del prev letter
 ctrl j      -     begin new line during insert mode
@@ -532,7 +539,7 @@ set names de luu lai cac command cut and copy de dung lai
      _ - black hole register
 
 
-Macros
+#macros
 luu nhieu acitons trong vim, dung dot. de repeat
 nen dung omap: 0 $ w e b
 tranh dung h j k l => vi khong biet do lai cua line 
@@ -553,7 +560,7 @@ recursive
 :'<'>norm @v     -     run for select context
 
 --------------------------------------------------------------------------------
-                                Marks and positions
+                                #marks and positions
 set name= 1 vi tri nao do, de jump to
 
 :marks        |     list of marks
@@ -613,7 +620,11 @@ m[0-9]       Toggle the corresponding marker !@#$%^&*()
 m?           Open location list and display markers from current buffer
 
 --------------------------------------------------------------------------------
-buffer
+#buffer
+
+:n {bufname}     -     new buffer with bufname
+:b {bufname}     -     switch to bufname
+:bd              -     Close current buffer
 
 :ls<cr>     list buffers set(1 2 3 4 5 ...)
 :bp<cr>     prev buffer
@@ -621,9 +632,21 @@ buffer
 :1b<cr>     select buffer 1
 :2b<cr>     select buffer 2
 
+:b#                       -     Last buffer visited, actual # sign
+:b1                       -     Switch to buffer #1
+:1b                       -     switch to buffer 1
+:bm                       -     Switch to next modified buffer
+
+
+:sb 1             -     Open buffer #1 in a split
+:sb {bufname}     -     Open buffer bufname in a split
+:sbn              -     Open next buffer in a split
+:sbp              -     Open previous buffer in a split
+:sba              -     Open all buffers in split windows
+
 --------------------------------------------------------------------------------
 
-replace
+#replace
 %s      all lines
 s       chi 1 line
 gi      khong phan biet lower upper
@@ -687,7 +710,7 @@ copy and paste
 :t$      -     copy current line, paste to end line of document
 
 
-# move lines
+#move lines
 :m[ove]
 :{int,int}m{to line=int motion=0 $ }
 
@@ -700,14 +723,14 @@ copy and paste
 :,+4m14       -     same (. for current line is assumed)
 
 
-# del lines
+#del lines
 syntax :{,}d
 :1,5d     -     del line1 to line5
 :3,$d     -     del lline3 to end document
 :$d       -     del last line document
 :%d       -     del all document
 
-Indent text
+#indent text
 >>      -     indent (move right) line one shiftwidth
 <<      -     de indent (move left) line one shiftwidth
 >%      -     indent a block with () or {} (cursor on brace)
@@ -716,25 +739,6 @@ Indent text
 3==     -     re indent 3 lines
 =%      -     re indent a block with () or {} (cursor on brace)
 =iB     -     re indent inner block with {}
-
-
-Exiting
-:w - write (save) the file, but don't exit
-:w !sudo tee % - write out the current file using sudo
-:wq or :x or ZZ - write (save) and quit
-:q - quit (fails if there are unsaved changes)
-:q! or ZQ - quit and throw away unsaved changes
-:wqa - write (save) and quit on all tabs
-
-Search and replace
-n - repeat search in same direction
-N - repeat search in opposite direction
-
-:noh[lsearch] - remove highlighting of search matches
-
-/{find_text} forward=right=next search
-?{find_text} backward=left=previous search
-
 
 ================================================================================
 #tmux #linux

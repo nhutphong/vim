@@ -268,7 +268,7 @@ set errorbells
 
 
 "------------------------------------------------------------------------------
-
+" #map #noremap
 
 "let mapleader='\'         =<leader>
 let mapleader=';'
@@ -287,21 +287,27 @@ let mapleader=';'
 imap jj <Esc>
 
 " 1 new tap se co nhieu windows
-map <C-l> gt       "shortcut cho next tab
+map <C-l> gt       "next tab
 map <C-h> gT       "previous tab
-map <C-n> :tabnew  "new tab
+map <C-n> :tabnew<cr>  "new tab
 
 "p or shift+p paste vim in vim
 ";p paste  tu program khac vao vim
 "nnoremap <leader>p "+gP
+
+" Buffer Navigation
+nnoremap gbl :ls<CR>      " list buffers
+nnoremap gbp :b#<CR>      " previous buffer
+nnoremap gbn :bn<CR>      " next buffer
+
 
 "open file config
 nmap <leader>vimrc :e ~/.vim/vimrc<cr>
 nmap <leader>zshrc :e ~/.zshrc<cr>
 nmap <leader>bashrc :e ~/.bashrc<cr>
 
-nmap <F8> :TagbarToggle<CR>
 nnoremap <F5> :UndotreeToggle<CR>
+nmap <F8> :TagbarToggle<CR>
 
 "reload file source file_name
 map <leader>xvimrc :so ~/.vimrc<cr>
@@ -310,7 +316,6 @@ map <leader>xvimrc :so ~/.vimrc<cr>
 "colo ron trong file vimrc = :colo ron<cr> trong command vim
 "set<space> = :
 "colo ron ===== :colo ron<cr>
-nmap <leader>cgb :colo gruvbox<cr>
 
 
 "------------------------------------------------------------------------------
@@ -431,3 +436,8 @@ highlight GitGutterChange guifg=#bbbb00 ctermfg=yellow
 highlight GitGutterDelete guifg=#ff2222 ctermfg=red
 
 "------------------------------------------------------------------------------
+"title case
+let g:titlecase_map_keys = 0
+nmap <leader>gt <Plug>Titlecase
+vmap <leader>gt <Plug>Titlecase
+nmap <leader>gT <Plug>TitlecaseLine
