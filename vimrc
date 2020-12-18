@@ -287,8 +287,8 @@ let mapleader=';'
 imap jj <Esc>
 
 " 1 new tap se co nhieu windows
-map <C-l> gt       "next tab
 map <C-h> gT       "previous tab
+map <C-l> gt       "next tab
 map <C-n> :tabnew<cr>  "new tab
 
 "p or shift+p paste vim in vim
@@ -296,7 +296,7 @@ map <C-n> :tabnew<cr>  "new tab
 "nnoremap <leader>p "+gP
 
 " Buffer Navigation
-nnoremap gbl :ls<CR>      " list buffers
+nnoremap gbl :ls          " list buffers
 nnoremap gbp :b#<CR>      " previous buffer
 nnoremap gbn :bn<CR>      " next buffer
 
