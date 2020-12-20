@@ -193,12 +193,16 @@ c3w new_string<esc>: override 3 tu= new_string
 
 yy      -     copy 1 line
 dd      -     cut 1 line
-cc      -     delete all words current line into insert mode
+cc      -     cut all words current line into insert mode
 
 dj      -     cut 2 line, current line and down line
 dk      -     cut 2 line, curernt line and up line
 y c     -     tuong tu
 
+
+d?{word}     -     cut to word left cursor
+d/{word}     -     cut ot word right cursor
+c y          -     cung vay
 
 #tips
 <esc>==jj
