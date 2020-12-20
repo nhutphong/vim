@@ -182,18 +182,20 @@ if has("gui_running")
     "
     hi LineNr guifg=yellow
     hi cursorlinenr guifg=aqua
+
     hi colorcolumn guibg=red
 else
     " setup for vim=terminal
-    set background=dark
-    colo sonokai
+    "set background=dark
+    colo oceanic_material
 
     hi visual cterm=bold ctermbg=darkblue ctermfg=red
 
     "
-    hi LineNr ctermfg=yellow
+    hi LineNr ctermfg=blue
     hi cursorlinenr ctermfg=red
-    hi colorcolumn ctermbg=yellow
+
+    hi colorcolumn ctermbg=red
 endif
 
 " chu y khi co file .editorconfig se overrive no

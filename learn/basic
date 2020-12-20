@@ -102,7 +102,7 @@ _      :     underscore
 ~      :     tilde
 
 --------------------------------------------------------------------------------
-                           #motion
+                           #motion #jumpto
 
 cursor movement [count=int][operator]
 h     -     move cursor left
@@ -142,8 +142,14 @@ ctrl g     -     xem thông tin dòng hiện tại
 
 0          -     jump to the start of the line
 $          -     jump to the end of the line
+
+#^ first-character last-character of line
 ^          -     jump to the first non_blank character of the line
 g_         -     jump to the last non_blank character of the line
+
+
+F{letter}     -     jump to backward letter on line
+f{letter}     -     jump to forward letter on line
 
 ;          -     repeat previous f, t, f or t movement
 ,          -     repeat previous f, t, f or t movement, backwards
@@ -655,7 +661,7 @@ gc      thong bao truoc khi action
 gic     aciton cua 2 line tren
 
 '<,'>   select content visual mode
-
+&     -     repeat replace
 
 
 :%s/old/new/g           Replace all occurences of old by new in file
@@ -730,12 +736,19 @@ syntax :{,}d
 :$d       -     del last line document
 :%d       -     del all document
 
+
 #indent text
+[repeat]>{> % motion=gg G}
+[repeat]>{> % motion=gg G}
 >>      -     indent (move right) line one shiftwidth
 <<      -     de indent (move left) line one shiftwidth
 >%      -     indent a block with () or {} (cursor on brace)
 >ib     -     indent inner block with ()
 >at     -     indent a block with <> tags
+
+
+indent undo
+[repeat]={= %}
 3==     -     re indent 3 lines
 =%      -     re indent a block with () or {} (cursor on brace)
 =iB     -     re indent inner block with {}
