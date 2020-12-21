@@ -3,7 +3,7 @@ important
     {count}{operator}{motion}
 
     number = int
-    operator=command -> i,a,r,c,d,y -> them xoa sua, ....
+    operator=command -> i,a,r,c,d,y -> them cut sua, ....
     motion -> phim h j k l w e b  ^ 0 $ g_
     text object:     
 
@@ -17,7 +17,7 @@ important
 
 :e file.txt     -     open file in current buffer
 :q              -     thoát khỏi vim
-:q!             -     bắt buộc thoát không cần lưu
+:q!             -     bắt buộc thoát không cần lưu ! = NOT save
 :w              -     lưu file
 :w!             -     bắt buộc ghi file (ghi đè)
 :wq             -     lưu xong thoát
@@ -43,9 +43,16 @@ gx          =     open deffault webbrowser
 :sav file.txt          -     save current buffer as a new ile file.txt.
 :up[date] file.txt     -     like :w but only save when the buffer has been motips
 
+:jumps       -     jump list
+:changes     -     change list
 
-ctrl o o          -     open file edited
-:argdo update     -     save all buffers
+ctrl o o                    -     open file edited
+:argdo update               -     save all buffers
+:args file1 file2 file3     -     group file{1,2,3} into :args
+:args **/*.js **/*.css      -     group js va css file
+** recursive directories
+* current director
+
 :bufdo
 :windo
 
@@ -54,11 +61,13 @@ range
 % all lines
 
 :[range]{mode} [cmd=motion ...]
-:%norm[al] a;          -     add ';' vao end all lines
+:%norm[al] A;          -     add ';' vao end all lines
 :%norm di'             -     delete content in ''
 :28put=range(5,55)     -     list numbers into lines after line28
 
 :for i in range(1,20) | put='192.168.1'.i | endfor
+
+:colorscheme <c-d>     #     list colorscheme
 
 
 left         -     right
@@ -69,6 +78,7 @@ backward     -     forward
 first        -     last
 above        -     below
 undo         -     redo
+earlier      -     later
 
 
 `      :     backtick
@@ -100,6 +110,13 @@ undo         -     redo
 ^      :     caret
 _      :     underscore
 ~      :     tilde
+
+
+--------------------------------------------------------------------------------
+#history #list #show
+q?     -     open window list history searching prev word
+q/     -     open window list history searching next word
+q:     -     open window list history command: vim
 
 --------------------------------------------------------------------------------
                            #motion #jumpto
@@ -147,12 +164,17 @@ $          -     jump to the end of the line
 ^          -     jump to the first non_blank character of the line
 g_         -     jump to the last non_blank character of the line
 
+gm         -     jumpto center screen
+gM         -     jumpto center line
 
 F{letter}     -     jump to backward letter on line
 f{letter}     -     jump to forward letter on line
 
-;          -     repeat previous f, t, f or t movement
-,          -     repeat previous f, t, f or t movement, backwards
+T{letter}     -     jumpto char backward letter
+t{letter}     -     jumpto char forward letter
+
+,               -     repeat previous f, t, f or t
+noremap / ;     -     repeat next f, t, f or t
 
 
 #screen #croll
@@ -167,8 +189,6 @@ ctrl d     -     move forward 1/2 a screen
 ctrl b     -     move back one full screen
 ctrl f     -     move forward one full screen
 
-gm         -     jumpto center screen
-gM         -     jumpto center line
 
 
 --------------------------------------------------------------------------------
@@ -177,16 +197,17 @@ gM         -     jumpto center line
 
                             DELETE=CUT
 p          :     paste
-dd         :     xoa 1 dong
-d3d        :     xoa 3 dong
-3d3d       :     del 9 line
+dd         :     cut 1 dong
+d3d        :     cut 3 dong
+3d3d       :     cut 9 line
 ddp        :     swap current line with below line= cut current line paste below cursor
 d3w        :     cut 3 word(tinh tu vi tri cursor)
 dfp        :     cut den khi gap 'p' cut lun 'p' thi stop on line
 dtp        :     cut den khi gap 'p' thi stop NO cut 'p'
 d18|       :     cut toi screen column 18
-d/haha     :     xoa den khi gap 'haha' thi stop all lines
-ggdG       :     gg=nhau ve dau file - dG xoa den cuoi file
+d/haha     :     cut den khi gap 'haha' thi stop all lines
+ggdG       :     gg=nhau ve dau file - dG cut den cuoi file
+J          :     #join down line with current line
 
 x: cut 1 letter
 c3w new_string<esc>: override 3 tu= new_string
@@ -246,7 +267,7 @@ ytp     -     copy letters to khi gap 'p'
 yt,     -     copy letters to khi gap ',' roi into insert mode
 yt;     -     copy letters to khi gap ';' thi stop
 
-copy    del=d  change=c  visual=v cung vay 
+copy    cut=d  change=c  visual=v cung vay 
 yis     -     copy 1 cau=sentence
 yas     -     copy 1 cau=sentence them spaces step sentence 2
 yip     -     copy 1 paragraph=sentences
@@ -254,14 +275,14 @@ yap     -     copy 1 paragraph=sentences them \n=xuong dong
 
 
 giong use voi searching
-d/{words}   del letters den khi gap 'words'
-c/{words}   del letters den khi gap 'words' roi into insert mode
+d/{words}   cut letters den khi gap 'words'
+c/{words}   cut letters den khi gap 'words' roi into insert mode
 y/{words}   copy letters den khi gap 'words' thi stop
 -------------------------------------------------------------------------------
                                 
                                 targets.vim
 operator d cut text nhung van o normal mode
-operator c delete text nhung into insetmode add them text
+operator c cut text nhung into insetmode add them text
 
 {operator}{i|I|a|A}{text-objects}
 
@@ -282,7 +303,7 @@ separator text object:
 operator:
     v = visual mode = selete text
     d = thuoc normal mode = cut text van o current mode
-    c = thuoc normal mode = delete text into insert text de add text=change
+    c = thuoc normal mode = cut text into insert text de add text=change
 
 {i|I|a|a}:
     i = all content bao gom space dau cuoi trong pair
@@ -370,7 +391,7 @@ inq anq Inq Anq ilq alq Ilq Alq
 
 --------------------------------------------------------------------------------
                                     vim-surround 
-delete, replace {} [] '' "" ``, ...
+cut, replace {} [] '' "" ``, ...
 ds{pair}            cut pair
 cs{old_p}{new_p}    change new_pair
 ys{text-object}{pair}    add pair
@@ -388,6 +409,10 @@ yss mapto 1g@g_
 dung thong
 add pair vao 1 word
 ysiw[   add pair [] thanh: [ dung ] thong
+
+into visual mode
+veee     -     select 3 word
+S"       -     add "" for 3 word
 
 add pair vao start va and line
 yssb    add pair () thanh: ( dung thong )
@@ -484,8 +509,8 @@ t for tag.
 
 
 #insert mode
-ctrl h      -     del prev word
-ctrl w      -     del prev letter
+ctrl h      -     del prev letter
+ctrl w      -     del prev word
 ctrl j      -     begin new line during insert mode
 ctrl t      -     indent (move right) line one shiftwidth during insert mode
 ctrl d      -     de indent (move left) line one shiftwidth during insert mode
@@ -496,8 +521,8 @@ ctrl rx     -     insert the contents of register x
 gwip     -     format paragraph textwidth=79
 gqip     -     format paragraph textwidth=79
 
-cc         -     remove all words current line into insert mode
-C          -     change (replace) to the end of the line
+cc         -     cut all words current line after switch into insert mode
+C          -     cut (replace) to the end of the line
 c$         -     change (replace) to the end of the line
 xp         -     transpose two letters (delete and paste)
 u          -     undo
@@ -634,7 +659,8 @@ m?           Open location list and display markers from current buffer
 
 :n {bufname}     -     new buffer with bufname
 :b {bufname}     -     switch to bufname
-:bd              -     Close current buffer
+:[range]bd       -     Close current buffer
+:bd {b1 b2 b2}   -     Close b1 b2 b3 
 
 :ls<cr>     list buffers set(1 2 3 4 5 ...)
 :bp<cr>     prev buffer
@@ -735,10 +761,10 @@ copy and paste
 
 #del lines
 syntax :{,}d
-:1,5d     -     del line1 to line5
-:3,$d     -     del lline3 to end document
-:$d       -     del last line document
-:%d       -     del all document
+:1,5d     -     cut line1 to line5
+:3,$d     -     cut lline3 to end document
+:$d       -     cut last line document
+:%d       -     cut all document
 
 
 #indent text

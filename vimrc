@@ -135,6 +135,11 @@ syntax on
 set columns=130
 set lines=41
 
+"add suggest code of zsh for vim
+"use tab, ctrl p, ctrl n
+set wildmenu
+set wildmode=full
+
 
 " Automatically wrap text that extends beyond the screen length.
 set wrap
@@ -274,6 +279,8 @@ set errorbells
 
 "let mapleader='\'         =<leader>
 let mapleader=';'
+noremap \ ;
+
 " . dot => repeat command truoc do
 
 "map <silent> <leader>g :tabnew 
@@ -298,10 +305,12 @@ map <C-n> :tabnew<cr>  "new tab
 "nnoremap <leader>p "+gP
 
 " Buffer Navigation
-nnoremap gbl :ls          " list buffers
-nnoremap gbp :b#<CR>      " previous buffer
-nnoremap gbn :bn<CR>      " next buffer
+nnoremap gbl :ls                  " list buffers
+nnoremap <silent> [b :bp<CR>      " previous buffer
+nnoremap <silent> ]b :bn<CR>      " next buffer
 
+nnoremap <silent> [B :bfirst<CR>     " first buffer
+nnoremap <silent> ]B :blast<CR>      " last buffer
 
 "open file config
 nmap <leader>vimrc :e ~/.vim/vimrc<cr>
