@@ -45,9 +45,14 @@ gx          =     open deffault webbrowser
 :changes     -     change list
 
 ctrl o o                    -     open file edited
-:argdo update               -     save all buffers
 :args file1 file2 file3     -     group file{1,2,3} into :args
 :args **/*.js **/*.css      -     group js va css file
+:argdo normal @a            -     run macros a for group buffer :args
+:argdo write                -     saved all buffers
+:wa[ll]                     -     = :argdo write
+:argdo update               -     save all buffers
+con :first :last :next :previous
+
 ** recursive directories
 * current director
 
@@ -112,6 +117,8 @@ earlier      -     later
 _      :     underscore
 ~      :     tilde
 
+/\v"[^"]+"<cr>           -     select content in "" lay lun ""
+/\v"\zs[^"]+\ze"<cr>     -     select content in ""
 
 --------------------------------------------------------------------------------
 #history #list #show
