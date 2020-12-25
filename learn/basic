@@ -117,6 +117,8 @@ earlier      -     later
 _      :     underscore
 ~      :     tilde
 
+--------------------------------------------------------------------------------
+
 /\v"[^"]+"<cr>           -     select content in "" lay lun ""
 /\v"\zs[^"]+\ze"<cr>     -     select content in ""
 
@@ -207,27 +209,41 @@ ctrl f     -     move forward one full screen
 P            -     paste front of cursor
 p            -     paste behind of cursor
 ctrl r "     -     paste tu y=command for ex mode
-ctrl r 0     -     paste tu y=command for insert mode
+ctrl r 0     -     paste tu y=command for insert ode
 
-dd         :     cut 1 dong
-d3d        :     cut 3 dong
-3d3d       :     cut 9 line
-ddp        :     swap current line with below line= cut current line paste below cursor
-d3w        :     cut 3 word(tinh tu vi tri cursor)
-dfp        :     cut den khi gap 'p' cut lun 'p' thi stop on line
-dtp        :     cut den khi gap 'p' thi stop NO cut 'p'
-d18|       :     cut toi screen column 18
-d/haha     :     cut den khi gap 'haha' thi stop all lines
-ggdG       :     gg=nhau ve dau file - dG cut den cuoi file
-J          :     #join down line with current line
+
+[recursive=int]{y d c}[int]{motion}
+y     -     copy
+d     -     cut
+c     -     cut and insert
+
+motion:
+k j h l
+l w e b ge 0 $ ^ g_ ( ) p gg G
+%            -     to ) } ]
+dd cc yy     -     copy or cut quick full 1 line
+
 
 x                       :     cut 1 letter
+cl         -     cut 1 char, after into insert mode
+s          -     == cl
+dd         -     cut 1 dong
+d3d        -     cut 3 dong
+3d3d       -     cut 9 line
+ddp        -     swap current line with below line= cut current line paste below cursor
+d3w        -     cut 3 word(tinh tu vi tri cursor)
+dfp        -     cut den khi gap 'p' cut lun 'p' thi stop on line
+dtp        -     cut den khi gap 'p' thi stop NO cut 'p'
+d18|       -     cut toi screen column 18
+d/haha     -     cut den khi gap 'haha' thi stop all lines
+ggdG       -     gg=nhau ve dau file, dG cut den cuoi file
+J          -     #join down line with current line
+
 
 yy          -     copy 1 line
 dd          -     cut 1 line
 cc          -     cut all words current line into insert mode
 c enter     -     = cc
-cl == s     -     cut 1 char, after into insert mode
 
 y^      -     copy to word start line non blank
 yg_     -     copy to word end line non blank
@@ -713,7 +729,7 @@ m?           Open location list and display markers from current buffer
 
 --------------------------------------------------------------------------------
 
-#replace
+#substitute #replace
 %s      all lines
 s       chi 1 line
 gi      khong phan biet lower upper
@@ -721,9 +737,15 @@ gI      phan biet lower upper
 gc      thong bao truoc khi action
 gic     aciton cua 2 line tren
 
-'<,'>   select content visual mode
-&     -     repeat replace
+'<,'>     -     select content visual mode
+&         -     repeat replace
+* .       -     zero or more characters
 
+:s/du.g/thong == :s/du*g/thong
+
+\={vimcode}
+:%s//\=@a/g       |     insert content with run macros a
+:%s//<c-r>0/g     |     insert content with register 0
 
 :%s/old/new/g           Replace all occurences of old by new in file
 :%s/onward/forward/gi	Replace onward by forward, case unsensitive=ko phan biet lower upper
