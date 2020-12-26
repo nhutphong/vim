@@ -222,6 +222,8 @@ k j h l
 l w e b ge 0 $ ^ g_ ( ) p gg G
 %            -     to ) } ]
 dd cc yy     -     copy or cut quick full 1 line
+gN           -     vselect to prev match word
+gn           -     vselect to next match word
 
 
 x                       :     cut 1 letter
@@ -542,28 +544,48 @@ B (or {, }) for block surrounded by {}
 [, ] for a block surrounded by []
 t for tag.
 
+--------------------------------------------------------------------------------
 
 #insert mode
-ctrl h      -     del prev letter
-ctrl w      -     del prev word
-ctrl j      -     begin new line during insert mode
-ctrl t      -     indent (move right) line one shiftwidth during insert mode
-ctrl d      -     de indent (move left) line one shiftwidth during insert mode
-ctrl n      -     insert (auto complete) next match left the cursor during insert mode
-ctrl p      -     insert (auto complete) previous match left the cursor during insert mode
-ctrl rx     -     insert the contents of register x
+ctrl h         -     del prev letter
+ctrl w         -     del prev word
+ctrl u         -     del to start line
+ctrl j         -     begin new line during insert mode
+ctrl t         -     indent (move right) line one shiftwidth during insert mode
+ctrl d         -     de indent (move left) line one shiftwidth during insert mode
+
+ctrl r x       -     insert the contents of register x
+ctrl r "       -     insert the last yank/delete
+ctrl r %       -     insert file name
+ctrl r /       -     insert last search term
+ctrl r :       -     insert last command line
+ctrl r =@a     -     run macros a
+
+
+autocomplete
+Ctrl x Ctrl l     -     insert a whole line
+Ctrl x Ctrl n     -     insert a text from current file
+Ctrl x Ctrl i     -     insert a text from included files
+Ctrl x Ctrl f     -     insert a file name
+Ctrl x Ctrl ]     -     insert from tags (must have tags)
+Ctrl x Ctrl o     -     insert from omnicompletion. Filetype specific.
+ctrl n and ctrl p khong can ctrl x
+
+jumpto
+Ctrl-o zz    " center window
+Ctrl-o H/M/L " jump to top/middle/bottom window
+Ctrl-o 'a    " jump to mark 'a'
+
+reapting text
+Ctrl-o 100ihello
+Ctrl-o 10Ahello
+
+execute command line
+Ctrl-o !! curl https://google.com
+Ctrl-o !! pwd
 
 gwip     -     format paragraph textwidth=79
 gqip     -     format paragraph textwidth=79
-
-cc         -     cut all words current line after switch into insert mode
-C          -     cut (replace) to the end of the line
-c$         -     change (replace) to the end of the line
-xp         -     transpose two letters (delete and paste)
-u          -     undo
-U          -     restore (undo) last changed line
-Ctrl r     -     redo
-
 
 
 cgn [text can thay the] exit
@@ -729,7 +751,7 @@ m?           Open location list and display markers from current buffer
 
 --------------------------------------------------------------------------------
 
-#substitute #replace
+#substitute #replace #ex
 %s      all lines
 s       chi 1 line
 gi      khong phan biet lower upper
@@ -752,7 +774,7 @@ gic     aciton cua 2 line tren
 :%s/old/new/gc          Replace all occurences with confirmation=thong bao
 :%s/^/hello/g	        Replace the begining of each line by hello
 :%s/$/Harry/g           Replace the end of each line by Harry
-:.,$s/dung/thong/g      replace "dung" by thong from current line to end line of file
+:.,$s/dung/thong/g      replace 'dung' by thong from current line to end line of file
 :.+4,$s/dung/thong/g
 :.,+4/dung/thong/g
 :36,42s/Unix/Linux/g    Replace Unix by Linux, line36 to  line42
@@ -763,7 +785,10 @@ gic     aciton cua 2 line tren
 :s/\(bad|godd\)/haha/g  replace 'bad' or 'good' by 'haha'
 
 
-g and d
+#global action #ex
+:[range]g[!]/{pattern}/[cmd][motion]
+cmd co t=copy m=move p=print ...
+
 ^   start of line
 $   end of line
 \s* zero or more space characters
@@ -783,9 +808,8 @@ del lines containing "string"
 :%s#<[^>]\+>##g	        Delete HTML tags but keeps text
 :%s/^\(.*\)\n\1$/\1/	Delete lines which appears twice
 
-Ctrl a     -     Increment number under the cursor
-Ctrl x     -     Decrement number under cursor
-ggVGg?     -     Change text to Rot13
+#sort
+:'<,'>sort
 
 
 #copy #paste
@@ -813,7 +837,6 @@ ggVGg?     -     Change text to Rot13
 
 
 #cut lines
-syntax :{,}d
 :1,5d     -     cut line1 to line5
 :3,$d     -     cut lline3 to end document
 :$d       -     cut last line document
@@ -977,8 +1000,6 @@ Shift s     =     search the highlighted selection directly inside a search engi
 
 ================================================================================
 #window 
-
-
 panel
 #split #horizontally
 <c-b> "
