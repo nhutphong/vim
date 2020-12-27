@@ -35,7 +35,7 @@ gf          =     open in the same window ("goto file")
 gx          =     open deffault webbrowser
 
 :x                     -     Exit vim but write only when changes have been made.
-:qa                    -     exit all open iles in current vim session
+:qa                    -     exit all open files in current vim session
 
 
 :sav file.txt          -     save current buffer as a new ile file.txt.
@@ -44,29 +44,34 @@ gx          =     open deffault webbrowser
 :jumps       -     jump list
 :changes     -     change list
 
-ctrl o o                    -     open file edited
+ctrl o o                    -     open file last edited
 :args file1 file2 file3     -     group file{1,2,3} into :args
 :args **/*.js **/*.css      -     group js va css file
+** recursive directories
+* current 1 directory
+
+all files in a tree=directory
 :argdo normal @a            -     run macros a for group buffer :args
 :argdo write                -     saved all buffers
 :wa[ll]                     -     = :argdo write
 :argdo update               -     save all buffers
 con :first :last :next :previous
 
-** recursive directories
-* current director
 
-:bufdo
-:windo
+all buffers
+:bufdo %s/pattern/replace/ge | update
+
+all windows
+:windo %s/pattern/replace/ge
 
 
 range
-% all lines
+%     -     all lines
 
 :[range]{mode} [cmd=motion ...]
 :%norm[al] A;          -     add ';' vao end all lines
 :%norm di'             -     delete content in ''
-:28put=range(5,55)     -     list numbers into lines after line28
+:28put=range(5,55)     -     list numbers into lines under line28
 
 :for i in range(1,20) | put='192.168.1'.i | endfor
 
@@ -81,10 +86,10 @@ top          -     bottom
 backward     -     forward
 front        -     behind
 
-first        -     last
-above        -     below
-undo         -     redo
-earlier      -     later
+first       -     last
+above       -     below|under
+undo        -     redo
+earlier     -     later
 
 
 `      :     backtick
@@ -163,7 +168,6 @@ sentences : la 1 cau stop boi dot<.>
 
 
 "jump to line   [count=int]gg
-gg         -     go to the first line of the document
 5gg        -     go to line 5
 ctrl g     -     xem thông tin dòng hiện tại
 
@@ -239,7 +243,7 @@ dtp        -     cut den khi gap 'p' thi stop NO cut 'p'
 d18|       -     cut toi screen column 18
 d/haha     -     cut den khi gap 'haha' thi stop all lines
 ggdG       -     gg=nhau ve dau file, dG cut den cuoi file
-J          -     #join down line with current line
+J          -     join down line with current line
 
 
 yy          -     copy 1 line
