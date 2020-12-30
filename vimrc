@@ -125,7 +125,7 @@ autocmd filetype plugin indent on
 set encoding=utf-8
 set shell=/usr/bin/zsh
 
-set clipboard=unnamedplus
+set clipboard^=unnamed,unnamedplus
 set mouse=a
 set t_Co=256
 
@@ -152,6 +152,7 @@ set autoindent
 set smartindent
 set tabstop=4
 set shiftwidth=4
+set softtabstop=4
 
 set foldmethod=indent
 
@@ -204,8 +205,8 @@ else
 endif
 
 " chu y khi co file .editorconfig se overrive no
-au BufNewFile,BufRead *.py
-    \ set tabstop=4
+au FileType python 
+    \ setlocal tabstop=4
     \ softtabstop=4 
     \ shiftwidth=4
     \ textwidth=79
@@ -213,10 +214,8 @@ au BufNewFile,BufRead *.py
 
 
 " For Full stack development 'au' command
-au BufNewFile,BufRead *.js, *.html, *.css
-    \ set tabstop=2
-    \ softtabstop=2
-    \ shiftwidth=2
+au FileType html,css,js
+  \ setlocal ts=2 sw=2 sts=2 
 
 "mau=dark
 "darkblue desert evening  gruvbox dogrun atom molokayo space-vim-dark darkblue

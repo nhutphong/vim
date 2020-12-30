@@ -859,9 +859,10 @@ del lines containing "string"
 
 indent undo
 [repeat]={= %}
-3==     -     re indent 3 lines
-=%      -     re indent a block with () or {} (cursor on brace)
-=iB     -     re indent inner block with {}
+gg=G     -     ve dau file indent full file
+3==      -     re indent 3 lines
+=%       -     re indent a block with () or {} (cursor on brace)
+=iB      -     re indent inner block with {}
 
 ================================================================================
 #tmux #linux
@@ -909,6 +910,8 @@ ctrl+l        -     clear
 bind b         -     list paste buffer
 <prefix> p     -     paste=put
 <prefix> P     -     show list copy
+
+ctrl shift v | ctrl y     -     paste tu os into terminal
 
 15p save 1 lan
 nen save lan dau
