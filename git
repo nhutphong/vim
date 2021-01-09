@@ -1,0 +1,83 @@
+
+#linux #github
+
+#save user and password
+git config credential.helper store 
+
+#set
+git config --global user.email "email@gmail.com"
+git config --global user.name "username"
+
+project> git init #tao repo tu local=pc
+#connect repo_pc với repository có sẵn trên github
+remote_name tên branch
+>git remote add <remote_name> <url.git>
+>git remote -v
+
+#lần đầu push code lên github
+> git push --set-upstream <remote_name> master
+
+#
+git fetch <remote_name> #xem có j mới on github
+git branch #xem nhánh local
+
+#create #branch 
+git branch <new_branch>
+git branch -b <new_branch> #create va chuyen toi branch
+git checkout <name_branch> # chuyển tới name_branch
+
+#del 
+git branch -d {branch_name}
+
+git checkout master
+master> git merge <name_branch> #hợp nhất thây đổi nhánh name_branch về master=root
+
+git log #xem lich su commit
+git diff #xem thay doi trc khi push
+git status
+
+#delete folder/*.file on github, giu lai o pc
+git rm -r --cached myFolder
+#đã clone tử web về pc
+git add . 
+git commit -m "điền nội dung commit vào đây"
+git push origin master #dua code len server
+
+git pull origin master #lay code ve pc
+
+#.gitignoze
+xoá hết cached file .gitignoze mới có tác dụng
+
+venv>git rm -r --cached .
+venv>git add .
+git commit -m "điền nội dung commit vào đây"
+git push origin master #dua code len server
+
+#pull
+git config --global pull.rebase true
+git pull --rebase --autostash 
+
+
+#remote
+Tạo một liên kết
+Giả sử kho chứa từ xa có địa chỉ url (https hoặc ssh) cần tạo ra liên kết đến nó đặt tên là remote-name thì thực hiện
+lệnh
+remote-name=la duy nhat url=respository-github
+git remote add remote-name url
+
+#set url remote-name phai ton tai truoc do
+git remote set-url <an-existing-remote-name> <url>
+
+Xóa một địa chỉ remote
+git remote rm remote-name
+
+Đổi tên địa chỉ remote
+git remote rename ten-cu ten-moi
+
+Xem thông tin về Remote
+Sử dụng lệnh git remote show, ví dụ xem remote origin:
+
+git remote show origin
+
+
+

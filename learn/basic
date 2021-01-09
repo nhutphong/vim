@@ -516,7 +516,12 @@ l(int)   left
 
 
 --------------------------------------------------------------------------------
+                                        emmet
+ctrl y ,     -     vao tag: emmet
 
+
+
+--------------------------------------------------------------------------------
 #undo u
 :ea[rlier] {int}{s m h d f}
 f là buffer file
@@ -906,7 +911,8 @@ bind e        -     open ~/.tmux.config.local
 bind r        -     reload config
 ctrl+l        -     clear
 
-#paste 
+#paste #copy
+bind y         -     copy to system clipboard
 bind b         -     list paste buffer
 <prefix> p     -     paste=put
 <prefix> P     -     show list copy
