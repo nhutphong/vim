@@ -70,7 +70,7 @@ range
 
 :[range]{mode} [cmd=motion ...]
 :%norm[al] A;          -     add ';' vao end all lines
-:%norm di'             -     delete content in ''
+:%norm di'             -     cut content in ''
 :28put=range(5,55)     -     list numbers into lines under line28
 
 :for i in range(1,20) | put='192.168.1'.i | endfor
@@ -817,88 +817,6 @@ del lines containing "string"
 :%s#<[^>]\+>##g	        Delete HTML tags but keeps text
 :%s/^\(.*\)\n\1$/\1/	Delete lines which appears twice
 
-#sort
-:'<,'>sort
-
-
-#copy #paste
-. dot is current line
-:[int,int]t{motion . $ .....}
-
-:copy = :t
-:6t.     -     copy line 6 goto current line=.
-:t6      -     current line. paste below line 6
-:t.      -     duplicate current line
-:t$      -     copy current line, paste to end line of document
-
-
-#move lines
-:m[ove]
-:{int,int}m{to line=int motion=0 $ }
-
-:'<,'>m$      -     move select contents to end lines
-:!{cmd}
-:5,7m21       -     move lines 5, 6 and 7 to after line 21
-:5,7m0        -     move lines 5, 6 and 7 to left first line
-:5,7m$        -     move lines 5, 6 and 7 to after last line
-:.,.+4m21     -     move 5 lines starting at current line to after line 21
-:,+4m14       -     same (. for current line is assumed)
-
-
-#cut lines
-:1,5d     -     cut line1 to line5
-:3,$d     -     cut lline3 to end document
-:$d       -     cut last line document
-:%d       -     cut all document
-
-
-#indent text
-[repeat]>{> % motion=gg G}
-[repeat]>{> % motion=gg G}
->>      -     indent (move right) line one shiftwidth
-<<      -     de indent (move left) line one shiftwidth
->%      -     indent a block with () or {} (cursor on brace)
->ib     -     indent inner block with ()
->at     -     indent a block with <> tags
-
-
-indent undo
-[repeat]={= %}
-gg=G     -     ve dau file indent full file
-3==      -     re indent 3 lines
-=%       -     re indent a block with () or {} (cursor on brace)
-=iB      -     re indent inner block with {}
-
-================================================================================
-#tmux #linux
-
-
-session sẽ run lại nếu open tmux
-dùng option <attach> đê restore session đó
-do dung tmux oh-my-god, vai key da dc remap
-
-bind = <prefix> = <c-b> = <c-a>
-tmux-oh-my
-tmux-plugins-manager phải fix lại
-~\.tmux.conf.local
-
-#plugin
-#install
-bind I         -     install plugin
-bind U         -     update plugin
-bind alt u     -     remove plugin
-
-#tmux-plugin-manager
- # List of plugins
- set -g @tpm_plugins '
-    \ tmux-plugins/tpm
-    \ tmux-plugins/tmux-sensible
-    \ tmux-plugins/tmux-resurrect
-    \ tmux-plugins/tmux-continuum
-    \ user-github/repository-name
-  '
-set -g @continuum-restore 'on
-
 #copy #paste
 #tmux-yank
 quick: mouse drag select text + y  => copy text
@@ -928,17 +846,17 @@ bind <c-r>
 # session > window > pane
 #session 
 bind=<prefix> = <c-b> = <c-a>
-s     -     list sessions
-w     -     list windows
+bind s     -     list sessions
+bind w     -     list windows
 
-f         =     searching sessions
-<c-f>     =     searching windows
+bind f         =     searching sessions
+bind <c-f>     =     searching windows
 
 #rename
-$     rename the current session
-,     rename the current window
+bind $     rename the current session
+bind ,     rename the current window
 
-d     detach from the current session
+bind d     detach from the current session
 
 bind c     =     create a new window
 bind -     =     create a horizontal pane
