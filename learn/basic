@@ -858,9 +858,10 @@ bind ,     rename the current window
 
 bind d     detach from the current session
 
-bind c     =     create a new window
-bind -     =     create a horizontal pane
-bind _     =     create a vertical pane
+bind ctrl c     =     create a new session
+bind c          =     create a new window
+bind -          =     create a horizontal pane
+bind _          =     create a vertical pane
 
 bind &     -     close window
 bind x     -     Xoá panel
@@ -941,12 +942,12 @@ panel
 #terminal
 
 #motion 
-ctrl a      -     begging line
-ctrl e      -     end line
-ctrl b      -     Go left (back) one character.
-ctrl f      -     Go right (forward) one character
-alt b       -     Go left (back) one word.
-alt f       -     Go right (forward) one word.
+bind ctrl a     -     begging line
+ctrl e          -     end line
+ctrl b          -     Go left (back) one character.
+ctrl f          -     Go right (forward) one character
+alt b           -     Go left (back) one word.
+alt f           -     Go right (forward) one word.
 
 ctrl p      -     prev cmd history
 ctrl n      -     next cmd history
