@@ -956,12 +956,14 @@ ctrl g      -     exit searching history mode
 ctrl o      -     ctrl g
 
 
-#delete
+#cut
 ctrl w      -     cut word left cursor
-alt d       -     cut word right lay lun letter tai current cursor
-ctrl u      -     cut 1 line
-ctrl k      -     cut current cursor to end line
+alt d       -     cut word right lay lun letter tai current cursordelete
+
+ctrl u      -     cut 1 line left cursor
+ctrl k      -     cut current right cursor to end line
 ctrl y      -     paste
+
 
 ctrl d      -     del character right cursor
 
