@@ -233,11 +233,14 @@ gn           -     vselect to next match word
 x                       :     cut 1 letter
 cl         -     cut 1 char, after into insert mode
 s          -     == cl
+dw          cut current char to end=right 1 word
+db          cut prev char to start=left 1 word
 dd         -     cut 1 dong
 d3d        -     cut 3 dong
 3d3d       -     cut 9 line
 ddp        -     swap current line with below line= cut current line paste below cursor
 d3w        -     cut 3 word(tinh tu vi tri cursor)
+dw         -
 dfp        -     cut den khi gap 'p' cut lun 'p' thi stop on line
 dtp        -     cut den khi gap 'p' thi stop NO cut 'p'
 d18|       -     cut toi screen column 18
@@ -819,6 +822,7 @@ del lines containing "string"
 
 #copy #paste
 #tmux-yank
+bind = ctrl a
 quick: mouse drag select text + y  => copy text
 copy mode: <prefix> [
 v  vao visual mode selete text

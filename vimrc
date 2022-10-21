@@ -189,7 +189,7 @@ if has("gui_running")
     hi LineNr guifg=yellow
     hi cursorlinenr guifg=aqua
 
-    hi colorcolumn guibg=red
+    hi colorcolumn guibg=green
 else
     " setup for vim=terminal
     "set background=dark
@@ -201,7 +201,7 @@ else
     hi LineNr ctermfg=blue
     hi cursorlinenr ctermfg=red
 
-    hi colorcolumn ctermbg=red
+    hi colorcolumn ctermbg=green
 endif
 
 " chu y khi co file .editorconfig se overrive no
