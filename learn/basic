@@ -1,12 +1,23 @@
+
+
+ctrl oo                 open file new close
+ctrl ww                 between nerdtree and buffer
+    
+:source ~/.vim/vimrc    reload vim
+
+
 #map #noremap
 <f2>     =     macros searching
 <f5>     =     :UndotreeToggle
 <f8>     =     :TagbarToggle
 
+gt      next tab
+gT      prev tab
+
 
 #noremap
 noremap jj <esc>
-noremap \ jj  "\ tuc jumpto to down 2 line, khong phai <esc>
+noremap \ jj        "\ tuc jumpto to down 2 line, khong phai <esc>
 
 noremap remap key = root key vim NOT recursive
 
@@ -44,7 +55,7 @@ gx          =     open deffault webbrowser
 :jumps       -     jump list
 :changes     -     change list
 
-ctrl o o                    -     open file last edited
+
 :args file1 file2 file3     -     group file{1,2,3} into :args
 :args **/*.js **/*.css      -     group js va css file
 ** recursive directories
@@ -58,15 +69,15 @@ all files in a tree=directory
 con :first :last :next :previous
 
 
-all buffers
+#all buffers
 :bufdo %s/pattern/replace/ge | update
 
 all windows
 :windo %s/pattern/replace/ge
 
 
-range
-%     -     all lines
+#range
+%                all lines
 
 :[range]{mode} [cmd=motion ...]
 :%norm[al] A;          -     add ';' vao end all lines
@@ -465,19 +476,20 @@ yss(    add pair () thanh: ( dung thong )
 
 --------------------------------------------------------------------------------
                                        title case
-<leader>cmd
+<leader>        is ';'
+<leader>cmd     ;cmd
 
-gT       -     is all title current line
-gtw      -     is title 1 word
-gt3w     -     is title 3 word
+gzz      -     all title current line
+gzw      -     title 1 word
+gz3w     -     title 3 word
 
-gti(     -     is title in pair
-gti'     -     is title in ''
-gta'     -     is title in ''
+gzi(     -     title in pair
+gzi'     -     title in ''
+gza'     -     title in ''
 ...
 
-gt(     -     is prev words file
-gt)     -     is next words file
+gz(     -     prev words file
+gz)     -     next words file
 
 
 vim system

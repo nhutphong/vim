@@ -2,6 +2,10 @@ call plug#begin()
 
 
 "
+Plug 'ekalinin/Dockerfile.vim'
+
+
+"
 Plug 'preservim/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'severin-lemaignan/vim-minimap'
@@ -274,7 +278,7 @@ set errorbells
 
 
 "------------------------------------------------------------------------------
-" #map #noremap
+" #map #noremap #hotkey
 
 "let mapleader='\'         =<leader>
 let mapleader=';'
@@ -317,6 +321,7 @@ nmap <leader>zshrc :e ~/.zshrc<cr>
 nmap <leader>bashrc :e ~/.bashrc<cr>
 
 nnoremap <F5> :UndotreeToggle<CR>
+nnoremap <F10> :NERDTree<CR>
 nmap <F8> :TagbarToggle<CR>
 
 "reload file source file_name
@@ -328,7 +333,7 @@ map <leader>xvimrc :so ~/.vimrc<cr>
 "colo ron ===== :colo ron<cr>
 
 
-"------------------------------------------------------------------------------
+"------------------------------------hotkey end------------------------------------------
 
 
 " airline
@@ -448,6 +453,7 @@ highlight GitGutterDelete guifg=#ff2222 ctermfg=red
 "------------------------------------------------------------------------------
 "title case
 let g:titlecase_map_keys = 0
-nmap <leader>gt <Plug>Titlecase
-vmap <leader>gt <Plug>Titlecase
-nmap <leader>gT <Plug>TitlecaseLine
+
+nmap <leader>gz  <Plug>Titlecase
+vmap <leader>gz  <Plug>Titlecase
+nmap <leader>gzz <Plug>TitlecaseLine
