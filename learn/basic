@@ -1,4 +1,11 @@
 
+1 tab default co:
+    buffer nerdtree(=tree folder manage folders files)
+    buffer empty
+
+:tabc       = close tab
+gt      next tab
+gT      prev tab
 
 ctrl oo                 open file new close
 ctrl ww                 between nerdtree and buffer
@@ -10,9 +17,7 @@ ctrl ww                 between nerdtree and buffer
 <f2>     =     macros searching
 <f5>     =     :UndotreeToggle
 <f8>     =     :TagbarToggle
-
-gt      next tab
-gT      prev tab
+<f10>    =     :NerdTree
 
 
 #noremap
@@ -25,11 +30,38 @@ noremap remap key = root key vim NOT recursive
 :!cmd_bash_terminal
 
 :e file.txt     -     open file in current buffer
-:q              -     thoát khỏi vim
+:q              -     close buffer or thoát khỏi vim
+:qa             -     quit vim not save
 :q!             -     bắt buộc thoát không cần lưu ! = NOT save
 :w              -     lưu file
 :w!             -     bắt buộc ghi file (ghi đè)
 :wq             -     lưu xong thoát
+
+--------------------------------------------------------------------------------
+#buffer
+
+:n {bufname}     -     new buffer with bufname
+:b {bufname}     -     switch to bufname
+:[range]bd       -     Close current buffer
+:bd {b1 b2 b2}   -     Close b1 b2 b3 
+
+:ls<cr>     list buffers set(1 2 3 4 5 ...)
+:bp<cr>     prev buffer
+:bn<cr>     next buffer
+:1b<cr>     select buffer 1
+:2b<cr>     select buffer 2
+
+:b#                       -     Last buffer visited, actual # sign
+:b1                       -     Switch to buffer #1
+:1b                       -     switch to buffer 1
+:bm                       -     Switch to next modified buffer
+
+:sb 1             -     Open buffer #1 in a split
+:sb {bufname}     -     Open buffer bufname in a split
+:sbn              -     Open next buffer in a split
+:sbp              -     Open previous buffer in a split
+:sba              -     Open all buffers in split windows
+
 
 :[range]r[ead] {filename}
 range = 0 dau file, $ cuoi file, int= int line
@@ -747,31 +779,6 @@ m[0-9]       Toggle the corresponding marker !@#$%^&*()
 [=           Jump to prev line having a marker of any type
 m?           Open location list and display markers from current buffer
 
---------------------------------------------------------------------------------
-#buffer
-
-:n {bufname}     -     new buffer with bufname
-:b {bufname}     -     switch to bufname
-:[range]bd       -     Close current buffer
-:bd {b1 b2 b2}   -     Close b1 b2 b3 
-
-:ls<cr>     list buffers set(1 2 3 4 5 ...)
-:bp<cr>     prev buffer
-:bn<cr>     next buffer
-:1b<cr>     select buffer 1
-:2b<cr>     select buffer 2
-
-:b#                       -     Last buffer visited, actual # sign
-:b1                       -     Switch to buffer #1
-:1b                       -     switch to buffer 1
-:bm                       -     Switch to next modified buffer
-
-
-:sb 1             -     Open buffer #1 in a split
-:sb {bufname}     -     Open buffer bufname in a split
-:sbn              -     Open next buffer in a split
-:sbp              -     Open previous buffer in a split
-:sba              -     Open all buffers in split windows
 
 --------------------------------------------------------------------------------
 
