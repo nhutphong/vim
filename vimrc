@@ -126,7 +126,8 @@ filetype off
 " For plug-ins to load correctly.
 autocmd filetype plugin indent on
 
-set encoding=utf-8
+"set encoding=utf-8
+set fileencoding=utf-8
 set shell=/usr/bin/zsh
 
 set clipboard^=unnamed,unnamedplus

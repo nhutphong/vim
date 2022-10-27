@@ -1,4 +1,10 @@
 
+
+ki hieu ^ trong menu of vim ==== la phim ctrl
+u           undo=prev=qua-khu
+ctrl r      redo=next=tuong-lai
+
+
 1 tab default co:
     buffer nerdtree(=tree folder manage folders files)
     buffer empty
@@ -11,6 +17,11 @@ ctrl oo                 open file new close
 ctrl ww                 between nerdtree and buffer
     
 :source ~/.vim/vimrc    reload vim
+
+<leader> mapto ;
+;vimrc      open vimrc
+;zshrc      open zshrc
+;bashrc     oepn bashrc
 
 
 #map #noremap
@@ -253,8 +264,8 @@ ctrl f     -     move forward one full screen
                             normal mode:
 
                             DELETE=CUT
-P            -     paste front of cursor
-p            -     paste behind of cursor
+P            -     paste front=prev=before of cursor
+p            -     paste behind=next=after of cursor
 ctrl r "     -     paste tu y=command for ex mode
 ctrl r 0     -     paste tu y=command for insert ode
 
@@ -265,8 +276,35 @@ d     -     cut
 c     -     cut and insert
 
 motion:
+    sentences 1 doan text cach nhau boi dau dot .
+
 k j h l
-l w e b ge 0 $ ^ g_ ( ) p gg G
+
+b       prev word, cursor first char
+w       next word, cursor first char
+
+ge      prev word, cursor end char
+e       next word, cursor end char
+
+(       prev paragraph
+)       next paragraph
+
+0       start line (= ^)
+$       end line (= g_)
+
+gg      start file
+G       end file
+
+O       new line above=prev, swap ve insert mode
+O       new line below=next, swap ve insert mode
+I       insert mode start line
+A       insert mode end line
+
+R       replace more chars
+r       replace 1 char
+
+
+
 %            -     to ) } ]
 dd cc yy     -     copy or cut quick full 1 line
 gN           -     vselect to prev match word
@@ -325,11 +363,13 @@ ctrl a     =     int+1
 ctrl x     =     int-1
 --------------------------------------------------------------------------------
                                     #easymotion
+N       jumpto prev match char
+n       jumpto next match char
 
-/[words]        searching full file 
-;f              search 1 letter full file
-s               search 2 letter full file
-t               search 2 letter down cursor jumpto space truoc 2letter
+/[words]        searching words full file 
+;f              search 1 char full file
+s               search 2 char full file , cursor ngay char 
+t               search 2 char, from current cursor to end file
 
 
 ;L              jump to mark line
@@ -345,10 +385,14 @@ t               search 2 letter down cursor jumpto space truoc 2letter
 #sentence #paragraph
 
 {d,c,y}{i,a,t,f}
-{dc,y}{t,f}{letter}
+{d,c,y}{t,f}{letter}
 t gap letter thi stop
 f lay lun letter roi stop
 
+dt,         cut to gap , thi stop, van o normal mode
+ct,         cut to gap , thi stop, swap to insert mode
+yt,         copy to gap , thi stop van o normal mode
+#cut #change #visual more words
 del=cut=d change=c visual=v deu giong nhau
 ytp     -     copy letters to khi gap 'p'
 yt,     -     copy letters to khi gap ',' roi into insert mode
@@ -389,53 +433,54 @@ separator text object:
 
 operator:
     v = visual mode = selete text
-    d = thuoc normal mode = cut text van o current mode
-    c = thuoc normal mode = cut text into insert text de add text=change
+    d       cut text,van o normal mode
+    c       cut text, swap to insert mode, 
 
-{i|I|a|a}:
-    i = all content bao gom space dau cuoi trong pair
+{I|i|a|A}:
     I = all context KO co space
-    a = lay luon ca pair cursor ngay pair đóng)]}
-    A = lay luon ca pair cursor sau pair dong)]}cursor
+    i = all content bao gom spaces dau cuoi trong pair
+    a = giong i, them cap pair of content
+    A = giong a, them more spaces 
 
 cursor into content moi dung i) 2i) or 3i) .... co count=int
 
 
 {v|d|c}{i|I|a|A}{text-object}
 I lay content
+I(       ======         I) , nen dung thuan tay la I( ngoac tron mo
 
 I( I) I{ I} IB I[ I] I< > It 
 a ( b (    abccontent     )      wordhaha ) e 
       ||   |        |    ||     |
-      ||   ----I)----    ||     |
+      ||   ----I(----    ||     |
       ||                 ||     |
-      ||-------i)--------||     |
+      ||-------i(--------||     |
       |                   |     |
-      |--------a)---------|     |
+      |--------a(---------|     |
       |                         |
-      |--------A)---------------|
+      |--------A(---------------|
 
 i lay content them spaces first va last
 i( i) i{ i} iB i[ i] i< i> it
 
 a ( b ( cccccccc ) d ) e
-   │   └── i) ──┘   │
-   └───── 2i) ──────┘
+   │   └── i( ──┘   │
+   └───── 2i( ──────┘
 
 
 a lay lun pair
 a( a) a{ a} aB a[ a] a< > at
 
 a ( b ( cccccccc ) d ) e
-  │   └─── a) ───┘   │
-  └────── 2a) ───────┘
+  │   └─── a( ───┘   │
+  └────── 2a( ───────┘
 
 A lay lun pair nhung cursor o pair right space
 A( A) A{ A} AB A[ A] A< > At
 
 a ( b ( cccccccc ) d ) e
-  │   └─── A) ────┘   │
-  └────── 2A) ────────┘a
+  │   └─── A( ────┘   │
+  └────── 2A( ────────┘a
 
 
 cursor inside in pair current -> next pair ke
@@ -478,32 +523,65 @@ inq anq Inq Anq ilq alq Ilq Alq
 
 --------------------------------------------------------------------------------
                                     vim-surround 
-cut, replace {} [] '' "" ``, ...
-ds{pair}            cut pair
-cs{old_p}{new_p}    change new_pair
+cut, replace pair = {} [] '' "" ``, ...
+text object = iw 
+
+ds{pair}                cut pair
+cs[{                    change ngoac [] thanh ngoac {}
+
+
 ys{text-object}{pair}    add pair
+ysw"                    add "" wrap    current cursor to end 1 word
+ys3w"                   add "" wrap    current cursor to end 3 word
+ys4w"                   add "" wrap    current cursor to end 4 word
+
+nen dung a thay cho i
+ysa{motion}
+ys{count=int}a{motion}          nhieu words
+ysaw"                   add "" wrap     ia = word
+ys3aw"                  add "" wrap     3 word
+ys3aw(                  add () wrap     3 word
+ys3awb                  add () wrap     3 word
+
+tp = tag <p>
+tdiv = tag <div>
+timg = tag <img>
+ys3awtp + enter         add <p> wrap     3 word
+
+ysas"                   add "" wrap    1 cau = sentence (ngan cach boi dot=.)
+ysas<                   add <> wrap    1 cau = sentence (ngan cach boi dot=.)
+ysasb                   add () wrap    1 cau = sentence (ngan cach boi dot=.)
+ysas( === ysasb
+
+ysastp + enter          add <p> wrap    1 cau = sentence (ngan cach boi dot=.)
 
 
-"dung thong co de bo trau"
-ds"     cut ""
-cs"{    change " thanh {}
+yss"                    add "" wrap     1 line
+yssb                    add () wrap     1 line
+yss(    ====    yysb
+
+rieng tag phai press them <enter>
+ysstp + enter           add tag=<p> wrap     1 line
+ysstdiv + enter         add tag=<div> wrap     1 line
+
+cs(*            change () thanh **
+csb*            change () thanh **
+csbtp           change () thanh tag <p>
+cs(tp           change () thanh tag <p>
+
+dst             cut=del tag html
+dsb             cut=del ()
+ds<             cut=del <>
 
 
 dung thong cursor inside 'dung'
+ysa mapto g@a
 ysi mapto g@i
 yss mapto 1g@g_
-
-dung thong
-add pair vao 1 word
-ysiw[   add pair [] thanh: [ dung ] thong
 
 into visual mode
 veee     -     select 3 word
 S"       -     add "" for 3 word
-
-add pair vao start va and line
-yssb    add pair () thanh: ( dung thong )
-yss(    add pair () thanh: ( dung thong )
 
 
 --------------------------------------------------------------------------------
@@ -650,6 +728,7 @@ n   next to word
 
 --------------------------------------------------------------------------------
 #visual commands
+#indent text #tab
 
 ctrl v     -     visual block mode
 V          -     select 1 line
@@ -664,6 +743,15 @@ d          -     cut marked text
 ~          -     switch case
 u          -     change marked text to lowercase
 U          -     change marked text to uppercase
+
+>%      - indent a block with () or {} (cursor on brace)
+>ib     - indent inner block with ()
+>at     - indent a block with <> tags
+3==     - re-indent 3 lines
+=%      - re-indent a block with () or {} (cursor on brace)
+=iB     - re-indent inner block with {}
+gg=G    - re-indent entire buffer
+]p      - paste and adjust indent to current line
 
 
 --------------------------------------------------------------------------------
