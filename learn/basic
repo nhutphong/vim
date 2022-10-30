@@ -993,6 +993,8 @@ del lines containing "string"
 #tmux-yank
 bind = ctrl a
 
+bind:       :comand
+
 quick: mouse drag select text + y  => copy text
 copy mode: <prefix> [
 v  vao visual mode selete text
@@ -1016,26 +1018,36 @@ nen save lan dau
 bind <c-s>
 bind <c-r>
 
-# window=tab
-# session > window > pane=buffer
-#session 
-bind=<prefix> = <c-b> = <c-a>
-bind s     -     list sessions
-bind w     -     list windows
+bind s      show list session
+bind w      show list session expand, show window
 
-bind f         =     searching sessions
-bind <c-f>     =     searching windows
+
+# login 
+tmux a
+tmux at
+tmux attach
+tmux attach-session
+
+# restore session_name
+tmux a[ttach] -t {session_name}
+tmux a -t index_or_name-session
+
 
 #new #session #window
-bind ctrl c     =     create a new session at current window
-bind ctrl c     =     create a new session new tab=window
+bind ctrl c     =     create a new session
+bind c          =     new a window
 bind -          =     create a horizontal pane=buffer
 bind _          =     create a vertical pane=buffer
 
+#del session
+tmux kill-session -t index_or_name_session
+
 #close
 bind &     -     close window
-bind x     -     Xoá panel=buffer
+bind x     -     Xoá panel=buffer if ch con 1 panel thi close window lun
 
+#searching
+bind f         =     searching windows
 
 #rename
 bind $     rename the current session
@@ -1047,6 +1059,9 @@ bind d     detach from the current session
 bind ctrl+h     -     prev window
 bind ctrl+l     -     next window
 bind tab        -     last window
+bind 1          select window=1
+bind 3          select window=3
+bind:swap-window -t 3           swap window to index=3
 
 bind <     -     swap panes
 bind >     -     swap panes
@@ -1057,33 +1072,16 @@ bind (     -     jump to prev session
 bind )     -     jump to next session
 
 #panes
-
-q     show pane numbers
-o     toggle between panes
-}     swap with next pane
-{     swap with previous pane
-!     break the pane out of the window
+bind q     show pane numbers
+bind o     toggle between panes
+bind {     swap with previous pane
+bind }     swap with next pane
+bind !     break the pane out of the window
 
 #new
 tmux
 tmux new
 tmux new -s [session_name]
-
-# login 
-tmux a
-tmux at
-tmux attach
-tmux attach-session
-
-# restore session_name
-tmux a[ttach] -t {session_name}
-
-
-#default=0
-tmux attach -t 0
-
-#del
-tmux kill-session -t s_name
 
 
 #copycat
@@ -1098,23 +1096,18 @@ bind ctrl u     =     url search (http, ftp and git urls)
 bind ctrl d     =     number search (mnemonic d, as digit)
 bind alt i      =     ip address search
 
-n     =     jumpto next match
-N     =     jumpto prev match
-
 
 copy mode = bind <cr>
 o           =     "open" a highlighted selection
 Ctrl o      =     open a highlighted selection with the $EDITOR
 Shift s     =     search the highlighted selection directly inside a search engine (defaults to google).
 
-================================================================================
-#window 
-panel
+#panel
 #split #horizontally
-<c-b> "
+ctrl a "
 
 #vertically
-<c-b> %
+ctrl a %
 =====================================terminal===========================================
 #terminal
 
