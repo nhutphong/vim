@@ -1015,8 +1015,8 @@ ctrl shift v | ctrl y     -     paste tu os into terminal
 
 15p save 1 lan
 nen save lan dau
-bind <c-s>
-bind <c-r>
+bind <c-s>      saved
+bind <c-r>      restore
 
 bind s      show list session
 bind w      show list session expand, show window
