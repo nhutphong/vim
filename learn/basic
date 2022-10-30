@@ -9,26 +9,42 @@ ctrl r      redo=next=tuong-lai
     buffer nerdtree(=tree folder manage folders files)
     buffer empty
 
-:tabc       = close tab
-gt      next tab
-gT      prev tab
+ctrl n      newtab + buffer empty
+t           cursor tai folder thi, la newtab chua nerdtree+buffer-empty
+t           cursor tai file thi, la newtab, chi co buffer-file-duoc-mo
 
-ctrl oo                 open file new close
-ctrl ww                 between nerdtree and buffer
-    
+:tabc       = close tab
+gT      prev tab
+gt      next tab
+
+#nerdtree #tree=cay-folders
+<f10>    =     :NerdTree
+o       open tree
+x       close tree
+u       jumpto prev tree
+C       jumpto next tree
+cd      set pwd is current tree
+i       open file theo chieu ngang=horizontal buffer
+s       open file theo chieu doc=vertical buffer
+
+ctrl j          snippet = autocomple-code
+zi              fold = show or hide code
+
+ctrl oo         open file new close
+ctrl ww         between nerdtree and buffer
+
 :source ~/.vim/vimrc    reload vim
 
 <leader> mapto ;
 ;vimrc      open vimrc
 ;zshrc      open zshrc
-;bashrc     oepn bashrc
+;bashrc     open bashrc
 
 
 #map #noremap
 <f2>     =     macros searching
 <f5>     =     :UndotreeToggle
 <f8>     =     :TagbarToggle
-<f10>    =     :NerdTree
 
 
 #noremap
@@ -316,6 +332,8 @@ cl         -     cut 1 char, after into insert mode
 s          -     == cl
 dw          cut current char to end=right 1 word
 db          cut prev char to start=left 1 word
+d18         cut 18 line tiep theo
+d18|       -     cut toi screen column 18
 dd         -     cut 1 dong
 d3d        -     cut 3 dong
 3d3d       -     cut 9 line
@@ -324,7 +342,6 @@ d3w        -     cut 3 word(tinh tu vi tri cursor)
 dw         -
 dfp        -     cut den khi gap 'p' cut lun 'p' thi stop on line
 dtp        -     cut den khi gap 'p' thi stop NO cut 'p'
-d18|       -     cut toi screen column 18
 d/haha     -     cut den khi gap 'haha' thi stop all lines
 ggdG       -     gg=nhau ve dau file, dG cut den cuoi file
 J          -     join down line with current line
@@ -382,7 +399,7 @@ t               search 2 char, from current cursor to end file
 
 
 --------------------------------------------------------------------------------
-#sentence #paragraph
+#searching #sentence #paragraph #copytochar #change #cut #yt
 
 {d,c,y}{i,a,t,f}
 {d,c,y}{t,f}{letter}
@@ -398,22 +415,24 @@ ytp     -     copy letters to khi gap 'p'
 yt,     -     copy letters to khi gap ',' roi into insert mode
 yt;     -     copy letters to khi gap ';' thi stop
 
+#copysentence #copyparagraph
 copy    cut=d  change=c  visual=v cung vay 
 yis     -     copy 1 cau=sentence
 yas     -     copy 1 cau=sentence them spaces step sentence 2
 yip     -     copy 1 paragraph=sentences
 yap     -     copy 1 paragraph=sentences them \n=xuong dong
 
-
+#searching #y/ #c/
+#copytoword #changetoword #cuttoword
 giong use voi searching
 d/{words}   cut letters den khi gap 'words'
-c/{words}   cut letters den khi gap 'words' roi into insert mode
+c/{words}   change letters den khi gap 'words' roi into insert mode
 y/{words}   copy letters den khi gap 'words' thi stop
 -------------------------------------------------------------------------------
                                 
                                 targets.vim
 operator d cut text nhung van o normal mode
-operator c cut text nhung into insetmode add them text
+operator c cut-change text nhung into insertmode add them text
 
 {operator}{i|I|a|A}{text-objects}
 
@@ -430,15 +449,15 @@ quote text objects:
 separator text object:
    , . ; : + - = ~ _ * # / | \ & $ 
 
-
+#content #pair
 operator:
     v = visual mode = selete text
     d       cut text,van o normal mode
-    c       cut text, swap to insert mode, 
+    c       cut-change text, swap to insert mode, 
 
 {I|i|a|A}:
     I = all context KO co space
-    i = all content bao gom spaces dau cuoi trong pair
+    i = giong I, them spaces before-after content, tru cap pair
     a = giong i, them cap pair of content
     A = giong a, them more spaces 
 
@@ -523,13 +542,14 @@ inq anq Inq Anq ilq alq Ilq Alq
 
 --------------------------------------------------------------------------------
                                     vim-surround 
+#pair
 cut, replace pair = {} [] '' "" ``, ...
 text object = iw 
 
 ds{pair}                cut pair
 cs[{                    change ngoac [] thanh ngoac {}
 
-
+#addpair
 ys{text-object}{pair}    add pair
 ysw"                    add "" wrap    current cursor to end 1 word
 ys3w"                   add "" wrap    current cursor to end 3 word
@@ -564,11 +584,13 @@ rieng tag phai press them <enter>
 ysstp + enter           add tag=<p> wrap     1 line
 ysstdiv + enter         add tag=<div> wrap     1 line
 
+#changepair
 cs(*            change () thanh **
 csb*            change () thanh **
 csbtp           change () thanh tag <p>
 cs(tp           change () thanh tag <p>
 
+#cutpair
 dst             cut=del tag html
 dsb             cut=del ()
 ds<             cut=del <>
@@ -589,6 +611,7 @@ S"       -     add "" for 3 word
 <leader>        is ';'
 <leader>cmd     ;cmd
 
+#uppercase #titlecase
 gzz      -     all title current line
 gzw      -     title 1 word
 gz3w     -     title 3 word
@@ -604,6 +627,7 @@ gz)     -     next words file
 
 vim system
 
+#uppercase #titlecase
 ~       invert case current 1 letter
 Vu      lowercase 1 line
 VU      uppercase 1 line
@@ -617,6 +641,7 @@ gu{t f}{letter}
 gu<cr>  lowercase 2 line
 gU<cr>  upeercase 2 line
 
+#invertcase
 g~<cr>   invert case letters 2 line
 g~~      invert case letters to end 1 line
 
@@ -628,6 +653,7 @@ gUw      make a word uppercase
 
 --------------------------------------------------------------------------------
                                     tabular.vim
+#tab #tabalign
 align text=can chinh text
 '<,'>   la select text = visual mode
 r{int}   right
@@ -642,8 +668,42 @@ l(int)   left
 
 --------------------------------------------------------------------------------
                                         emmet
+nho press tab khi end
 ctrl y ,     -     vao tag: emmet
+p[class="name"]{tao la content}                <p class="name">tao la content</p>
+.box                                            <div class="box"></div>     
+#box                                            <div id="box"></div>
+p+p                                             <p></p><p></p>
+p>a      tag p chua tag a                       <p><a></a></p>
+ul>li*5         ul chua 5 li
 
+ul>li.item$*5
+<ul>
+    <li class="item1"></li>
+    <li class="item2"></li>
+    <li class="item3"></li>
+    <li class="item4"></li>
+    <li class="item5"></li>
+</ul>
+
+div+div>p>span+em^bq
+<div></div>
+<div>
+    <p><span></span><em></em></p>
+    <blockquote></blockquote>
+</div>
+
+^       jumpto 1 level
+^^      jumpto 2 level
+div+div>p>span+em^^bq
+<div></div>
+<div>
+    <p><span></span><em></em></p>
+</div>
+<blockquote></blockquote>
+
+more ....
+https://docs.emmet.io/cheat-sheet/
 
 
 --------------------------------------------------------------------------------
@@ -658,13 +718,13 @@ f là buffer file
 
 --------------------------------------------------------------------------------
                                     fold
-folder la group cac <tab> khi ve 1 dong nhieu cho gon
+folder la group cac <tab> khi ve 1 line cho gon
 
 zi     -     open/close all folds
 zo     -     open 1 fold
 zc     -     close 1 fold
 --------------------------------------------------------------------------------
-                        text object
+                        text-object
 {operator}{a|i}{text-object}
 
 text-object
@@ -927,9 +987,12 @@ del lines containing "string"
 :%s#<[^>]\+>##g	        Delete HTML tags but keeps text
 :%s/^\(.*\)\n\1$/\1/	Delete lines which appears twice
 
+=========================================tmux=================================================
+
 #copy #paste
 #tmux-yank
 bind = ctrl a
+
 quick: mouse drag select text + y  => copy text
 copy mode: <prefix> [
 v  vao visual mode selete text
@@ -953,8 +1016,8 @@ nen save lan dau
 bind <c-s>
 bind <c-r>
 
-
-# session > window > pane
+# window=tab
+# session > window > pane=buffer
 #session 
 bind=<prefix> = <c-b> = <c-a>
 bind s     -     list sessions
@@ -963,19 +1026,22 @@ bind w     -     list windows
 bind f         =     searching sessions
 bind <c-f>     =     searching windows
 
+#new #session #window
+bind ctrl c     =     create a new session at current window
+bind ctrl c     =     create a new session new tab=window
+bind -          =     create a horizontal pane=buffer
+bind _          =     create a vertical pane=buffer
+
+#close
+bind &     -     close window
+bind x     -     Xoá panel=buffer
+
+
 #rename
 bind $     rename the current session
 bind ,     rename the current window
 
 bind d     detach from the current session
-
-bind ctrl c     =     create a new session
-bind c          =     create a new window
-bind -          =     create a horizontal pane
-bind _          =     create a vertical pane
-
-bind &     -     close window
-bind x     -     Xoá panel
 
 0 to 9 select windows 0 through 9
 bind ctrl+h     -     prev window
@@ -1049,7 +1115,7 @@ panel
 
 #vertically
 <c-b> %
-================================================================================
+=====================================terminal===========================================
 #terminal
 
 #motion 

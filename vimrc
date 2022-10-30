@@ -12,7 +12,7 @@ Plug 'severin-lemaignan/vim-minimap'
 Plug 'ryanoasis/vim-devicons'
 
 "autocomplete
-Plug 'valloric/youcompleteme'
+"Plug 'valloric/youcompleteme'
 
 
 "
@@ -409,8 +409,8 @@ map  N <Plug>(easymotion-prev)
 " phai map to <C-j> tranh xung dot youcompleteme
 let g:UltiSnipsExpandTrigger="<C-j>" 
 
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-tab>"        "up
+let g:UltiSnipsJumpForwardTrigger="<tab>"           "down
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
