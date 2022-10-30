@@ -31,7 +31,8 @@ ctrl j          snippet = autocomple-code
 zi              fold = show or hide code
 
 ctrl oo         open file new close
-ctrl ww         between nerdtree and buffer
+ctrl ww         select next buffer
+ctrl wr         swap buffer above
 
 :source ~/.vim/vimrc    reload vim
 
@@ -930,7 +931,7 @@ m?           Open location list and display markers from current buffer
 
 --------------------------------------------------------------------------------
 
-#substitute #replace #ex
+#substitute #replace-word #ex
 %s      all lines
 s       chi 1 line
 gi      khong phan biet lower upper
@@ -941,6 +942,8 @@ gic     aciton cua 2 line tren
 '<,'>     -     select content visual mode
 &         -     repeat replace
 * .       -     zero or more characters
+
+:%s/old/new/g           replace all 'old' thanh 'new'
 
 :s/du.g/thong == :s/du*g/thong
 
