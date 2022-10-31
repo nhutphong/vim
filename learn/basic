@@ -1,8 +1,29 @@
+f
+/var enter
+cgn{new-word}jj
+n.      n jumpto to next word, . repeat cmd truoc do
+
+
+20gg        jumpto line20
+10-         -10 jumpto line
+10 enter    +10 jumpto line
+
+macros:
+    q{macros-name=char}         register macros
+    code vim
+    q       end register macros
+
+    @macros-name        run macros da register
+
+#normal-mode
+ctrl a      count int len +1
+:noh        turn off searching highlight
 
 
 ki hieu ^ trong menu of vim ==== la phim ctrl
 u           undo=prev=qua-khu
 ctrl r      redo=next=tuong-lai
+
 
 
 1 tab default co:
@@ -346,6 +367,11 @@ dtp        -     cut den khi gap 'p' thi stop NO cut 'p'
 d/haha     -     cut den khi gap 'haha' thi stop all lines
 ggdG       -     gg=nhau ve dau file, dG cut den cuoi file
 J          -     join down line with current line
+
+y10h        copy 10 prev chars
+y10l        copy 10 next chars
+y10k        copy 10 line above
+y10j        copy 10 line below
 
 
 yy          -     copy 1 line
@@ -848,7 +874,7 @@ qAgUq     -     append gU vao register name=a dung upper A
 
 
 #macros
-luu nhieu acitons trong vim, dung dot. de repeat
+luu lai vim-code va dung lai no
 nen dung omap: 0 $ w e b
 tranh dung h j k l -> vi khong biet do lai cua line 
 ^]     =    press <esc>
@@ -872,9 +898,9 @@ recursive
                                 #marks and positions
 set name= 1 vi tri nao do, de jump to
 
-:marks        |     list of marks
 m{a-zA-Z}     |     set current position for mark A
 `a            |     jump to position co name=a
+:marks        |     list of marks
 
 
 :delmarks a        |     delete mark a
@@ -1077,7 +1103,7 @@ bind )     -     jump to next session
 #panes
 bind q     show pane numbers
 bind o     toggle between panes
-bind {     swap with previous pane
+bind {     swap with prev pane
 bind }     swap with next pane
 bind !     break the pane out of the window
 

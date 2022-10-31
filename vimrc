@@ -183,9 +183,13 @@ set cursorcolumn
 " cterm, gui =  bold italic underline reverse none.
 
 
+
 if has("gui_running")
-    " setup for gvim
+    " setup for gvim, trong block if else moi co effect
     colo molokayo
+    
+    " color cho comment
+    hi Comment guifg=green
 
     " highlght visual mode
     hi visual gui=bold guibg=silver guifg=red
@@ -199,6 +203,8 @@ else
     " setup for vim=terminal
     "set background=dark
     colo oceanic_material
+
+    hi Comment ctermfg=green
 
     hi visual cterm=bold ctermbg=darkblue ctermfg=red
 
