@@ -76,6 +76,31 @@ noremap \ jj        "\ tuc jumpto to down 2 line, khong phai <esc>
 noremap remap key = root key vim NOT recursive
 
 
+#range
+%                all lines
+
+:[range]{mode} [cmd=motion ...]
+:%norm A;          -     add ';' vao end all lines
+:%norm di'             -     cut content in ''
+:28put=range(5,55)     -     list numbers into lines under line28
+
+:for i in range(1,20) | put='192.168.1'.i | endfor
+
+:colorscheme <c-d>     #     list colorscheme
+
+#cut #change #copy use :command from line number ot line number
+:[from],[to]{d,c,y}
+
+:3,8y       copy from line3 to line8
+:3,10d      cut from line3 to line10
+:8y         copy line8
+:8d         cut line8
+
+:%d         cut all lines
+:.,$d       cut current line to end file
+
+
+#bash code
 :!cmd_bash_terminal
 
 :e file.txt     -     open file in current buffer
@@ -154,20 +179,7 @@ con :first :last :next :previous
 :bufdo %s/pattern/replace/ge | update
 
 all windows
-:windo %s/pattern/replace/ge
-
-
-#range
-%                all lines
-
-:[range]{mode} [cmd=motion ...]
-:%norm[al] A;          -     add ';' vao end all lines
-:%norm di'             -     cut content in ''
-:28put=range(5,55)     -     list numbers into lines under line28
-
-:for i in range(1,20) | put='192.168.1'.i | endfor
-
-:colorscheme <c-d>     #     list colorscheme
+:windo %s/pattern/replace/ge   
 
 
 left         -     right
@@ -263,12 +275,8 @@ sentences : la 1 cau stop boi dot<.>
 5gg        -     go to line 5
 ctrl g     -     xem thông tin dòng hiện tại
 
-0          -     jump to the start of the line
-$          -     jump to the end of the line
-
-#^ first-character last-character of line
-^          -     jump to the first non_blank character of the line
-g_         -     jump to the last non_blank character of the line
+0   /   $       start / end of line
+^   /   g_      first / last word of line
 
 gm         -     jumpto center screen
 gM         -     jumpto center line
@@ -296,9 +304,7 @@ ctrl b     -     move back one full screen
 ctrl f     -     move forward one full screen
 
 
-
 --------------------------------------------------------------------------------
-
                             normal mode:
 
                             DELETE=CUT
@@ -342,9 +348,8 @@ R       replace more chars
 r       replace 1 char
 
 
-
 %            -     to ) } ]
-dd cc yy     -     copy or cut quick full 1 line
+dd cc yy     -     cut change copy 1 line
 gN           -     vselect to prev match word
 gn           -     vselect to next match word
 
@@ -378,6 +383,7 @@ yy          -     copy 1 line
 dd          -     cut 1 line
 cc          -     cut all words current line into insert mode
 c enter     -     = cc
+dgg / dG        cut to start file / end file
 
 y^      -     copy to word start line non blank
 yg_     -     copy to word end line non blank
@@ -409,6 +415,10 @@ ctrl x     =     int-1
                                     #easymotion
 N       jumpto prev match char
 n       jumpto next match char
+
+*       highlight quick words(ca file) at current cursor (== ctrl d of sublime text)
+*       next words da highlight
+
 
 /[words]        searching words full file 
 ;f              search 1 char full file
@@ -675,9 +685,6 @@ g~~      invert case letters to end 1 line
 guw      make a word lowercase
 gUw      make a word uppercase
 >g       tab word
-
-
-
 --------------------------------------------------------------------------------
                                     tabular.vim
 #tab #tabalign
@@ -691,8 +698,6 @@ l(int)   left
 :'<,'>Tabularize /=        -     cang chinh theo =
 :'<,'>Tabularize /:/r0     -     cang chinh theo : right 0 space
 :'<,'>Tabularize /:\zs     -     theo space ignoze :  content right, align left for content
-
-
 --------------------------------------------------------------------------------
                                         emmet
 nho press tab khi end
@@ -731,8 +736,6 @@ div+div>p>span+em^^bq
 
 more ....
 https://docs.emmet.io/cheat-sheet/
-
-
 --------------------------------------------------------------------------------
 #undo u
 :ea[rlier] {int}{s m h d f}
@@ -839,7 +842,6 @@ U          -     change marked text to uppercase
 =iB     - re-indent inner block with {}
 gg=G    - re-indent entire buffer
 ]p      - paste and adjust indent to current line
-
 
 --------------------------------------------------------------------------------
                                 #register
@@ -953,7 +955,6 @@ m[0-9]       Toggle the corresponding marker !@#$%^&*()
 ]=           Jump to next line having a marker of any type
 [=           Jump to prev line having a marker of any type
 m?           Open location list and display markers from current buffer
-
 
 --------------------------------------------------------------------------------
 
