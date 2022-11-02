@@ -55,10 +55,16 @@ Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 
 
-"colorschemy
+"colorscheme
 Plug 'altercation/vim-colors-solarized'
 Plug 'https://github.com/rafi/awesome-vim-colorschemes.git'
 Plug 'kabbamine/vcoolor.vim'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'ajmwagar/vim-deus'
+Plug 'srcery-colors/srcery-vim'
+Plug 'fedepujol/nv-themes'
+Plug 'dracula/vim', { 'as': 'dracula' }
+
 
 " color indent line
 Plug 'yggdroot/indentline'
@@ -111,12 +117,12 @@ call plug#end()
 
 
 "vim-plug
-"source %  -> reload file
-"PlugInstall
-"plugUpdate -> update plugin
-"PlugClean -> delete
+":source %          reload file
+":PlugInstall       install
+":plugUpdate        update plugin
+":PlugClean         delete
 
-"PlugUpgrade -> upgrade itself
+"PlugUpgrade    -> upgrade itself
 
 set nocompatible              " required
 
@@ -182,11 +188,12 @@ set cursorcolumn
 " color select text in visual mode
 " cterm, gui =  bold italic underline reverse none.
 
+set background=dark
 
 
 if has("gui_running")
     " setup for gvim, trong block if else moi co effect
-    colo molokayo
+    colo srcery 
     
     " color cho comment
     hi Comment guifg=green
@@ -228,8 +235,8 @@ au FileType python
 au FileType html,css,js
   \ setlocal ts=2 sw=2 sts=2 
 
-"mau=dark
-"darkblue desert evening  gruvbox dogrun atom molokayo space-vim-dark darkblue
+"mau=dark colorscheme
+"srcery darkblue desert evening  gruvbox dogrun atom molokayo space-vim-dark darkblue
 "torte sonokai peachpuff onedark OceanicNext
 
 "mau=white
@@ -263,9 +270,9 @@ set rulerformat=%l,%v
 
 
 " Browse & Scroll
-
 set scrolloff=5
 set laststatus=2
+
 " Speed up scrolling in Vim
 set ttyfast
 
