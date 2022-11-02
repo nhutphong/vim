@@ -1023,6 +1023,9 @@ del lines containing "string"
 #tmux-yank
 bind = ctrl a
 
+#chi can lam 1 lan
+bind I      auto restore session when start os linux
+
 bind:       :comand
 
 quick: mouse drag select text + y  => copy text

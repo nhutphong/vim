@@ -333,14 +333,14 @@ nnoremap <silent> ]B :blast<CR>      " last buffer
 nmap <leader>vimrc :e ~/.vim/vimrc<cr>
 nmap <leader>zshrc :e ~/.zshrc<cr>
 nmap <leader>bashrc :e ~/.bashrc<cr>
+nmap <leader>tmuxconf :e ~/.tmux/.tmux.conf.local<cr>
 
 nnoremap <F5> :UndotreeToggle<CR>
 nnoremap <F10> :NERDTree<CR>
 nmap <F8> :TagbarToggle<CR>
 
 "reload file source file_name
-map <leader>xvimrc :so ~/.vimrc<cr>
-
+nmap <leader>loadvim :so ~/.vim/vimrc<cr>
 
 "colo ron trong file vimrc = :colo ron<cr> trong command vim
 "set<space> = :
