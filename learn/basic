@@ -1,4 +1,4 @@
-f
+
 /var enter
 cgn{new-word}jj
 n.      n jumpto to next word, . repeat cmd truoc do
@@ -34,7 +34,7 @@ ctrl n      newtab + buffer empty
 t           cursor tai folder thi, la newtab chua nerdtree+buffer-empty
 t           cursor tai file thi, la newtab, chi co buffer-file-duoc-mo
 
-:tabc       = close tab
+:tabc       = close 1 tab == close all buffer
 gT      prev tab
 gt      next tab
 
@@ -43,7 +43,8 @@ gt      next tab
 o       open tree
 x       close tree
 u       jumpto prev tree
-C       jumpto next tree
+C       change tree root to cursor(select dir)
+CD      change tree root to cwd 
 cd      set pwd is current tree
 i       open file theo chieu ngang=horizontal buffer
 s       open file theo chieu doc=vertical buffer
@@ -54,6 +55,63 @@ zi              fold = show or hide code
 ctrl oo         open file new close
 ctrl ww         select next buffer
 ctrl wr         swap buffer above
+
+:e[dit] file            edit a file in a new buffer
+:bn[ext]                go to the next buffer
+:bp[revious]            go to the previous buffer
+:bd[elete]              delete a buffer (close a file)
+:b[uffer]#              go to a buffer by index #
+:b[uffer] file          go to a buffer by file
+:ls or :buffers         list all open buffers
+:sp[lit] file           open a file in a new buffer and split window
+:vs[plit] file          open a file in a new buffer and vertically split window
+:vert[ical] ba[ll]       edit all buffers as vertical windows
+:tab ba[ll]              edit all buffers as tabs
+
+Ctrl ws        split buffer
+Ctrl wv        split buffer vertically
+Ctrl wT        move current buffer into newtab
+Ctrl wq        quit a buffer
+Ctrl wx        exchange current buffer with next one
+Ctrl w=        make all buffers equal height & width
+Ctrl wh        move cursor to the left buffer (vertical split)
+Ctrl wl        move cursor to the right buffer (vertical split)
+Ctrl wj        move cursor to the buffer below (horizontal split)
+Ctrl wk        move cursor to the buffer above (horizontal split)
+Ctrl wH        make current buffer full height at far left (leftmost vertical buffer)
+Ctrl wL        make current buffer full height at far right (rightmost vertical buffer)
+Ctrl wJ        make current buffer full width at the very bottom (bottommost horizontal buffer)
+Ctrl wK        make current buffer full width at the very top (topmost horizontal buffer)
+
+
+:tabnew or :tabnew {page.words.file}         open a file in a new tab
+gt or :tabn[ext]                 move to the next tab
+gT or :tabp[revious]                 move to the previous tab
+#gt                         move to tab number #
+:tabm[ove] #                 move current tab to the #th position (indexed from 0)
+:tabc[lose]                  close the current tab and all its windows
+:tabo[nly]                   close all tabs except for the current one
+:tabdo command               run the command on all tabs (e.g. :tabdo q - closes all opened tabs)
+
+
+zf       manually define a fold up to motion
+zd       delete fold under the cursor
+za       toggle fold under the cursor
+zA
+zo       open fold under the cursor
+zc       close fold under the cursor
+zr       reduce (open) all folds by one level
+zm       fold more (close) all folds by one level
+zi       toggle folding functionality
+]c       jump to start of next change
+[c       jump to start of previous change
+do or :diffg[et]             obtain (get) difference (from other buffer)
+dp or :diffpu[t]             put difference (to other buffer)
+:diffthis                    make current window part of diff
+:dif[fupdate]                update differences
+:diffo[ff]                  switch off diff mode for current window
+
+
 
 :source ~/.vim/vimrc    reload vim
 
@@ -826,21 +884,22 @@ gv-
 o-
 
 >.         -     two tab indent text
->>         -     shift text right
-<<         -     shift text left
 y          -     yank (copy) marked text
 d          -     cut marked text
 ~          -     switch case
 u          -     change marked text to lowercase
 U          -     change marked text to uppercase
 
+#indent
+<<         -     indent text left
+>>         -     indent text right
 >%      - indent a block with () or {} (cursor on brace)
 >ib     - indent inner block with ()
 >at     - indent a block with <> tags
 3==     - re-indent 3 lines
 =%      - re-indent a block with () or {} (cursor on brace)
 =iB     - re-indent inner block with {}
-gg=G    - re-indent entire buffer
+gg=G    - re-indent all line buffer
 ]p      - paste and adjust indent to current line
 
 --------------------------------------------------------------------------------
@@ -1081,6 +1140,8 @@ bind x     -     Xoá panel=buffer if ch con 1 panel thi close window lun
 
 #searching
 bind f         =     searching windows
+
+bind {a, <tab>}      next tab
 
 #rename
 bind $     rename the current session
