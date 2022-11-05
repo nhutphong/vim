@@ -25,7 +25,33 @@ keyname =
 <PageUp>       Page-Up
 <PageDown>     Page-Down
 <bar>          the '|' character, which otherwise needs to be escaped '\|'
+<C-S-v>         ctrl + shift + v
 
 sau hai_cham la :expresion
 
 mode <keyname> :expression
+
+
+
+nmap vmap imap
+nnoremap vnoremap inoremap onoremap cnoremap tnoremap
+
+
+:let mapleader = ";"
+  <leader> = ;
+:nnoremap <leader>d dd
+
+#recursive
+:nmap - dd
+:nmap \ -
+
+\  sẽ run -, - run dd
+
+#delete 
+:nunmap -
+:nunmap \
+
+#recursive-non
+:nmap x dd
+:nnoremap \ x
+\  sẽ run x default, tức là xoá 1 char

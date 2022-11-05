@@ -16,23 +16,24 @@ macros:
     @macros-name        run macros da register
 
 #normal-mode
-ctrl a      count int len +1
+ctrl x  / ctrl a        count -1 / +1 
 :noh        turn off searching highlight
-
 
 ki hieu ^ trong menu of vim ==== la phim ctrl
 u           undo=prev=qua-khu
 ctrl r      redo=next=tuong-lai
 
-
-
+----------------------------------------nerdtree----------------------------------------
 1 tab default co:
     buffer nerdtree(=tree folder manage folders files)
     buffer empty
 
+#open-file
 ctrl n      newtab + buffer empty
 t           cursor tai folder thi, la newtab chua nerdtree+buffer-empty
-t           cursor tai file thi, la newtab, chi co buffer-file-duoc-mo
+t           open file into newtab
+s       open file theo chieu doc=vertical buffer
+i       open file theo chieu ngang=horizontal buffer
 
 :tabc       = close 1 tab == close all buffer
 gT      prev tab
@@ -46,13 +47,13 @@ u       jumpto prev tree
 C       change tree root to cursor(select dir)
 CD      change tree root to cwd 
 cd      set pwd is current tree
-i       open file theo chieu ngang=horizontal buffer
-s       open file theo chieu doc=vertical buffer
+---------------------------------------nerdtree end----------------------------------------
 
 ctrl j          snippet = autocomple-code
 zi              fold = show or hide code
 
 ctrl oo         open file new close
+Ctrl wq         quit a buffer
 ctrl ww         select next buffer
 ctrl wr         swap buffer above
 
@@ -68,26 +69,27 @@ ctrl wr         swap buffer above
 :vert[ical] ba[ll]       edit all buffers as vertical windows
 :tab ba[ll]              edit all buffers as tabs
 
-Ctrl ws        split buffer
-Ctrl wv        split buffer vertically
+Ctrl wv        split buffer vertically=left-right
+Ctrl ws        split buffer horizontal=above-below
 Ctrl wT        move current buffer into newtab
-Ctrl wq        quit a buffer
 Ctrl wx        exchange current buffer with next one
 Ctrl w=        make all buffers equal height & width
+
 Ctrl wh        move cursor to the left buffer (vertical split)
 Ctrl wl        move cursor to the right buffer (vertical split)
-Ctrl wj        move cursor to the buffer below (horizontal split)
 Ctrl wk        move cursor to the buffer above (horizontal split)
-Ctrl wH        make current buffer full height at far left (leftmost vertical buffer)
-Ctrl wL        make current buffer full height at far right (rightmost vertical buffer)
-Ctrl wJ        make current buffer full width at the very bottom (bottommost horizontal buffer)
-Ctrl wK        make current buffer full width at the very top (topmost horizontal buffer)
+Ctrl wj        move cursor to the buffer below (horizontal split)
+
+Ctrl wH        swap buffer left-vertical=doc
+Ctrl wL        swap buffer right-vertical=doc
+Ctrl wK        swap buffer above-horozontal=ngang
+Ctrl wJ        swap buffer below-horozontal=ngang
 
 
 :tabnew or :tabnew {page.words.file}         open a file in a new tab
 gt or :tabn[ext]                 move to the next tab
-gT or :tabp[revious]                 move to the previous tab
-#gt                         move to tab number #
+gT or :tabp[revious]             move to the previous tab
+#gt                          move to tab number #
 :tabm[ove] #                 move current tab to the #th position (indexed from 0)
 :tabc[lose]                  close the current tab and all its windows
 :tabo[nly]                   close all tabs except for the current one
@@ -109,8 +111,7 @@ do or :diffg[et]             obtain (get) difference (from other buffer)
 dp or :diffpu[t]             put difference (to other buffer)
 :diffthis                    make current window part of diff
 :dif[fupdate]                update differences
-:diffo[ff]                  switch off diff mode for current window
-
+:diffo[ff]                   switch off diff mode for current window
 
 
 :source ~/.vim/vimrc    reload vim
@@ -158,6 +159,100 @@ noremap remap key = root key vim NOT recursive
 :.,$d       cut current line to end file
 
 
+--------------------------------------------------------------------------------
+#substitute #replace-word #moveto #copyto #ex
+
+?pattern?       prev
+/pattern/       next
+
+%s / 1,$    all lines
+s           chi 1 line
+gi          khong phan biet lower upper
+gI          phan biet lower upper
+gc          thong bao truoc khi action
+gic         aciton cua 2 line tren
+
+'<,'>     -     select content visual mode
+&         -     repeat replace
+*         -     zero or more characters
+
+0       first file
+$       end file
+.       current line
+.+3     line1049 = line1046+3
+
+:3,5d           delete line-range3,5
+:3,5t 30        line-range3,5 copyto below line30
+:3,5m 30        line-range3,5 moveto below line30
+
+:%s/old/new/g           replace all 'old' thanh 'new'
+:s/du.g/thong == :s/du*g/thong
+
+#d=cut t=copyto m=moveto
+:21,25d	    delete lines 21 to 25 inclusive
+:$d	        delete the last line
+:1,.-1d	    delete all lines before the current line
+:.+1,$d	    delete all lines after the current line
+:21,25t 30  	copy lines 21 to 25 inclusive to just after line 30     #copyto
+:$t 0	        copy the last line to before the first line             #copyto
+:.t .+10        copy current line to curent line+10
+:21,25m 30  	move lines 21 to 25 inclusive to just after line 30     #moveto
+:$m 0	        move the last line to before the first line             #moveto
+
+#use mark in command 
+:'a,'bd	                    delete lines from mark a to mark b, inclusive
+:.,'bd	                    delete lines from the current line to mark b, inclusive
+:'a,'bm 0	                move lines from mark a to b inclusive, to the beginning
+:'a,'bw file.txt	        write lines from mark a to b to file.txt
+:'a,'bw >> file.txt     	append lines from mark a to b to file.txt
+
+\={vimcode}
+:%s//\=@a/g       |     insert content with run macros a
+:%s//<c-r>0/g     |     insert content with register 0
+
+:%s/old/new/g           Replace all occurences of old by new in file
+:%s/onward/forward/gi	Replace onward by forward, case unsensitive=ko phan biet lower upper
+:%s/old/new/gc          Replace all occurences with confirmation=thong bao
+:%s/^/hello/g	        Replace the begining of each line by hello
+:%s/$/Harry/g           Replace the end of each line by Harry
+:.,$s/dung/thong/g      replace 'dung' by thong from current line to end line of file
+:.+4,$s/dung/thong/g
+:.,+4/dung/thong/g
+:36,42s/Unix/Linux/g    Replace Unix by Linux, line36 to  line42
+
+\<str_old\>
+\(bad|good\)
+:s/\<is\>/was/g         replace chinh xac word=is = was
+:s/\(bad|godd\)/haha/g  replace 'bad' or 'good' by 'haha'
+
+
+#global action #ex
+:[range]g[!]/{pattern}/[cmd][motion]
+cmd co t=copy m=move p=print ...
+
+^   start of line
+$   end of line
+\s* zero or more space characters
+
+del lines containing "string"
+:g/old/                 list all lines matching 'old'
+:w my.txt               write all lines to file 'my.txt'
+:%s/ *$//g	            Delete all white spaces
+:g/^$/d                 delete all lines empty
+:g/string/d	            Delete all lines containing "string"
+:g!/string/d	        Delete all lines containing which didn’t contain "string"
+:v/string/d	            Delete all lines containing which didn’t contain "string"
+
+:s/Bill/Steve/	        Replace the first occurence of Bill by Steve in current line
+:s/Bill/Steve/g	        Replace Bill by Steve in current line
+:%s/Bill/Steve/g	    Replace Bill by Steve in all the file
+:%s/^M//g	            Delete DOS carriage returns (^M)
+:%s/\r/\r/g	            Transform DOS carriage returns in returns
+:%s#<[^>]\+>##g	        Delete HTML tags but keeps text
+:%s/^\(.*\)\n\1$/\1/	Delete lines which appears twice
+
+
+=========================================tmux=================================================
 #bash code
 :!cmd_bash_terminal
 
@@ -168,6 +263,10 @@ noremap remap key = root key vim NOT recursive
 :w              -     lưu file
 :w!             -     bắt buộc ghi file (ghi đè)
 :wq             -     lưu xong thoát
+:1,10 w myfile          save line 1 to 10 in myfile
+:1,10 w >> myfile       append line 1 to 10 to myfile
+:r myfile               insert content of myfile to current line of buffer
+:234 myfile             insert content of myfile under line23
 
 --------------------------------------------------------------------------------
 #buffer
@@ -178,8 +277,8 @@ noremap remap key = root key vim NOT recursive
 :bd {b1 b2 b2}   -     Close b1 b2 b3 
 
 :ls<cr>     list buffers set(1 2 3 4 5 ...)
-:bp<cr>     prev buffer
-:bn<cr>     next buffer
+[b  /  :bp<cr>     prev buffer
+]b  /  :bn<cr>     next buffer
 :1b<cr>     select buffer 1
 :2b<cr>     select buffer 2
 
@@ -319,14 +418,12 @@ e      -     next end word
 
 sentences : la 1 cau stop boi dot<.>
 
-{      -     jump to prev line empty giua cac paragraph=1 doan=nhieu sentencess
-}      -     jump to next line empty giua cac paragraph=1 doan=nhieu sentences
+( / )         jumpto prev / next sentences
+{ / }         jumpto prev / next line empty giua cac paragraph=1 doan=nhieu sentencess
 
-(      -     jump to prev sentences
-)      -     jump to next sentences
 
-%      -     jump to () or {}, [], ...
-[[     -     jump to prev func or class
+%      -     jumpto () or {}, [], ...
+[[     -     jumpto prev func or class
 
 
 "jump to line   [count=int]gg
@@ -514,8 +611,16 @@ yt;     -     copy letters to khi gap ';' thi stop
 copy    cut=d  change=c  visual=v cung vay 
 yis     -     copy 1 cau=sentence
 yas     -     copy 1 cau=sentence them spaces step sentence 2
-yip     -     copy 1 paragraph=sentences
-yap     -     copy 1 paragraph=sentences them \n=xuong dong
+ct<    change toi <
+
+#more sentences= nhieu cau, nen dung a thay cho i
+cis         change het 1 cau = sentence 
+ya3s        copy 3 cau
+ca4s        change 4 cau
+da4s        cut 4 cau
+
+yip     -     copy above lines, gap line-empty stop
+yap     -     giong yip, them + \n
 
 #searching #y/ #c/
 #copytoword #changetoword #cuttoword
@@ -526,20 +631,23 @@ y/{words}   copy letters den khi gap 'words' thi stop
 -------------------------------------------------------------------------------
                                 
                                 targets.vim
+#change-content
 operator d cut text nhung van o normal mode
 operator c cut-change text nhung into insertmode add them text
 
 {operator}{i|I|a|A}{text-objects}
+hay dung nhat la i a
 
 {operator}{i|I|a|A}[l|n]{text-object}
 them [l|n] dung cho text-object left=prev=above next=right=below
 
-pair text objects:
-    () {} [] <> '' "" ``
-    ( content haha thong dung )
 
-quote text objects:
-    '' "" ``
+int{operator}{i|I|a|A}[l|n]{text-object}
+
+pair text objects: use b thay the cho () [] {}
+
+quote text objects: use q thay the cho '' "" ``
+
 
 separator text object:
    , . ; : + - = ~ _ * # / | \ & $ 
@@ -559,49 +667,39 @@ operator:
 cursor into content moi dung i) 2i) or 3i) .... co count=int
 
 
-{v|d|c}{i|I|a|A}{text-object}
+{v,d,c,y}{I,i,a,A}{b,q,t,>}
 I lay content
-I(       ======         I) , nen dung thuan tay la I( ngoac tron mo
 
 I( I) I{ I} IB I[ I] I< > It 
 a ( b (    abccontent     )      wordhaha ) e 
       ||   |        |    ||     |
-      ||   ----I(----    ||     |
+      ||   ----Ib----    ||     |
       ||                 ||     |
-      ||-------i(--------||     |
+      ||-------ib--------||     |
       |                   |     |
-      |--------a(---------|     |
+      |--------ab---------|     |
       |                         |
-      |--------A(---------------|
+      |--------Ab---------------|
 
-i lay content them spaces first va last
-i( i) i{ i} iB i[ i] i< i> it
-
-a ( b ( cccccccc ) d ) e
-   │   └── i( ──┘   │
-   └───── 2i( ──────┘
+cib         jumpto block change content
+ciq         jumpto quote change content
+cit         jumpto tag-html change content
 
 
 a lay lun pair
 a( a) a{ a} aB a[ a] a< > at
 
 a ( b ( cccccccc ) d ) e
-  │   └─── a( ───┘   │
-  └────── 2a( ───────┘
+  │   └─── ab ───┘   │
+  └────── 2ab ───────┘
 
-A lay lun pair nhung cursor o pair right space
+# it dung A
+A lay lun pair nhung cursor o pair right spaces
 A( A) A{ A} AB A[ A] A< > At
 
 a ( b ( cccccccc ) d ) e
-  │   └─── A( ────┘   │
-  └────── 2A( ────────┘a
-
-
-cursor inside in pair current -> next pair ke
-next=right va pre=left
-{v|d|c}{i|I|a|A}{l|n}{text-object}
-
-in( an( In( An( il( al( Il( Al( ...
+  │   └─── Ab ────┘   │
+  └────── 2Ab ────────┘a
 
 
 argument=a
@@ -622,21 +720,28 @@ Aa      lay tu ( to spaces content2
 a , b ( contentx ,      content2 ) e
       └─── Aa ────-----|
 
-left=prev and right=next a=argument
-ina ana Ina Ana ila ala Ila Ala
 
-left next
-any block
-inb anb Inb Anb ilb alb Ilb Alb
+n == next,      {I, i, a, A} hay dung {i,a}
+{d,y,c}{i,a}{b, q, t, >}
+{d,y,c}{i,a}{l,n}{b, q, t, >}
+int=count{d,y,c}{i,a}{l,n}{b, q, t, >}
 
+# {  content1   } [   cotennt 2 ] (   content 3    )
+#cursor at block1
+cib        jumpto block change content1
+cinb       jumpto block change content2
+2cinb      jumpto block change content3
 
-left next
-any quote ' "
-inq anq Inq Anq ilq alq Ilq Alq
+l == prev
+#cursor at block3
+cib        jumpto block change content1
+cilb       jumpto block change content2
+2cilb      jumpto block change content3
 
 
 --------------------------------------------------------------------------------
                                     vim-surround 
+#add-block
 #pair
 cut, replace pair = {} [] '' "" ``, ...
 text object = iw 
@@ -664,7 +769,7 @@ timg = tag <img>
 ys3awtp + enter         add <p> wrap     3 word
 
 ysas"                   add "" wrap    1 cau = sentence (ngan cach boi dot=.)
-ysas<                   add <> wrap    1 cau = sentence (ngan cach boi dot=.)
+ysas>                   add <> wrap    1 cau = sentence (ngan cach boi dot=.)
 ysasb                   add () wrap    1 cau = sentence (ngan cach boi dot=.)
 ysas( === ysasb
 
@@ -680,14 +785,17 @@ ysstp + enter           add tag=<p> wrap     1 line
 ysstdiv + enter         add tag=<div> wrap     1 line
 
 #changepair
+# cs{pair_old}{pair_new}
 cs(*            change () thanh **
 csb*            change () thanh **
+csb>            change () thanh <>, khi change phai dung >close
 csbtp           change () thanh tag <p>
 cs(tp           change () thanh tag <p>
 
 #cutpair
-dst             cut=del tag html
 dsb             cut=del ()
+dsq             cut=del "" 
+dst             cut=del tag html
 ds<             cut=del <>
 
 
@@ -743,11 +851,12 @@ g~~      invert case letters to end 1 line
 guw      make a word lowercase
 gUw      make a word uppercase
 >g       tab word
+
 --------------------------------------------------------------------------------
                                     tabular.vim
 #tab #tabalign
 align text=can chinh text
-'<,'>   la select text = visual mode
+:'<,'>   visual mode
 r{int}   right
 c(int)   center
 l(int)   left
@@ -756,6 +865,7 @@ l(int)   left
 :'<,'>Tabularize /=        -     cang chinh theo =
 :'<,'>Tabularize /:/r0     -     cang chinh theo : right 0 space
 :'<,'>Tabularize /:\zs     -     theo space ignoze :  content right, align left for content
+
 --------------------------------------------------------------------------------
                                         emmet
 nho press tab khi end
@@ -1015,68 +1125,6 @@ m[0-9]       Toggle the corresponding marker !@#$%^&*()
 [=           Jump to prev line having a marker of any type
 m?           Open location list and display markers from current buffer
 
---------------------------------------------------------------------------------
-
-#substitute #replace-word #ex
-%s      all lines
-s       chi 1 line
-gi      khong phan biet lower upper
-gI      phan biet lower upper
-gc      thong bao truoc khi action
-gic     aciton cua 2 line tren
-
-'<,'>     -     select content visual mode
-&         -     repeat replace
-* .       -     zero or more characters
-
-:%s/old/new/g           replace all 'old' thanh 'new'
-
-:s/du.g/thong == :s/du*g/thong
-
-\={vimcode}
-:%s//\=@a/g       |     insert content with run macros a
-:%s//<c-r>0/g     |     insert content with register 0
-
-:%s/old/new/g           Replace all occurences of old by new in file
-:%s/onward/forward/gi	Replace onward by forward, case unsensitive=ko phan biet lower upper
-:%s/old/new/gc          Replace all occurences with confirmation=thong bao
-:%s/^/hello/g	        Replace the begining of each line by hello
-:%s/$/Harry/g           Replace the end of each line by Harry
-:.,$s/dung/thong/g      replace 'dung' by thong from current line to end line of file
-:.+4,$s/dung/thong/g
-:.,+4/dung/thong/g
-:36,42s/Unix/Linux/g    Replace Unix by Linux, line36 to  line42
-
-\<str_old\>
-\(bad|good\)
-:s/\<is\>/was/g         replace chinh xac word=is = was
-:s/\(bad|godd\)/haha/g  replace 'bad' or 'good' by 'haha'
-
-
-#global action #ex
-:[range]g[!]/{pattern}/[cmd][motion]
-cmd co t=copy m=move p=print ...
-
-^   start of line
-$   end of line
-\s* zero or more space characters
-
-del lines containing "string"
-:%s/ *$//g	            Delete all white spaces
-:g/^$/d                 delete all lines empty
-:g/string/d	            Delete all lines containing "string"
-:g!/string/d	        Delete all lines containing which didn’t contain "string"
-:v/string/d	            Delete all lines containing which didn’t contain "string"
-
-:s/Bill/Steve/	        Replace the first occurence of Bill by Steve in current line
-:s/Bill/Steve/g	        Replace Bill by Steve in current line
-:%s/Bill/Steve/g	    Replace Bill by Steve in all the file
-:%s/^M//g	            Delete DOS carriage returns (^M)
-:%s/\r/\r/g	            Transform DOS carriage returns in returns
-:%s#<[^>]\+>##g	        Delete HTML tags but keeps text
-:%s/^\(.*\)\n\1$/\1/	Delete lines which appears twice
-
-=========================================tmux=================================================
 
 #copy #paste
 #tmux-yank

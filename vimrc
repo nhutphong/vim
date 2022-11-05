@@ -92,6 +92,10 @@ Plug 'haya14busa/incsearch-fuzzy.vim'
 Plug 'haya14busa/incsearch-easymotion.vim'
 
 
+"multi cursor
+"Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+
+
 "github
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -198,14 +202,17 @@ if has("gui_running")
     " color cho comment
     hi Comment guifg=green
 
-    " highlght visual mode
+    " highlight visual mode
     hi visual gui=bold guibg=silver guifg=red
-
     "
+    "highlight search
+    hi Search guibg=yellow guifg=black
+
+    "highlight column cursor of number
     hi LineNr guifg=yellow
     hi cursorlinenr guifg=aqua
 
-    hi colorcolumn guibg=green
+    hi colorcolumn guibg=red
 else
     " setup for vim=terminal
     "set background=dark
@@ -215,11 +222,13 @@ else
 
     hi visual cterm=bold ctermbg=darkblue ctermfg=red
 
-    "
-    hi LineNr ctermfg=blue
-    hi cursorlinenr ctermfg=red
+    hi Search ctermbg=yellow ctermfg=black
 
-    hi colorcolumn ctermbg=green
+    "
+    hi LineNr ctermfg=yellow
+    hi cursorlinenr ctermfg=aqua
+
+    hi colorcolumn ctermbg=red
 endif
 
 " chu y khi co file .editorconfig se overrive no
