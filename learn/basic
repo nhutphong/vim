@@ -52,7 +52,8 @@ cd      set pwd is current tree
 ctrl j          snippet = autocomple-code
 zi              fold = show or hide code
 
-ctrl oo         open file new close
+ctrl oo         open file new closed
+ctrl wn         new buffer empty, horizontal
 Ctrl wq         quit a buffer
 ctrl ww         select next buffer
 ctrl wr         swap buffer above
@@ -252,7 +253,7 @@ del lines containing "string"
 :%s/^\(.*\)\n\1$/\1/	Delete lines which appears twice
 
 
-=========================================tmux=================================================
+==========================================================================================
 #bash code
 :!cmd_bash_terminal
 
@@ -422,8 +423,9 @@ sentences : la 1 cau stop boi dot<.>
 { / }         jumpto prev / next line empty giua cac paragraph=1 doan=nhieu sentencess
 
 
-%      -     jumpto () or {}, [], ...
-[[     -     jumpto prev func or class
+%      -     jumpto () or {}, [], ... close braket / close braket
+[[  /  ]]       -       jumpto prev / next func or class
+[m  /  ]m       -       giong tren nhung jumpto lun subfunc or subclass lun 
 
 
 "jump to line   [count=int]gg
@@ -811,29 +813,29 @@ S"       -     add "" for 3 word
 
 --------------------------------------------------------------------------------
                                        title case
-<leader>        is ';'
-<leader>cmd     ;cmd
 
-#uppercase #titlecase
-gzz      -     all title current line
-gzw      -     title 1 word
-gz3w     -     title 3 word
+#uppercase #lowercase #titlecase #invertcase
+~               invert case 1 char
+10~             invert case 10 char
 
-gzi(     -     title in pair
-gzi'     -     title in ''
-gza'     -     title in ''
-...
+;gzz            titlecase 1 line
+g~~             invertcase 1 line
+guu             lowercase 1 line
+gUU             uppercase 1 line
+Vu              lowercase 1 line
+VU              uppercase 1 line
 
-gz(     -     prev words file
-gz)     -     next words file
+;gzw           title 1 word
+;gz3w          title 3 word
+
+;gzib          title in pair
+;gzi'          title in ''
+;gza'          title in ''
+
+;gz(          at cursor, title words to end line above
+;gz)          at cursor, title words to end file below
 
 
-vim system
-
-#uppercase #titlecase
-~       invert case current 1 letter
-Vu      lowercase 1 line
-VU      uppercase 1 line
 
 gu{motion}
 g{u U}[i a]{w s p ( ' " < t ...}
@@ -939,10 +941,10 @@ t for tag.
 --------------------------------------------------------------------------------
 
 #insert mode
+ctrl j         -     new line
 ctrl h         -     del prev letter
 ctrl w         -     del prev word
 ctrl u         -     del to start line
-ctrl j         -     begin new line during insert mode
 ctrl t         -     indent (move right) line one shiftwidth during insert mode
 ctrl d         -     de indent (move left) line one shiftwidth during insert mode
 
@@ -1011,6 +1013,8 @@ U          -     change marked text to uppercase
 =iB     - re-indent inner block with {}
 gg=G    - re-indent all line buffer
 ]p      - paste and adjust indent to current line
+
+:3,5le 4        indent left space=4 from line3 to line5
 
 --------------------------------------------------------------------------------
                                 #register
@@ -1190,6 +1194,7 @@ bind x     -     Xoá panel=buffer if ch con 1 panel thi close window lun
 bind f         =     searching windows
 
 bind {a, <tab>}      next tab
+bind a + a           next tab
 
 #rename
 bind $     rename the current session

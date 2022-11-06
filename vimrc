@@ -10,6 +10,7 @@ Plug 'preservim/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'severin-lemaignan/vim-minimap'
 Plug 'ryanoasis/vim-devicons'
+Plug 'reedes/vim-pencil'
 
 "autocomplete
 "Plug 'valloric/youcompleteme'
@@ -22,6 +23,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'othree/html5.vim'
 Plug 'mitsuhiko/jinja2'
 Plug 'glench/vim-jinja2-syntax'
+Plug 'elzr/vim-json'
 
 
 "snippet
@@ -136,8 +138,6 @@ filetype off
 " For plug-ins to load correctly.
 autocmd filetype plugin indent on
 
-"set encoding=utf-8
-set fileencoding=utf-8
 set shell=/usr/bin/zsh
 
 set clipboard^=unnamed,unnamedplus
