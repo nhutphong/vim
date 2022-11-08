@@ -5,7 +5,7 @@
 * [fold-hotkey](#fold-hotkey)
 * [replace](#replace)  
 * [bash](#bash)
-# [buffer-ex](#buffer-ex)
+* [buffer-ex](#buffer-ex)
 * [motion](#motion)
 * [easymotion](#easymotion)
 * [searching](#searching)
@@ -24,6 +24,8 @@
 * [vim-signature](#vim-signature)
 * [tmux](#tmux)
 * [terminal](#terminal)
+
+---
 
 <h1 id="tips">tips</h1>
 
