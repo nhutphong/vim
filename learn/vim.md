@@ -1,11 +1,10 @@
 
 # menu
-    1. [tips](#tips)
-    
+    * [tips](#tips)
 
----
 
 <h1 id="tips">tips<h1/>
+
 /var enter
 cgn{new-word}jj
 n.      n jumpto to next word, . repeat cmd truoc do
