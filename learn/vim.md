@@ -1,6 +1,6 @@
 
 # menu
-[tips](#tips)
+     1. [tips](#tips)
 
 
 <h1 id="tips">tips<h1/>
