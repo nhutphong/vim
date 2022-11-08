@@ -66,6 +66,8 @@ zi              fold = show or hide code
 ```
 
 <h2 id="buffer-hotkey">buffer-hotkey<h2/>
+```
+
 ## buffer with hotkey, ex-command
 ctrl oo         open file new closed
 ctrl wn         new buffer empty, horizontal
@@ -110,8 +112,11 @@ gT or :tabp[revious]             move to the previous tab
 :tabc[lose]                  close the current tab and all its windows
 :tabo[nly]                   close all tabs except for the current one
 :tabdo command               run the command on all tabs (e.g. :tabdo q - closes all opened tabs)
+'''
 
 # fold hotkey
+```
+
 zf       manually define a fold up to motion
 zd       delete fold under the cursor
 za       toggle fold under the cursor
@@ -129,6 +134,7 @@ dp or :diffpu[t]             put difference (to other buffer)
 :dif[fupdate]                update differences
 :diffo[ff]                   switch off diff mode for current window
 
+```
 
 :source ~/.vim/vimrc    reload vim
 
@@ -144,14 +150,16 @@ dp or :diffpu[t]             put difference (to other buffer)
 <f8>     =     :TagbarToggle
 
 
-#noremap
+# noremap
 noremap jj <esc>
 noremap \ jj        "\ tuc jumpto to down 2 line, khong phai <esc>
 
 noremap remap key = root key vim NOT recursive
 
 
-#range
+# range
+```
+
 %                all lines
 
 :[range]{mode} [cmd=motion ...]
@@ -173,10 +181,11 @@ noremap remap key = root key vim NOT recursive
 
 :%d         cut all lines
 :.,$d       cut current line to end file
-
+```
 ---
 
 <h1 id="replace">replace<h1/>
+```
 #substitute #replace-word #moveto #copyto #ex
 
 ?pattern?       prev
@@ -242,6 +251,7 @@ $       end file
 :s/\<is\>/was/g         replace chinh xac word=is = was
 :s/\(bad|godd\)/haha/g  replace 'bad' or 'good' by 'haha'
 
+```
 
 #global action #ex
 :[range]g[!]/{pattern}/[cmd][motion]
@@ -268,9 +278,10 @@ del lines containing "string"
 :%s#<[^>]\+>##g	        Delete HTML tags but keeps text
 :%s/^\(.*\)\n\1$/\1/	Delete lines which appears twice
 
+---
 
-==========================================================================================
-#bash code
+# bash code
+```
 :!cmd_bash_terminal
 
 :e file.txt     -     open file in current buffer
@@ -285,8 +296,10 @@ del lines containing "string"
 :r myfile               insert content of myfile to current line of buffer
 :234 myfile             insert content of myfile under line23
 
---------------------------------------------------------------------------------
-#buffer
+---
+
+# buffer-ex
+```
 
 :n {bufname}     -     new buffer with bufname
 :b {bufname}     -     switch to bufname
@@ -354,7 +367,7 @@ con :first :last :next :previous
 
 all windows
 :windo %s/pattern/replace/ge   
-
+```
 
 left         -     right
 previous     -     next
@@ -414,7 +427,6 @@ q:     -     open window list history command: vim
 --- 
 
 <h1 id="motion">motion</h1>
-``
 ```
 
 cursor movement [count=int][operator]
@@ -587,11 +599,12 @@ c y          =     giong voi cut=d
 
 ctrl a     =     int+1
 ctrl x     =     int-1
+```
 
 ---
 
 # easymotion
-
+```
 N       jumpto prev match char
 n       jumpto next match char
 
@@ -612,9 +625,9 @@ t               search 2 char, from current cursor to end file
 ;l              jump to word right cursor tren 1 line 
 ;j              jump to word down curosr tren nhieu lines
 ;k              jump to word up cursor tren nhieu lines
+```
+---
 
-
---------------------------------------------------------------------------------
 #searching #sentence #paragraph #copytochar #change #cut #yt
 
 {d,c,y}{i,a,t,f}
@@ -652,9 +665,12 @@ giong use voi searching
 d/{words}   cut letters den khi gap 'words'
 c/{words}   change letters den khi gap 'words' roi into insert mode
 y/{words}   copy letters den khi gap 'words' thi stop
--------------------------------------------------------------------------------
-                                
+```
+
+---
+
                                 targets.vim
+```
 #change-content
 operator d cut text nhung van o normal mode
 operator c cut-change text nhung into insertmode add them text
@@ -761,10 +777,12 @@ l == prev
 cib        jumpto block change content1
 cilb       jumpto block change content2
 2cilb      jumpto block change content3
+```
 
+---
 
---------------------------------------------------------------------------------
                                     vim-surround 
+```
 #add-block
 #pair
 cut, replace pair = {} [] '' "" ``, ...
@@ -831,9 +849,8 @@ yss mapto 1g@g_
 into visual mode
 veee     -     select 3 word
 S"       -     add "" for 3 word
-
-
---------------------------------------------------------------------------------
+```
+```
                                        title case
 
 #uppercase #lowercase #titlecase #invertcase
@@ -875,9 +892,11 @@ g~~      invert case letters to end 1 line
 guw      make a word lowercase
 gUw      make a word uppercase
 >g       tab word
+```
 
---------------------------------------------------------------------------------
+---
                                     tabular.vim
+```
 #tab #tabalign
 align text=can chinh text
 :'<,'>   visual mode
@@ -889,9 +908,12 @@ l(int)   left
 :'<,'>Tabularize /=        -     cang chinh theo =
 :'<,'>Tabularize /:/r0     -     cang chinh theo : right 0 space
 :'<,'>Tabularize /:\zs     -     theo space ignoze :  content right, align left for content
+```
 
---------------------------------------------------------------------------------
+---
+
                                         emmet
+```
 nho press tab khi end
 ctrl y ,     -     vao tag: emmet
 p[class="name"]{tao la content}                <p class="name">tao la content</p>
@@ -928,7 +950,9 @@ div+div>p>span+em^^bq
 
 more ....
 https://docs.emmet.io/cheat-sheet/
---------------------------------------------------------------------------------
+```
+---
+
 #undo u
 :ea[rlier] {int}{s m h d f}
 f là buffer file
