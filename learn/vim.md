@@ -159,8 +159,6 @@ noremap remap key = root key vim NOT recursive
 
 # range
 
-```
-
 %                all lines
 
 :[range]{mode} [cmd=motion ...]
@@ -256,7 +254,6 @@ $       end file
 :s/\<is\>/was/g         replace chinh xac word=is = was
 :s/\(bad|godd\)/haha/g  replace 'bad' or 'good' by 'haha'
 
-```
 
 #global action #ex
 :[range]g[!]/{pattern}/[cmd][motion]
@@ -424,12 +421,11 @@ earlier     -     later
 _      :     underscore
 ~      :     tilde
 
---------------------------------------------------------------------------------
 
 /\v"[^"]+"<cr>           -     select content in "" lay lun ""
 /\v"\zs[^"]+\ze"<cr>     -     select content in ""
 
---------------------------------------------------------------------------------
+
 #history #list #show
 q?     -     open window list history searching prev word
 q/     -     open window list history searching next word
