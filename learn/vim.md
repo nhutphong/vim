@@ -6,7 +6,7 @@
 * [replace](#replace)  
 * [easymotion](#easymotion)
 
-<h1 id="tips">tips<h1/>
+<h1 id="tips">tips</h1>
 
 ```
 
@@ -65,7 +65,7 @@ zi              fold = show or hide code
 
 ```
 
-<h2 id="buffer-hotkey">buffer-hotkey<h2/>
+<h2 id="buffer-hotkey">buffer-hotkey</h2>
 
 ```
 
@@ -185,7 +185,7 @@ noremap remap key = root key vim NOT recursive
 
 ---
 
-<h1 id="replace">replace<h1/>
+<h1 id="replace">replace</h1>
 
 ```
 
