@@ -112,7 +112,7 @@ gT or :tabp[revious]             move to the previous tab
 :tabc[lose]                  close the current tab and all its windows
 :tabo[nly]                   close all tabs except for the current one
 :tabdo command               run the command on all tabs (e.g. :tabdo q - closes all opened tabs)
-'''
+```
 
 # fold hotkey
 ```
@@ -134,8 +134,6 @@ dp or :diffpu[t]             put difference (to other buffer)
 :dif[fupdate]                update differences
 :diffo[ff]                   switch off diff mode for current window
 
-```
-
 :source ~/.vim/vimrc    reload vim
 
 <leader> mapto ;
@@ -155,7 +153,8 @@ noremap jj <esc>
 noremap \ jj        "\ tuc jumpto to down 2 line, khong phai <esc>
 
 noremap remap key = root key vim NOT recursive
-
+``:w
+`
 
 # range
 ```
@@ -182,10 +181,12 @@ noremap remap key = root key vim NOT recursive
 :%d         cut all lines
 :.,$d       cut current line to end file
 ```
+
 ---
 
 <h1 id="replace">replace<h1/>
 ```
+
 #substitute #replace-word #moveto #copyto #ex
 
 ?pattern?       prev
@@ -277,11 +278,13 @@ del lines containing "string"
 :%s/\r/\r/g	            Transform DOS carriage returns in returns
 :%s#<[^>]\+>##g	        Delete HTML tags but keeps text
 :%s/^\(.*\)\n\1$/\1/	Delete lines which appears twice
+```
 
 ---
 
 # bash code
 ```
+
 :!cmd_bash_terminal
 
 :e file.txt     -     open file in current buffer
@@ -295,6 +298,7 @@ del lines containing "string"
 :1,10 w >> myfile       append line 1 to 10 to myfile
 :r myfile               insert content of myfile to current line of buffer
 :234 myfile             insert content of myfile under line23
+```
 
 ---
 
@@ -361,13 +365,12 @@ all files in a tree=directory
 :argdo update               -     save all buffers
 con :first :last :next :previous
 
-
 #all buffers
 :bufdo %s/pattern/replace/ge | update
 
-all windows
+#all windows
 :windo %s/pattern/replace/ge   
-```
+
 
 left         -     right
 previous     -     next
@@ -423,6 +426,8 @@ _      :     underscore
 q?     -     open window list history searching prev word
 q/     -     open window list history searching next word
 q:     -     open window list history command: vim
+
+```
 
 --- 
 
@@ -490,11 +495,12 @@ ctrl d     -     move forward 1/2 a screen
 
 ctrl b     -     move back one full screen
 ctrl f     -     move forward one full screen
+```
 
+---
 
---------------------------------------------------------------------------------
                             normal mode:
-
+```
 # paste
 P            -     paste front=prev=before of cursor
 p            -     paste behind=next=after of cursor
@@ -626,10 +632,11 @@ t               search 2 char, from current cursor to end file
 ;j              jump to word down curosr tren nhieu lines
 ;k              jump to word up cursor tren nhieu lines
 ```
+
 ---
 
-#searching #sentence #paragraph #copytochar #change #cut #yt
-
+# searching #sentence #paragraph #copytochar #change #cut #yt
+```
 {d,c,y}{i,a,t,f}
 {d,c,y}{t,f}{char}
 t gap letter thi stop
@@ -669,8 +676,9 @@ y/{words}   copy letters den khi gap 'words' thi stop
 
 ---
 
-                                targets.vim
+# targets.vim
 ```
+
 #change-content
 operator d cut text nhung van o normal mode
 operator c cut-change text nhung into insertmode add them text
@@ -781,7 +789,7 @@ cilb       jumpto block change content2
 
 ---
 
-                                    vim-surround 
+# vim-surround 
 ```
 #add-block
 #pair
@@ -850,8 +858,11 @@ into visual mode
 veee     -     select 3 word
 S"       -     add "" for 3 word
 ```
+
+---
+
+# title case
 ```
-                                       title case
 
 #uppercase #lowercase #titlecase #invertcase
 ~               invert case 1 char
@@ -893,9 +904,9 @@ guw      make a word lowercase
 gUw      make a word uppercase
 >g       tab word
 ```
-
 ---
-                                    tabular.vim
+
+# tabular.vim
 ```
 #tab #tabalign
 align text=can chinh text
@@ -912,7 +923,7 @@ l(int)   left
 
 ---
 
-                                        emmet
+# emmet
 ```
 nho press tab khi end
 ctrl y ,     -     vao tag: emmet
@@ -953,7 +964,8 @@ https://docs.emmet.io/cheat-sheet/
 ```
 ---
 
-#undo u
+# undo u
+```
 :ea[rlier] {int}{s m h d f}
 f là buffer file
 :ea 3d      undo 3day before
@@ -961,16 +973,23 @@ f là buffer file
 #redo <c-y> 
 :lat[er] {int}{s m h d f}
 :lat 3h     redo 3hour after
+```
 
---------------------------------------------------------------------------------
-                                    fold
+---
+
+# fold
+```
 folder la group cac <tab> khi ve 1 line cho gon
 
 zi     -     open/close all folds
 zo     -     open 1 fold
 zc     -     close 1 fold
---------------------------------------------------------------------------------
-                        text-object
+```
+
+---
+
+# text-object
+```
 {operator}{a|i}{text-object}
 
 text-object
@@ -983,10 +1002,13 @@ B (or {, }) for block surrounded by {}
 <, > for a block surrounded by <>
 [, ] for a block surrounded by []
 t for tag.
+```
 
---------------------------------------------------------------------------------
+---
 
-#insert mode
+
+# insert mode
+```
 ctrl j         -     new line
 ctrl h         -     del prev letter
 ctrl w         -     del prev word
@@ -1031,9 +1053,13 @@ gqip     -     format paragraph textwidth=79
 cgn [text can thay the] exit
 n   next to word
 .   repeat
+```
 
---------------------------------------------------------------------------------
-#visual commands
+---
+
+
+# visual commands, indent
+```
 #indent text #tab
 
 ctrl v     -     visual block mode
@@ -1061,10 +1087,12 @@ gg=G    - re-indent all line buffer
 ]p      - paste and adjust indent to current line
 
 :3,5le 4        indent left space=4 from line3 to line5
+```
 
---------------------------------------------------------------------------------
-                                #register
+---
 
+# register
+```
 set names de luu lai cac command cut and copy de dung lai
 "xyy     -     save context cua command=yy toi name=x
 "xp      -     paste context cua name=x
@@ -1092,9 +1120,10 @@ qAgUq     -     append gU vao register name=a dung upper A
      - - last small (less than a line) delete
      = - expression register
      _ - black hole register
+```
 
-
-#macros
+# macros
+```
 luu lai vim-code va dung lai no
 nen dung omap: 0 $ w e b
 tranh dung h j k l -> vi khong biet do lai cua line 
@@ -1114,9 +1143,12 @@ recursive
 :10,$norm @v     -     run macros for line10 to end line of file
 :%norm @v        -     run all lines
 :'<'>norm @v     -     run for select context
+```
 
---------------------------------------------------------------------------------
-                                #marks and positions
+---
+
+# marks and positions
+```
 set name= 1 vi tri nao do, de jump to
 
 m{a-zA-Z}     |     set current position for mark A
@@ -1143,9 +1175,12 @@ Ctrl o       -     go to older position in jump list
 g,           -     go to newer position in change list
 g;           -     go to older position in change list
 Ctrl  ]      -     jump to the tag under cursor
+```
 
---------------------------------------------------------------------------------
-                                    vim-signature
+---
+
+# vim-signature
+```
 marks: place, toggle and display
 
 mx           Toggle mark 'x' and display it in the leftmost column
@@ -1174,8 +1209,12 @@ m[0-9]       Toggle the corresponding marker !@#$%^&*()
 ]=           Jump to next line having a marker of any type
 [=           Jump to prev line having a marker of any type
 m?           Open location list and display markers from current buffer
+```
 
+---
 
+# tmux
+```
 #copy #paste
 #tmux-yank
 bind = ctrl a
@@ -1301,9 +1340,12 @@ ctrl a "
 
 #vertically
 ctrl a %
-=====================================terminal===========================================
-#terminal
+```
 
+---
+
+# terminal
+```
 #motion 
 bind ctrl a     -     begging line
 ctrl e          -     end line
@@ -1339,3 +1381,4 @@ alt c       -     capitalize
 #swap
 alt t       -     swap word with prev word
 ctrl t      -     swap letter with prev letter
+```
