@@ -1,7 +1,10 @@
 
 # menu
-1. [tips](#tips)
-2. [motion](#motion)
+* [tips](#tips)
+* [motion](#motion)
+* [buffer](#buffer-hotkey)
+* [replace](#replace)  
+* [easymotion](#easymotion)
 
 <h1 id="tips">tips<h1/>
 
@@ -58,6 +61,7 @@ cd      set pwd is current tree
 ctrl j          snippet = autocomple-code
 zi              fold = show or hide code
 
+<h2 id="buffer-hotkey">buffer-hotkey<h2/>
 ## buffer with hotkey, ex-command
 ctrl oo         open file new closed
 ctrl wn         new buffer empty, horizontal
@@ -166,8 +170,9 @@ noremap remap key = root key vim NOT recursive
 :%d         cut all lines
 :.,$d       cut current line to end file
 
+---
 
---------------------------------------------------------------------------------
+<h1 id="replace">replace<h1/>
 #substitute #replace-word #moveto #copyto #ex
 
 ?pattern?       prev
@@ -402,10 +407,11 @@ q?     -     open window list history searching prev word
 q/     -     open window list history searching next word
 q:     -     open window list history command: vim
 
---------------------------------------------------------------------------------
-                           #motion #jumpto
+--- 
 
 <h1 id="motion">motion</h1>
+``
+```
 
 cursor movement [count=int][operator]
 h     -     move cursor left
@@ -577,8 +583,11 @@ c y          =     giong voi cut=d
 
 ctrl a     =     int+1
 ctrl x     =     int-1
---------------------------------------------------------------------------------
-                                    #easymotion
+
+---
+
+# easymotion
+
 N       jumpto prev match char
 n       jumpto next match char
 

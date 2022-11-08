@@ -17,7 +17,7 @@ Plug 'reedes/vim-pencil'
 
 
 "
-Plug 'plasticboy/vim-markdown'
+"Plug 'plasticboy/vim-markdown'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'pangloss/vim-javascript'
 Plug 'othree/html5.vim'
