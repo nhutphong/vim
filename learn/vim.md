@@ -52,7 +52,7 @@ C       change tree root to cursor(select dir)
 CD      change tree root to cwd 
 cd      set pwd is current tree
 
-## test <a name="test"></a>
+## test <a href="test"></a>
 
 
 ctrl j          snippet = autocomple-code
