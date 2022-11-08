@@ -1,4 +1,8 @@
 
+# menu
+    1. [test](#test)
+
+
 /var enter
 cgn{new-word}jj
 n.      n jumpto to next word, . repeat cmd truoc do
@@ -23,12 +27,12 @@ ki hieu ^ trong menu of vim ==== la phim ctrl
 u           undo=prev=qua-khu
 ctrl r      redo=next=tuong-lai
 
-----------------------------------------nerdtree----------------------------------------
+# nerdtree
 1 tab default co:
     buffer nerdtree(=tree folder manage folders files)
     buffer empty
 
-#open-file
+## open-file
 ctrl n      newtab + buffer empty
 t           cursor tai folder thi, la newtab chua nerdtree+buffer-empty
 t           open file into newtab
@@ -39,7 +43,7 @@ i       open file theo chieu ngang=horizontal buffer
 gT      prev tab
 gt      next tab
 
-#nerdtree #tree=cay-folders
+## nerdtree #tree=cay-folders
 <f10>    =     :NerdTree
 o       open tree
 x       close tree
@@ -47,11 +51,14 @@ u       jumpto prev tree
 C       change tree root to cursor(select dir)
 CD      change tree root to cwd 
 cd      set pwd is current tree
----------------------------------------nerdtree end----------------------------------------
+
+## test <a name="test"></a>
+
 
 ctrl j          snippet = autocomple-code
 zi              fold = show or hide code
 
+## buffer with hotkey, ex-command
 ctrl oo         open file new closed
 ctrl wn         new buffer empty, horizontal
 Ctrl wq         quit a buffer
@@ -96,7 +103,7 @@ gT or :tabp[revious]             move to the previous tab
 :tabo[nly]                   close all tabs except for the current one
 :tabdo command               run the command on all tabs (e.g. :tabdo q - closes all opened tabs)
 
-
+# fold hotkey
 zf       manually define a fold up to motion
 zd       delete fold under the cursor
 za       toggle fold under the cursor
@@ -464,7 +471,7 @@ ctrl f     -     move forward one full screen
 --------------------------------------------------------------------------------
                             normal mode:
 
-                            DELETE=CUT
+# paste
 P            -     paste front=prev=before of cursor
 p            -     paste behind=next=after of cursor
 ctrl r "     -     paste tu y=command for ex mode
@@ -596,7 +603,7 @@ t               search 2 char, from current cursor to end file
 #searching #sentence #paragraph #copytochar #change #cut #yt
 
 {d,c,y}{i,a,t,f}
-{d,c,y}{t,f}{letter}
+{d,c,y}{t,f}{char}
 t gap letter thi stop
 f lay lun letter roi stop
 
@@ -695,7 +702,7 @@ a ( b ( cccccccc ) d ) e
   │   └─── ab ───┘   │
   └────── 2ab ───────┘
 
-# it dung A
+` it dung A `
 A lay lun pair nhung cursor o pair right spaces
 A( A) A{ A} AB A[ A] A< > At
 
