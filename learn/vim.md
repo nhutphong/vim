@@ -1,6 +1,8 @@
 
 # menu
-  1. [tips](#tips)
+    1. [tips](#tips)
+    2. [motion](#motion)
+
 
 
 <h1 id="tips">tips<h1/>
@@ -404,6 +406,8 @@ q:     -     open window list history command: vim
 
 --------------------------------------------------------------------------------
                            #motion #jumpto
+
+# <h1 id="motion">motion</h1>
 
 cursor movement [count=int][operator]
 h     -     move cursor left
