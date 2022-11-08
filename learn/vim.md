@@ -24,6 +24,7 @@
 * [vim-signature](#vim-signature): == mark
 * [tmux](#tmux)
 * [terminal](#terminal)
+* [test](#test)
 
 ---
 
@@ -1453,3 +1454,5 @@ alt t       -     swap word with prev word
 ctrl t      -     swap letter with prev letter
 
 ```
+## Test {#test}
+## Examples <a name="live-examples"></a>
