@@ -1,10 +1,29 @@
 
 # menu
 * [tips](#tips)
-* [motion](#motion)
 * [buffer](#buffer-hotkey)
+* [fold-hotkey](#fold-hotkey)
 * [replace](#replace)  
+* [bash](#bash)
+# [buffer-ex](#buffer-ex)
+* [motion](#motion)
 * [easymotion](#easymotion)
+* [searching](#searching)
+* [targets.vim](#targets)
+* [vim-surround](#vim-surround)
+* [title-case](#title-case)
+* [tabular.vim](#tabular)
+* [emmet](#emmet)
+* [undo](#undo)
+* [text-object](#emmet)
+* [insert-mode](#insert-mode)
+* [visual commands indent](#indent)
+* [register](#register)
+* [macros](#macros)
+* [mark](#mark)
+* [vim-signature](#vim-signature)
+* [tmux](#tmux)
+* [terminal](#terminal)
 
 <h1 id="tips">tips</h1>
 
@@ -65,7 +84,7 @@ zi              fold = show or hide code
 
 ```
 
-<h2 id="buffer-hotkey">buffer-hotkey</h2>
+<h1 id="buffer-hotkey">buffer-hotkey</h1>
 
 ```
 
@@ -116,7 +135,7 @@ gT or :tabp[revious]             move to the previous tab
 
 ```
 
-# fold hotkey
+<h1 id="fold-hotkey">fold-hotkey</h1>
 
 ```
 
@@ -284,7 +303,7 @@ del lines containing "string"
 
 ---
 
-# bash code
+<h1 id="bash">bash</h1>
 
 ```
 
@@ -306,7 +325,7 @@ del lines containing "string"
 
 ---
 
-# buffer-ex
+<h1 id="buffer-ex">buffer-ex</h1>
 
 ```
 
@@ -618,7 +637,7 @@ ctrl x     =     int-1
 
 ---
 
-# easymotion
+<h1 id="easymotion">easymotion</h1>
 
 ```
 
@@ -647,7 +666,7 @@ t               search 2 char, from current cursor to end file
 
 ---
 
-# searching #sentence #paragraph #copytochar #change #cut #yt
+<h1 id="searching">searching</h1>
 
 ```
 
@@ -691,7 +710,7 @@ y/{words}   copy letters den khi gap 'words' thi stop
 
 ---
 
-# targets.vim
+<h1 id="targets">targets.vim</h1>
 
 ```
 
@@ -806,7 +825,7 @@ cilb       jumpto block change content2
 
 ---
 
-# vim-surround 
+<h1 id="vim-surround">vim-surround</h1> 
 
 ```
 
@@ -881,7 +900,7 @@ S"       -     add "" for 3 word
 
 ---
 
-# title case
+<h1 id="title-case">title case</h1>
 
 ```
 
@@ -929,7 +948,7 @@ gUw      make a word uppercase
 
 ---
 
-# tabular.vim
+<h1 id="tabular">tabular.vim</h1>
 
 ```
 
@@ -949,7 +968,7 @@ l(int)   left
 
 ---
 
-# emmet
+<h1 id="emmet">emmet</h1>
 
 ```
 
@@ -994,7 +1013,7 @@ https://docs.emmet.io/cheat-sheet/
 
 ---
 
-# undo u
+<h1 id="undo">undo u</h1>
 
 ```
 
@@ -1010,21 +1029,8 @@ f là buffer file
 
 ---
 
-# fold
 
-```
-
-folder la group cac <tab> khi ve 1 line cho gon
-
-zi     -     open/close all folds
-zo     -     open 1 fold
-zc     -     close 1 fold
-
-```
-
----
-
-# text-object
+<h1 id="text-object">text-object</h1>
 
 ```
 
@@ -1046,7 +1052,7 @@ t for tag.
 ---
 
 
-# insert mode
+<h1 id="insert-mode">insert mode</h1>
 
 ```
 
@@ -1100,7 +1106,7 @@ n   next to word
 ---
 
 
-# visual commands, indent
+<h1 id="indent">visual commands, indent</h1>
 
 ```
 
@@ -1136,7 +1142,7 @@ gg=G    - re-indent all line buffer
 
 ---
 
-# register
+<h1 id="register">register</h1>
 
 ```
 
@@ -1170,7 +1176,7 @@ qAgUq     -     append gU vao register name=a dung upper A
 
 ```
 
-# macros
+<h1 id="macros">macros</h1>
 
 ```
 
@@ -1198,7 +1204,7 @@ recursive
 
 ---
 
-# marks and positions
+<h1 id="mark">marks and positions</h1>
 
 ```
 
@@ -1233,7 +1239,7 @@ Ctrl  ]      -     jump to the tag under cursor
 
 ---
 
-# vim-signature
+<h1 id="vim-signature">vim-signature</h1>
 
 ```
 
@@ -1270,7 +1276,7 @@ m?           Open location list and display markers from current buffer
 
 ---
 
-# tmux
+<h1 id="tmux">tmux</h1>
 
 ```
 
@@ -1404,7 +1410,7 @@ ctrl a %
 
 ---
 
-# terminal
+<h1 id="terminal">terminal</h1>
 
 ```
 
