@@ -8,6 +8,8 @@
 
 <h1 id="tips">tips<h1/>
 
+```
+
 /var enter
 cgn{new-word}jj
 n.      n jumpto to next word, . repeat cmd truoc do
@@ -60,6 +62,8 @@ cd      set pwd is current tree
 
 ctrl j          snippet = autocomple-code
 zi              fold = show or hide code
+
+```
 
 <h2 id="buffer-hotkey">buffer-hotkey<h2/>
 ## buffer with hotkey, ex-command
