@@ -5,7 +5,7 @@
 
 ---
 
-<h1 id="tips"><h1/>
+<h1 id="tips">tips<h1/>
 /var enter
 cgn{new-word}jj
 n.      n jumpto to next word, . repeat cmd truoc do
@@ -54,8 +54,6 @@ u       jumpto prev tree
 C       change tree root to cursor(select dir)
 CD      change tree root to cwd 
 cd      set pwd is current tree
-
-## test <a href="test"></a>
 
 
 ctrl j          snippet = autocomple-code
