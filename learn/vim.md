@@ -4,7 +4,7 @@
 * [fold-hotkey](#fold-hotkey)
 * [replace](#replace): use ex-mode, copyto, moveto, regular
 * [bash](#bash)
-* [buffer-ex](#buffer-ex)
+* [buffer-ex](#buffer-ex): open file, buffer, verical, horizontal, ...
 * [motion](#motion): default of vim
 * [easymotion](#easymotion): jumpto quick(search)
 * [searching](#searching): copy change cut
@@ -16,10 +16,10 @@
 * [undo](#undo)
 * [text-object](#text-object)
 * [insert-mode](#insert-mode)
-* [visual commands indent](#indent)
-* [register](#register): paste content of command, use double quote: "{char}p
+* [indent, visual commands](#indent)
+* [register](#register): paste content of command, use double quotes: "{char}p
 * [macros](#macros): stored commands, run macros: {int}@{char}
-* [mark](#mark): jumpto, use quote: '{char}
+* [mark](#mark): jumpto, use quotes: '{char}
 * [vim-signature](#vim-signature): == mark
 * [tmux](#tmux)
 * [terminal](#terminal)
