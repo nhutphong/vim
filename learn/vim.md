@@ -6,6 +6,7 @@
 * [bash](#bash)
 * [buffer-ex](#buffer-ex): open file, buffer, verical, horizontal, ...
 * [motion](#motion): default of vim
+* [normal mode](#normal-mode): default of vim
 * [easymotion](#easymotion): jumpto quick(search)
 * [searching](#searching): copy change cut
 * [targets.vim](#targets): change, copy, cut content in pair, quotes, tag-html
@@ -525,7 +526,7 @@ ctrl f     -     move forward one full screen
 
 ---
 
-                            normal mode:
+<h1 id="normal-mode">normal mode</h1>
 
 ```
 
