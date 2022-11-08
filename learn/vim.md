@@ -1,27 +1,26 @@
-
 # menu
 * [tips](#tips)
 * [buffer](#buffer-hotkey)
 * [fold-hotkey](#fold-hotkey)
-* [replace](#replace)  
+* [replace](#replace): use ex-mode, copyto, moveto, regular
 * [bash](#bash)
 * [buffer-ex](#buffer-ex)
-* [motion](#motion)
-* [easymotion](#easymotion)
-* [searching](#searching)
-* [targets.vim](#targets)
-* [vim-surround](#vim-surround)
+* [motion](#motion): default of vim
+* [easymotion](#easymotion): jumpto quick(search)
+* [searching](#searching): copy change cut
+* [targets.vim](#targets): change, copy, cut content in pair, quotes, tag-html
+* [vim-surround](#vim-surround): add, change, cut pair
 * [title-case](#title-case)
-* [tabular.vim](#tabular)
+* [tabular.vim](#tabular): alignment
 * [emmet](#emmet)
 * [undo](#undo)
-* [text-object](#emmet)
+* [text-object](#text-object)
 * [insert-mode](#insert-mode)
 * [visual commands indent](#indent)
-* [register](#register)
-* [macros](#macros)
-* [mark](#mark)
-* [vim-signature](#vim-signature)
+* [register](#register): paste content of command, use double quote: "{char}p
+* [macros](#macros): stored commands, run macros: {int}@{char}
+* [mark](#mark): jumpto, use quote: '{char}
+* [vim-signature](#vim-signature): == mark
 * [tmux](#tmux)
 * [terminal](#terminal)
 
