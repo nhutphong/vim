@@ -3,6 +3,7 @@
 * [buffer](#buffer-hotkey)
 * [fold-hotkey](#fold-hotkey)
 * [replace](#replace): use ex-mode, copyto, moveto, regular
+    * [inverse match](#inverse-match)
 * [bash](#bash)
 * [buffer-ex](#buffer-ex): open file, buffer, verical, horizontal, ...
 * [motion](#motion): default of vim
@@ -253,9 +254,9 @@ $       end file
 #use mark in command 
 :'a,'bd	                    delete lines from mark a to mark b, inclusive
 :.,'bd	                    delete lines from the current line to mark b, inclusive
-:'a,'bm 0	                move lines from mark a to b inclusive, to the beginning
-:'a,'bw file.txt	        write lines from mark a to b to file.txt
-:'a,'bw >> file.txt     	append lines from mark a to b to file.txt
+:'a,'bm 0	            move lines from mark a to b inclusive, to the beginning
+:'a,'bw file.txt	    write lines from mark a to b to file.txt
+:'a,'bw >> file.txt         end lines from mark a to b to file.txt
 
 \={vimcode}
 :%s//\=@a/g       |     insert content with run macros a
@@ -274,12 +275,18 @@ $       end file
 \<str_old\>
 \(bad|good\)
 :s/\<is\>/was/g         replace chinh xac word=is = was
-:s/\(bad|godd\)/haha/g  replace 'bad' or 'good' by 'haha'
+:s/\(bad|good\)/haha/g  replace 'bad' or 'good' by 'haha'
 
+```
+
+<h1 id="inverse-match">Inverse match</h1>
+
+```
 
 #global action #ex
 :[range]g[!]/{pattern}/[cmd][motion]
 cmd co t=copy m=move p=print ...
+
 
 ^   start of line
 $   end of line
@@ -288,17 +295,17 @@ $   end of line
 del lines containing "string"
 :g/old/                 list all lines matching 'old'
 :w my.txt               write all lines to file 'my.txt'
-:%s/ *$//g	            Delete all white spaces
+:%s/ *$//g	        Delete all white spaces
 :g/^$/d                 delete all lines empty
-:g/string/d	            Delete all lines containing "string"
-:g!/string/d	        Delete all lines containing which didn’t contain "string"
-:v/string/d	            Delete all lines containing which didn’t contain "string"
+:g/string/d	        Delete all lines containing "string"
+:g!/haha/d	        Delete all lines NOT containing "haha"
+:v/haha/d	        Delete all lines NOT containing "haha"
 
 :s/Bill/Steve/	        Replace the first occurence of Bill by Steve in current line
 :s/Bill/Steve/g	        Replace Bill by Steve in current line
-:%s/Bill/Steve/g	    Replace Bill by Steve in all the file
-:%s/^M//g	            Delete DOS carriage returns (^M)
-:%s/\r/\r/g	            Transform DOS carriage returns in returns
+:%s/Bill/Steve/g	Replace Bill by Steve in all the file
+:%s/^M//g	        Delete DOS carriage returns (^M)
+:%s/\r/\r/g	        Transform DOS carriage returns in returns
 :%s#<[^>]\+>##g	        Delete HTML tags but keeps text
 :%s/^\(.*\)\n\1$/\1/	Delete lines which appears twice
 
@@ -1454,5 +1461,3 @@ alt t       -     swap word with prev word
 ctrl t      -     swap letter with prev letter
 
 ```
-## Test {#test}
-## Examples <a name="live-examples"></a>
