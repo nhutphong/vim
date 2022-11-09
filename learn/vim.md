@@ -3,6 +3,7 @@
 * [buffer](#buffer-hotkey)
 * [fold-hotkey](#fold-hotkey)
 * [replace](#replace): use ex-mode, copyto, moveto, regular
+    * [substitute](#substitute)
     * [inverse match](#inverse-match)
 * [bash](#bash)
 * [buffer-ex](#buffer-ex): open file, buffer, verical, horizontal, ...
@@ -12,7 +13,7 @@
 * [searching](#searching): copy change cut
 * [targets.vim](#targets): change, copy, cut content in pair, quotes, tag-html
 * [vim-surround](#vim-surround): add, change, cut pair
-* [title-case](#title-case)
+* [title-case](#title-case): lower, upper, title, invert-case
 * [tabular.vim](#tabular): alignment
 * [emmet](#emmet)
 * [undo](#undo)
@@ -25,7 +26,6 @@
 * [vim-signature](#vim-signature): == mark
 * [tmux](#tmux)
 * [terminal](#terminal)
-* [test](#test)
 
 ---
 
@@ -85,6 +85,10 @@ cd      set pwd is current tree
 
 ctrl j          snippet = autocomple-code
 zi              fold = show or hide code
+
+## command hotkey: phai into command
+ctrl f      show list history command
+ctrl c      close
 
 ```
 
@@ -209,6 +213,7 @@ noremap remap key = root key vim NOT recursive
 ---
 
 <h1 id="replace">replace</h1>
+  <h2 id="substitute">substitute: use ex-command</h2>
 
 ```
 
@@ -272,6 +277,14 @@ $       end file
 :.,+4/dung/thong/g
 :36,42s/Unix/Linux/g    Replace Unix by Linux, line36 to  line42
 
+:s/Bill/Steve/	        Replace the first occurence of Bill by Steve in current line
+:s/Bill/Steve/g	        Replace Bill by Steve in current line
+:%s/Bill/Steve/g	Replace Bill by Steve in all the file
+:%s/^M//g	        Delete DOS carriage returns (^M)
+:%s/\r/\r/g	        Transform DOS carriage returns in returns
+:%s#<[^>]\+>##g	        Delete HTML tags but keeps text
+:%s/^\(.*\)\n\1$/\1/	Delete lines which appears twice
+
 \<str_old\>
 \(bad|good\)
 :s/\<is\>/was/g         replace chinh xac word=is = was
@@ -279,7 +292,7 @@ $       end file
 
 ```
 
-<h1 id="inverse-match">Inverse match</h1>
+  <h2 id="inverse-match">Inverse match</h2>
 
 ```
 
@@ -295,19 +308,27 @@ $   end of line
 del lines containing "string"
 :g/old/                 list all lines matching 'old'
 :w my.txt               write all lines to file 'my.txt'
+:g/=/d                  delete all lines containing "="
 :%s/ *$//g	        Delete all white spaces
 :g/^$/d                 delete all lines empty
+:g/^\s*$/d              delete all lines with blank spaces.
 :g/string/d	        Delete all lines containing "string"
+
 :g!/haha/d	        Delete all lines NOT containing "haha"
 :v/haha/d	        Delete all lines NOT containing "haha"
+:g/console/v/two/d      delete all ilnes chua "console", va NOT "two"
 
-:s/Bill/Steve/	        Replace the first occurence of Bill by Steve in current line
-:s/Bill/Steve/g	        Replace Bill by Steve in current line
-:%s/Bill/Steve/g	Replace Bill by Steve in all the file
-:%s/^M//g	        Delete DOS carriage returns (^M)
-:%s/\r/\r/g	        Transform DOS carriage returns in returns
-:%s#<[^>]\+>##g	        Delete HTML tags but keeps text
-:%s/^\(.*\)\n\1$/\1/	Delete lines which appears twice
+#:g/pattern/{d,y,m,t}{motion}
+#:g/pattern/{d,y,m,t} {motion}      co 1 space before motion cho de nhin
+:g/console/m $          move all line chua "console" to end of file
+:g/^/m 0                reverse all lines of file
+
+#:g/pattern/pu {register}
+:g/console/pu a                         paste content cua register-name=a, cho all lines chua "console" 
+:g/console/pu =\"//Test comment\"       giong tren
+
+#:g/pattern/normal {normal-mode-command}
+:g/const/normal @q      run macros-name "q" cho all lines chua "const"
 
 ```
 
@@ -469,20 +490,16 @@ q:     -     open window list history command: vim
 ```
 
 cursor movement [count=int][operator]
-h     -     move cursor left
-j     -     move cursor down
-k     -     move cursor up
-l     -     move cursor right
+h / l       left / right move cursor
+k / j       up / down move cursor  
 
 h     -     move to top of screen
 m     -     move to middle of screen
 l     -     move to bottom of screen
 
-b      -     prev start word
-w      -     next start word
+b / w       prev / next start word
 
-ge     -     prev end word
-e      -     next end word
+ge / e      prev / next end word
 
 *      -     select all word giong nhau
 *      -     next hightlight text
@@ -502,8 +519,8 @@ sentences : la 1 cau stop boi dot<.>
 5gg        -     go to line 5
 ctrl g     -     xem thông tin dòng hiện tại
 
+^   /   g_      first / last word of line        
 0   /   $       start / end of line
-^   /   g_      first / last word of line
 
 gm         -     jumpto center screen
 gM         -     jumpto center line
@@ -552,17 +569,6 @@ c     -     cut and insert
 
 motion:
     sentences 1 doan text cach nhau boi dau dot .
-
-k j h l
-
-b       prev word, cursor first char
-w       next word, cursor first char
-
-ge      prev word, cursor end char
-e       next word, cursor end char
-
-(       prev paragraph
-)       next paragraph
 
 0       start line (= ^)
 $       end line (= g_)
@@ -889,6 +895,7 @@ csb*            change () thanh **
 csb>            change () thanh <>, khi change phai dung >close
 csbtp           change () thanh tag <p>
 cs(tp           change () thanh tag <p>
+cstta           change current tag thanh tag <a></a>
 
 #cutpair
 dsb             cut=del ()
