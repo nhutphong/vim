@@ -33,6 +33,15 @@
 
 ```
 
+:h [command]        help command
+:reg            show c/register , l/macros
+
+;w                      jumpto quick use 2char
+"0p                     paste yank-del command gan nhat
+:%norm@a                run macros-a cho all lines cua file
+:let @a='A;jjj'         create quick macros-a
+
+
 /var enter
 cgn{new-word}jj
 n.      n jumpto to next word, . repeat cmd truoc do
@@ -41,13 +50,6 @@ n.      n jumpto to next word, . repeat cmd truoc do
 20gg        jumpto line20
 10-         -10 jumpto line
 10 enter    +10 jumpto line
-
-macros:
-    q{macros-name=char}         register macros
-    code vim
-    q       end register macros
-
-    @macros-name        run macros da register
 
 #normal-mode
 ctrl x  / ctrl a        count -1 / +1 
@@ -670,8 +672,8 @@ s               search 2 char full file , cursor ngay char
 t               search 2 char, from current cursor to end file
 
 
-;L              jump to mark line
-;w              jump to 2 letter mark words
+;L              jump to mark column1
+;w              jump to 2 letter mark words of file (nen dung)
 
 ;h              jump to word left curosr tren 1 line
 ;l              jump to word right cursor tren 1 line 
@@ -1163,6 +1165,8 @@ gg=G    - re-indent all line buffer
 
 ```
 
+:reg        show register
+
 set names de luu lai cac command cut and copy de dung lai
 "xyy     -     save context cua command=yy toi name=x
 "xp      -     paste context cua name=x
@@ -1202,20 +1206,31 @@ nen dung omap: 0 $ w e b
 tranh dung h j k l -> vi khong biet do lai cua line 
 ^]     =    press <esc>
 
-qa                               -     record macro a name
-motion,d c y p  ... sau do q
-q                                -     stop=quit=save recording macro
+q{char-name}{motion}q
+
+qaA;q
+    a       macros-name = a
+    A;      cuoi line add ";"
+    q       saved macros, exit
+
+
+# create quick 1 macros-a
+:let @a='A;jjj'
+    A       cuoi line add ";"
+    jj      <esc> = exit-insert-mode
+    j       motion=xuong dong
+
 @a                               -     run macro a name
 @@                               -     run lai macros
 
-recursive
+#recursive
 100@v           run 100 lines
 
 :[range]norm[al] [cmd=@v, motion, ...]
-:6,16norm @v     -     run macros name=v for line6 to line16
-:10,$norm @v     -     run macros for line10 to end line of file
-:%norm @v        -     run all lines
-:'<'>norm @v     -     run for select context
+:6,16norm @v          run macros name=v for line6 to line16
+:10,$norm @v          run macros for line10 to end line of file
+:%norm @v             run all lines
+:'<,'>norm @v         run for select context
 
 ```
 
