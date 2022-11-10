@@ -12,8 +12,6 @@ inoremap jj <Esc>
  cnoremap <C-j> <down>
  cnoremap <C-k> <up>
  cnoremap <C-l> <right>
- cnoremap ^ <home>
- cnoremap $ <end>
 
 " 1 new tap se co nhieu windows
 map <C-h> gT       "previous tab

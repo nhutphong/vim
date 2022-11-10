@@ -44,10 +44,15 @@
 
 # insert-mode
     ctrl r {register-name}      paste content of register-name
-    ctrl r *        paste clipboard os to vim insert-mode
-    ctrl r +        paste clipboard os to vim insert-mode
 
-ctrl r "        paste last yank/delete cho (insert, command-mode)
+# paste
+P               paste front=prev=before of cursor
+p               paste behind=next=after of cursor
+ctrl r "        paste recent from [clipboard, normal] to [insert, ex-mode]
+ctrl r 0        paste recent only from [normal] to [insert, ex-mode]
+
+ctrl r *        paste clipboard os to vim insert-mode
+ctrl r +        paste clipboard os to vim insert-mode
 
 
 # jumpto quick
@@ -572,8 +577,9 @@ ctrl f     -     move forward one full screen
 # paste
 P               paste front=prev=before of cursor
 p               paste behind=next=after of cursor
-ctrl r "        paste tu y=command for ex mode
-ctrl r 0        paste tu y=command for insert mode
+ctrl r "        paste recent from [clipboard, normal] to [insert, ex-mode]
+ctrl r 0        paste recent only from [normal] to [insert, ex-mode]
+
 ctrl r *        paste clipboard os to vim insert-mode
 ctrl r +        paste clipboard os to vim insert-mode
 
@@ -1199,18 +1205,18 @@ set names de luu lai cac command cut and copy de dung lai
 "0p       -     uu tien paste tu y=command ignoze c d
 qAgUq     -     append gU vao register name=a dung upper A
 
-     0 - last yank
-     " - unnamed register, last delete or yank
-     % - current file name
-     # - alternate file name
-     * - clipboard contents (X11 primary)
-     + - clipboard contents (X11 clipboard)
-     / - last search pattern
-     : - ex command-line
-     . - last inserted text
-     - - last small (less than a line) delete
-     = - expression register
-     _ - black hole register
+     0       last yank
+     "       unnamed register, last delete or yank
+     %       current file name
+     #       alternate file name
+     *       clipboard contents (X11 primary)
+     +       clipboard contents (X11 clipboard)
+     /       last search pattern
+     :       ex command-line
+     .       last inserted text
+     -       last small (less than a line) delete
+     =       expression register
+     _       black hole register
 
 ```
 
