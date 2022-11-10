@@ -42,9 +42,21 @@
 :let @a='A;jjj'         create quick macros-a
 
 
-/var enter
-cgn{new-word}jj
-n.      n jumpto to next word, . repeat cmd truoc do
+# insert-mode
+    ctrl r {register-name}      paste content of register-name
+    ctrl r *        paste clipboard os to vim insert-mode
+    ctrl r +        paste clipboard os to vim insert-mode
+
+ctrl r "        paste last yank/delete cho (insert, command-mode)
+
+
+# jumpto quick
+f{char}
+    fw      jumpto "w"
+    fa      jumpto "a"
+
+# easymotion
+;w      jumpto quick use 2char
 
 
 20gg        jumpto line20
@@ -558,10 +570,12 @@ ctrl f     -     move forward one full screen
 ```
 
 # paste
-P            -     paste front=prev=before of cursor
-p            -     paste behind=next=after of cursor
-ctrl r "     -     paste tu y=command for ex mode
-ctrl r 0     -     paste tu y=command for insert ode
+P               paste front=prev=before of cursor
+p               paste behind=next=after of cursor
+ctrl r "        paste tu y=command for ex mode
+ctrl r 0        paste tu y=command for insert mode
+ctrl r *        paste clipboard os to vim insert-mode
+ctrl r +        paste clipboard os to vim insert-mode
 
 
 [recursive=int]{y d c}[int]{motion}
@@ -856,7 +870,7 @@ ds{pair}                cut pair
 cs[{                    change ngoac [] thanh ngoac {}
 
 #addpair
-ys{text-object}{pair}    add pair
+ys{motion}{pair}    add pair
 ysw"                    add "" wrap    current cursor to end 1 word
 ys3w"                   add "" wrap    current cursor to end 3 word
 ys4w"                   add "" wrap    current cursor to end 4 word
@@ -1053,7 +1067,8 @@ f là buffer file
 
 ```
 
-{operator}{a|i}{text-object}
+{operator}{i|a}{text-object}
+{int}{operator}{i|a}{text-object}
 
 text-object
 w   for word
@@ -1089,6 +1104,8 @@ ctrl r /       -     insert last search term
 ctrl r :       -     insert last command line
 ctrl r =@a     -     run macros a
 
+Ctrl x y    Scroll up
+Ctrl x e    Scroll down
 
 autocomplete
 Ctrl x Ctrl l     -     insert a whole line
