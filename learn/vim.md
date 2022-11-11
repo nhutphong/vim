@@ -17,7 +17,7 @@
 * [tabular.vim](#tabular): alignment
 * [emmet](#emmet)
 * [undo](#undo)
-* [text-object](#text-object)
+* [text-object](#text-object): == motion
 * [insert-mode](#insert-mode)
 * [indent, visual commands](#indent)
 * [register](#register): paste content of command, use double quotes: "{char}p
@@ -45,7 +45,7 @@
 # insert-mode
     ctrl r {register-name}      paste content of register-name
 
-# paste
+# paste, ctrl r thuong use in insert-mode
 P               paste front=prev=before of cursor
 p               paste behind=next=after of cursor
 ctrl r "        paste recent from [clipboard, normal] to [insert, ex-mode]
@@ -724,9 +724,12 @@ yt;     -     copy letters to khi gap ';' thi stop
 
 #copysentence #copyparagraph
 copy    cut=d  change=c  visual=v cung vay 
-yis     -     copy 1 cau=sentence
-yas     -     copy 1 cau=sentence them spaces step sentence 2
-ct<    change toi <
+yl            copy 1 char
+yw / yiw      copy 1 word
+yis           copy 1 cau=sentence
+yas          copy 1 cau=sentence them spaces step sentence 2
+ct<          change toi "<"
+cf<         change toi "<", del lun "<"
 
 #more sentences= nhieu cau, nen dung a thay cho i
 cis         change het 1 cau = sentence 
@@ -756,14 +759,14 @@ y/{words}   copy letters den khi gap 'words' thi stop
 operator d cut text nhung van o normal mode
 operator c cut-change text nhung into insertmode add them text
 
-{operator}{i|I|a|A}{text-objects}
+{operator}{i|I|a|A}{motion}
 hay dung nhat la i a
 
-{operator}{i|I|a|A}[l|n]{text-object}
-them [l|n] dung cho text-object left=prev=above next=right=below
+{operator}{i|I|a|A}[l|n]{motion}
+them [l|n] dung cho motion left=prev=above next=right=below
 
 
-int{operator}{i|I|a|A}[l|n]{text-object}
+int{operator}{i|I|a|A}[l|n]{motion}
 
 pair text objects: use b thay the cho () [] {}
 
@@ -886,6 +889,7 @@ ysa{motion}
 ys{count=int}a{motion}          nhieu words
 ysaw"                   add "" wrap     ia = word
 ys3aw"                  add "" wrap     3 word
+ys3aw'                  add '' wrap     3 word
 ys3aw(                  add () wrap     3 word
 ys3awb                  add () wrap     3 word
 
@@ -1073,10 +1077,10 @@ f là buffer file
 
 ```
 
-{operator}{i|a}{text-object}
-{int}{operator}{i|a}{text-object}
+{operator}{i|a}{motion}
+{int}{operator}{i|a}{motion}
 
-text-object
+# text-object == motion
 w   for word
 s   for sentence
 ', ", `     for quotes
@@ -1096,6 +1100,8 @@ t for tag.
 
 ```
 
+:reg[isters]
+    
 ctrl j         -     new line
 ctrl h         -     del prev letter
 ctrl w         -     del prev word
@@ -1153,30 +1159,37 @@ n   next to word
 ```
 
 #indent text #tab
+# visual-mode
+    V       select 1 line
+    gv      prev / next select cursor
 
-ctrl v     -     visual block mode
-V          -     select 1 line
-gv-
-o-
+ctrl v      switch [v-block vs normal-mode] v-block==cursors multiple
+    o       jumpto start / end cursors
+    gv      prev / next select cursors
+    I       insert start-word (cursors)
+    A       insert end-word (cursors)
+    {motion}{d,y,c}        cut, copy, change on cursors multiple
 
->.         -     two tab indent text
-y          -     yank (copy) marked text
-d          -     cut marked text
-~          -     switch case
-u          -     change marked text to lowercase
-U          -     change marked text to uppercase
+
+>.         -    two tab indent text
+y          -    yank (copy) marked text
+d          -    cut marked text
+u          -    lowercase
+U          -    uppercase
+;gz             title-case (NOT in v-block)
+~          -    invert case
 
 #indent
-<<         -     indent text left
->>         -     indent text right
->%      - indent a block with () or {} (cursor on brace)
->ib     - indent inner block with ()
->at     - indent a block with <> tags
-3==     - re-indent 3 lines
-=%      - re-indent a block with () or {} (cursor on brace)
-=iB     - re-indent inner block with {}
-gg=G    - re-indent all line buffer
-]p      - paste and adjust indent to current line
+<<          indent text left
+>>          indent text right
+>ib         indent inner block == content in block
+>ab / >%    indent a block
+>at         indent a block with <> tags
+3==         re-indent 3 lines
+=%          re-indent a block with () or {} (cursor on brace)
+=iB         re-indent inner block with {}
+=G          re-indent all line buffer
+]p          paste and adjust indent to current line
 
 :3,5le 4        indent left space=4 from line3 to line5
 
@@ -1189,6 +1202,8 @@ gg=G    - re-indent all line buffer
 ```
 
 :reg        show register
+    type "l" is content,        run: "{name}{p,P}
+    type "c" is command=macros  run: @{name}
 
 set names de luu lai cac command cut and copy de dung lai
 "xyy     -     save context cua command=yy toi name=x
@@ -1205,18 +1220,21 @@ set names de luu lai cac command cut and copy de dung lai
 "0p       -     uu tien paste tu y=command ignoze c d
 qAgUq     -     append gU vao register name=a dung upper A
 
-     0       last yank
-     "       unnamed register, last delete or yank
-     %       current file name
-     #       alternate file name
-     *       clipboard contents (X11 primary)
-     +       clipboard contents (X11 clipboard)
-     /       last search pattern
-     :       ex command-line
-     .       last inserted text
-     -       last small (less than a line) delete
-     =       expression register
-     _       black hole register
+     "0p       last yank
+     ""p       unnamed register, last delete or yank
+     "%p       current file name
+     "#p       alternate file name
+     "*p       clipboard contents (X11 primary)
+     "+p       clipboard contents (X11 clipboard)
+     "/p       last search pattern
+     ":p       ex command-line
+     ".p       last inserted text
+     "-p       last small (less than a line) delete
+     "=p       expression register
+     "_p       black hole register
+
+# insert-mode use ctrl-r de paste:
+    ctrl r {0 " % # * + / : . - = _}
 
 ```
 
