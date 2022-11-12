@@ -47,6 +47,8 @@ nmap <leader>loadvim :so ~/.vim/vimrc<cr>
 "set<space> = :
 "colo ron ===== :colo ron<cr>
 
+" tagbar, autorun
+autocmd FileType python,go,javascript,vue,sh,markdown,vim TagbarOpen
 
 "------------------------------------hotkey end------------------------------------------
 
