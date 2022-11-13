@@ -1364,8 +1364,11 @@ bind:       :comand
 
 quick: mouse drag select text + y  => copy text
 copy mode: <prefix> [
-v  vao visual mode selete text
-y copy
+v        vao visual mode selete text
+    use: [w b ] motion
+y       copy
+#paste
+bind p
 
 bind <cr>     -     into copy mode
 bind e        -     open ~/.tmux.config.local
