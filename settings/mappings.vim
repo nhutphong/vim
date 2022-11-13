@@ -31,10 +31,14 @@ nnoremap <silent> [B :bfirst<CR>     " first buffer
 nnoremap <silent> ]B :blast<CR>      " last buffer
 
 "open file config
+nmap <leader>vimmd :e ~/.vim/learn/vim.md<cr>
 nmap <leader>vimrc :e ~/.vim/vimrc<cr>
+nmap <leader>mappings :e ~/.vim/settings/mappings.vim<cr>
+nmap <leader>configs :e ~/.vim/settings/configs.vim<cr>
+nmap <leader>plugins :e ~/.vim/settings/plugins.vim<cr>
 nmap <leader>zshrc :e ~/.zshrc<cr>
 nmap <leader>bashrc :e ~/.bashrc<cr>
-nmap <leader>tmuxconf :e ~/.tmux/.tmux.conf.local<cr>
+nmap <leader>tmuxconf :e ~/.tmux.conf.local<cr>
 
 nnoremap <F5> :UndotreeToggle<CR>
 nnoremap <F10> :NERDTree<CR>
@@ -48,7 +52,7 @@ nmap <leader>loadvim :so ~/.vim/vimrc<cr>
 "colo ron ===== :colo ron<cr>
 
 " tagbar, autorun
-autocmd FileType python,go,javascript,vue,sh,markdown,vim TagbarOpen
+"autocmd FileType python,go,javascript TagbarToggle
 
 "------------------------------------hotkey end------------------------------------------
 

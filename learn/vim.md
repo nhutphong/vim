@@ -11,7 +11,7 @@
 * [normal mode](#normal-mode): default of vim
 * [easymotion](#easymotion): jumpto quick(search)
 * [searching](#searching): copy change cut
-* [targets.vim](#targets): change, copy, cut content in pair, quotes, tag-html
+* [targets.vim](#targets): copy change cut content in pair, quotes, tag-html
 * [vim-surround](#vim-surround): add, change, cut pair
 * [title-case](#title-case): lower, upper, title, invert-case
 * [tabular.vim](#tabular): alignment
@@ -40,6 +40,9 @@
 "0p                     paste yank-del command gan nhat
 :%norm@a                run macros-a cho all lines cua file
 :let @a='A;jjj'         create quick macros-a
+    A;      end line them ';'
+    jj = <esc>
+    j       xuong dong
 
 
 # insert-mode
@@ -63,6 +66,15 @@ f{char}
 # easymotion
 ;w      jumpto quick use 2char
 
+# command-mode, redirect
+# dot = . = current line
+:.!pwd          redirect output '!pwd' to current line
+:.!ls -l        redirect output '!ls -l' to current line
+
+gwip     -     format paragraph textwidth=79
+    gwap
+gqip     -     format paragraph textwidth=79
+    gqap
 
 20gg        jumpto line20
 10-         -10 jumpto line
@@ -85,8 +97,8 @@ ctrl r      redo=next=tuong-lai
 ctrl n      newtab + buffer empty
 t           cursor tai folder thi, la newtab chua nerdtree+buffer-empty
 t           open file into newtab
-s       open file theo chieu doc=vertical buffer
-i       open file theo chieu ngang=horizontal buffer
+s           open file theo chieu doc=vertical buffer
+i           open file theo chieu ngang=horizontal buffer
 
 :tabc       = close 1 tab == close all buffer
 gT      prev tab
@@ -118,7 +130,7 @@ ctrl c      close
 ## buffer with hotkey, ex-command
 ctrl oo         open file new closed
 ctrl wn         new buffer empty, horizontal
-Ctrl wq         quit a buffer
+Ctrl w q/c         quit a buffer
 ctrl ww         select next buffer
 ctrl wr         swap buffer above
 
@@ -204,13 +216,13 @@ noremap \ jj        "\ tuc jumpto to down 2 line, khong phai <esc>
 noremap remap key = root key vim NOT recursive
 
 # range
-
 %                all lines
 
 :[range]{mode} [cmd=motion ...]
 :%norm A;          -     add ';' vao end all lines
 :%norm di'             -     cut content in ''
-:28put=range(5,55)     -     list numbers into lines under line28
+# :[range]put=range(1,20)
+:28put=range(1,10)     -     insert 1 to 10 under line28
 
 :for i in range(1,20) | put='192.168.1'.i | endfor
 
@@ -241,7 +253,7 @@ noremap remap key = root key vim NOT recursive
 ?pattern?       prev
 /pattern/       next
 
-%s / 1,$    all lines
+%s / ,$s    all lines
 s           chi 1 line
 gi          khong phan biet lower upper
 gI          phan biet lower upper
@@ -252,10 +264,7 @@ gic         aciton cua 2 line tren
 &         -     repeat replace
 *         -     zero or more characters
 
-0       first file
-$       end file
-.       current line
-.+3     line1049 = line1046+3
+0       first file $       end file .       current line .+3     line1049 = line1046+3
 
 :3,5d           delete line-range3,5
 :3,5t 30        line-range3,5 copyto below line30
@@ -786,7 +795,7 @@ operator:
     I = all context KO co space
     i = giong I, them spaces before-after content, tru cap pair
     a = giong i, them cap pair of content
-    A = giong a, them more spaces 
+    A = giong a, them more spaces, after pair 
 
 cursor into content moi dung i) 2i) or 3i) .... co count=int
 
@@ -827,7 +836,7 @@ a ( b ( cccccccc ) d ) e
 
 
 argument=a
-{I i a A}{a}
+{v,y,c,d}{I i a A}{a}
 Ia      lay context argument one
 a , b ( contentx , d ) e
         └─ Ia ─┘
@@ -1141,8 +1150,6 @@ execute command line
 Ctrl-o !! curl https://google.com
 Ctrl-o !! pwd
 
-gwip     -     format paragraph textwidth=79
-gqip     -     format paragraph textwidth=79
 
 
 cgn [text can thay the] exit
