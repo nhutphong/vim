@@ -12,6 +12,9 @@
 * [easymotion](#easymotion): jumpto quick(search)
 * [searching](#searching): copy change cut
 * [targets.vim](#targets): copy change cut content in pair, quotes, tag-html
+    * [copy change cut in block](#content): {v d c y}{I i a A}{b q t >}
+    * [argument in block](#argument): {v d c y}{I i a A}{a}
+    * [prev/next block](#block-next): {v d c y}{I i a A}{l n}{a q t >}
 * [vim-surround](#vim-surround): add, change, cut pair
 * [title-case](#title-case): lower, upper, title, invert-case
 * [tabular.vim](#tabular): alignment
@@ -32,6 +35,14 @@
 <h1 id="tips">tips</h1>
 
 ```
+
+v{int}{I i a A}{b q t >}            int buoc phai nam sau v
+v{int}{motion}
+
+{int}{d c y}{I i a A}{b q t >}      int thong nhat nen nam truoc {d c y}, co the giong v
+{int}{d c y}{motion}                int thong nhat nen nam truoc {d c y}, co the giong v
+{int}{d c y}{t f}{char}
+
 
 :h [command]        help command
 :reg            show c/register , l/macros
@@ -762,6 +773,8 @@ y/{words}   copy letters den khi gap 'words' thi stop
 
 <h1 id="targets">targets.vim</h1>
 
+<h2 id="content">{v,d,c,y}{I,i,a,A}{b,q,t,>}: content</h2>
+
 ```
 
 #change-content
@@ -834,15 +847,20 @@ a ( b ( cccccccc ) d ) e
   │   └─── Ab ────┘   │
   └────── 2Ab ────────┘a
 
+```
+
+<h2 id="argument">{v,y,c,d}{I i a A}{a}: arguments in block</h2>
+
+```
 
 argument=a
 {v,y,c,d}{I i a A}{a}
 Ia      lay context argument one
-a , b ( contentx , d ) e
+a , b ( contentx , two ) e
         └─ Ia ─┘
 
 ia      lay context them spaces
-a , b ( contentx , d ) e
+a , b ( contentx , two ) e
        └── ia ──┘
 
 aa      lay contentx to spaces content2
@@ -853,6 +871,11 @@ Aa      lay tu ( to spaces content2
 a , b ( contentx ,      content2 ) e
       └─── Aa ────-----|
 
+```
+
+<h2 id="block-next">{d,y,c}{i,a}{l,n}{b, q, t, >}: prev/next block</h2>
+
+```
 
 n == next,      {I, i, a, A} hay dung {i,a}
 {d,y,c}{i,a}{b, q, t, >}
