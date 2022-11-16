@@ -9,15 +9,15 @@
 * [buffer-ex](#buffer-ex): open file, buffer, verical, horizontal, ...
 * [motion](#motion): default of vim
 * [normal mode](#normal-mode): default of vim
-* [easymotion](#easymotion): jumpto quick(search)
+* [easymotion](#easymotion): jumpto quick(search) :hammer:
 * [searching](#searching): copy change cut
-* [targets.vim](#targets): copy change cut content in pair, quotes, tag-html
+* [targets.vim](#targets): copy change cut content in pair, quotes, tag-html :hammer:
     * [copy change cut in block](#content): {v d c y}{I i a A}{b q t >}
     * [argument in block](#argument): {v d c y}{I i a A}{a}
     * [prev/next block](#block-next): {v d c y}{I i a A}{l n}{a q t >}
-* [vim-surround](#vim-surround): add, change, cut pair
-* [title-case](#title-case): lower, upper, title, invert-case
-* [tabular.vim](#tabular): alignment
+* [vim-surround](#vim-surround): add, change, cut pair :hammer:
+* [title-case](#title-case): lower, upper, title, invert-case :hammer:
+* [tabular.vim](#tabular): alignment :hammer:
 * [emmet](#emmet)
 * [undo](#undo)
 * [insert-mode](#insert-mode)
@@ -696,7 +696,7 @@ ctrl x     =     int-1
 
 ---
 
-<h1 id="easymotion">easymotion</h1>
+<h1 id="easymotion">easymotion :hammer:</h1>
 
 ```
 
@@ -772,7 +772,7 @@ y/{words}   copy letters den khi gap 'words' thi stop
 
 ---
 
-<h1 id="targets">targets.vim</h1>
+<h1 id="targets">targets.vim :hammer:</h1>
 
 <h2 id="content">{v,d,c,y}{I,i,a,A}{b,q,t,>}: content</h2>
 
@@ -899,7 +899,7 @@ cilb       jumpto block change content2
 
 ---
 
-<h1 id="vim-surround">vim-surround</h1> 
+<h1 id="vim-surround">vim-surround :hammer:</h1> 
 
 ```
 
@@ -982,7 +982,7 @@ S"       -     add "" for 3 word
 
 ---
 
-<h1 id="title-case">title case</h1>
+<h1 id="title-case">title case :hammer:</h1>
 
 ```
 
@@ -1030,7 +1030,7 @@ gUw      make a word uppercase
 
 ---
 
-<h1 id="tabular">tabular.vim</h1>
+<h1 id="tabular">tabular.vim :hammer:</h1>
 
 ```
 
