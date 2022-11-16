@@ -1,4 +1,4 @@
-# menu
+# menu :sunny:
 * [tips](#tips)
 * [buffer](#buffer-hotkey)
 * [fold-hotkey](#fold-hotkey)
@@ -20,7 +20,6 @@
 * [tabular.vim](#tabular): alignment
 * [emmet](#emmet)
 * [undo](#undo)
-* [text-object](#text-object): == motion
 * [insert-mode](#insert-mode)
 * [indent, visual commands](#indent)
 * [register](#register): paste content of command, use double quotes: "{char}p
@@ -1111,30 +1110,6 @@ f là buffer file
 ```
 
 ---
-
-
-<h1 id="text-object">text-object</h1>
-
-```
-
-{operator}{i|a}{motion}
-{int}{operator}{i|a}{motion}
-
-# text-object == motion
-w   for word
-s   for sentence
-', ", `     for quotes
-p   for paragraph
-b (or (, )) for block surrounded by (),
-B (or {, }) for block surrounded by {}
-<, > for a block surrounded by <>
-[, ] for a block surrounded by []
-t for tag.
-
-```
-
----
-
 
 <h1 id="insert-mode">insert mode</h1>
 
