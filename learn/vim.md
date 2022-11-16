@@ -36,6 +36,8 @@
 
 ```
 
+int=count recursive, so lan run cua 1 command, neu khong co int, mat dinh la 1, run 1 lan
+
 v{int}{I i a A}{b q t >}            int buoc phai nam sau v
 v{int}{motion}
 
@@ -880,7 +882,7 @@ a , b ( contentx ,      content2 ) e
 n == next,      {I, i, a, A} hay dung {i,a}
 {d,y,c}{i,a}{b, q, t, >}
 {d,y,c}{i,a}{l,n}{b, q, t, >}
-int=count{d,y,c}{i,a}{l,n}{b, q, t, >}
+{int}{d,y,c}{i,a}{l,n}{b, q, t, >}
 
 # {  content1   } [   cotennt 2 ] (   content 3    )
 #cursor at block1
@@ -918,17 +920,23 @@ ys4w"                   add "" wrap    current cursor to end 4 word
 
 nen dung a thay cho i
 ysa{motion}
-ys{count=int}a{motion}          nhieu words
+ys{int}a{motion}          nhieu words
 ysaw"                   add "" wrap     ia = word
 ys3aw"                  add "" wrap     3 word
 ys3aw'                  add '' wrap     3 word
 ys3aw(                  add () wrap     3 word
 ys3awb                  add () wrap     3 word
 
+{int}ys{a}{motion}      nen dung cho thong nhat voi {int}{d c y}
+3ysaw"                  add "" wrap     3 word
+3ysaw'                  add '' wrap     3 word
+3ysaw(                  add () wrap     3 word
+3ysawb                  add () wrap     3 word
+
 tp = tag <p>
 tdiv = tag <div>
 timg = tag <img>
-ys3awtp + enter         add <p> wrap     3 word
+3ysawtp + enter         add <p> wrap     3 word
 
 ysas"                   add "" wrap    1 cau = sentence (ngan cach boi dot=.)
 ysas>                   add <> wrap    1 cau = sentence (ngan cach boi dot=.)
