@@ -9,16 +9,19 @@
 * [buffer-ex](#buffer-ex): open file, buffer, verical, horizontal, ...
 * [motion](#motion): default of vim
 * [normal mode](#normal-mode): default of vim
-* [easymotion](#easymotion): jumpto quick(search) :hammer:
 * [searching](#searching): copy change cut
+* [easymotion](#easymotion): jumpto quick(search) :hammer:
 * [targets.vim](#targets): copy change cut content in pair, quotes, tag-html :hammer:
     * [copy change cut in block](#content): {v d c y}{I i a A}{b q t >}
     * [argument in block](#argument): {v d c y}{I i a A}{a}
     * [prev/next block](#block-next): {v d c y}{I i a A}{l n}{a q t >}
 * [vim-surround](#vim-surround): add, change, cut pair :hammer:
+    * [add-pair](#surround-add): {int}ys{i a}{motion}{pair}
+    * [change-pair](#surround-change): cs{pair_old}{pair_new}
+    * [cut-pair](#surround-change): ds{b q t <} 
 * [title-case](#title-case): lower, upper, title, invert-case :hammer:
 * [tabular.vim](#tabular): alignment :hammer:
-* [emmet](#emmet)
+* [emmet](#emmet) :hammer:
 * [undo](#undo)
 * [insert-mode](#insert-mode)
 * [indent, visual commands](#indent)
@@ -696,35 +699,6 @@ ctrl x     =     int-1
 
 ---
 
-<h1 id="easymotion">easymotion :hammer:</h1>
-
-```
-
-N       jumpto prev match char
-n       jumpto next match char
-
-*       highlight quick words(ca file) at current cursor (== ctrl d of sublime text)
-*       next words da highlight
-
-
-/[words]        searching words full file 
-;f              search 1 char full file
-s               search 2 char full file , cursor ngay char 
-t               search 2 char, from current cursor to end file
-
-
-;L              jump to mark column1
-;w              jump to 2 letter mark words of file (nen dung)
-
-;h              jump to word left curosr tren 1 line
-;l              jump to word right cursor tren 1 line 
-;j              jump to word down curosr tren nhieu lines
-;k              jump to word up cursor tren nhieu lines
-
-```
-
----
-
 <h1 id="searching">searching</h1>
 
 ```
@@ -771,6 +745,36 @@ y/{words}   copy letters den khi gap 'words' thi stop
 ```
 
 ---
+
+<h1 id="easymotion">easymotion :hammer:</h1>
+
+```
+
+N       jumpto prev match char
+n       jumpto next match char
+
+*       highlight quick words(ca file) at current cursor (== ctrl d of sublime text)
+*       next words da highlight
+
+
+/[words]        searching words full file 
+;f              search 1 char full file
+s               search 2 char full file , cursor ngay char 
+t               search 2 char, from current cursor to end file
+
+
+;L              jump to mark column1
+;w              jump to 2 letter mark words of file (nen dung)
+
+;h              jump to word left curosr tren 1 line
+;l              jump to word right cursor tren 1 line 
+;j              jump to word down curosr tren nhieu lines
+;k              jump to word up cursor tren nhieu lines
+
+```
+
+---
+
 
 <h1 id="targets">targets.vim :hammer:</h1>
 
@@ -900,6 +904,7 @@ cilb       jumpto block change content2
 ---
 
 <h1 id="vim-surround">vim-surround :hammer:</h1> 
+<h2 id="surround-add">add-pair: {int}ys{i a}{motion}{pair}</h2>
 
 ```
 
@@ -932,9 +937,7 @@ ys3awb                  add () wrap     3 word
 3ysaw(                  add () wrap     3 word
 3ysawb                  add () wrap     3 word
 
-tp = tag <p>
-tdiv = tag <div>
-timg = tag <img>
+{int}ysa{motion s p}t{html-tags-name} + enter
 3ysawtp + enter         add <p> wrap     3 word
 
 ysas"                   add "" wrap    1 cau = sentence (ngan cach boi dot=.)
@@ -943,6 +946,7 @@ ysasb                   add () wrap    1 cau = sentence (ngan cach boi dot=.)
 ysas( === ysasb
 
 ysastp + enter          add <p> wrap    1 cau = sentence (ngan cach boi dot=.)
+ysas<p + enter          add <p> wrap    1 cau = sentence (ngan cach boi dot=.)
 
 
 yss"                    add "" wrap     1 line
@@ -953,7 +957,13 @@ rieng tag phai press them <enter>
 ysstp + enter           add tag=<p> wrap     1 line
 ysstdiv + enter         add tag=<div> wrap     1 line
 
-#changepair
+```
+
+<h2 id="surround-change">change-pair: cs{pair_old}{pair_new}</h2>
+
+```
+
+#pair-change
 # cs{pair_old}{pair_new}
 cs(*            change () thanh **
 csb*            change () thanh **
@@ -962,7 +972,7 @@ csbtp           change () thanh tag <p>
 cs(tp           change () thanh tag <p>
 cstta           change current tag thanh tag <a></a>
 
-#cutpair
+#pair-cut
 dsb             cut=del ()
 dsq             cut=del "" 
 dst             cut=del tag html
